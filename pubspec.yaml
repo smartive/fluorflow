@@ -1,11 +1,11 @@
 name: fluorflow
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: todo
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
-  flutter: ">=1.17.0"
+  flutter: '>=1.17.0'
 
 dependencies:
   flutter:
