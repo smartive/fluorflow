@@ -1,0 +1,63 @@
+builders:
+  locator:
+    import: 'package:fluorflow_generator/fluorflow_generator.dart'
+    builder_factories: ['locatorBuilder']
+    build_extensions: { 'lib/$lib$': ['lib/app.locator.dart'] }
+    auto_apply: root_package
+    build_to: source
+    defaults:
+      options:
+        emitAllReady: true
+        output: 'lib/app.locator.dart'
+        register_services:
+          bottomSheet: true
+          dialog: true
+          navigation: true
+
+  testLocator:
+    import: 'package:fluorflow_generator/fluorflow_generator.dart'
+    builder_factories: ['testLocatorBuilder']
+    build_extensions: { 'lib/$lib$': ['test/test.locator.dart'] }
+    auto_apply: root_package
+    build_to: source
+    applies_builders:
+      - 'mockito:mockBuilder'
+    runs_before:
+      - 'mockito:mockBuilder'
+    defaults:
+      options:
+        output: 'test/test.locator.dart'
+        services:
+          bottomSheet: true
+          dialog: true
+          navigation: true
+
+  router:
+    import: 'package:fluorflow_generator/fluorflow_generator.dart'
+    builder_factories: ['routerBuilder']
+    build_extensions: { 'lib/$lib$': ['lib/app.router.dart'] }
+    auto_apply: root_package
+    build_to: source
+    defaults:
+      options:
+        output: 'lib/app.router.dart'
+
+  dialog:
+    import: 'package:fluorflow_generator/fluorflow_generator.dart'
+    builder_factories: ['dialogBuilder']
+    build_extensions: { 'lib/$lib$': ['lib/app.dialogs.dart'] }
+    auto_apply: root_package
+    build_to: source
+    defaults:
+      options:
+        output: 'lib/app.dialogs.dart'
+
+  bottomSheet:
+    import: 'package:fluorflow_generator/fluorflow_generator.dart'
+    builder_factories: ['bottomSheetBuilder']
+    build_extensions: { 'lib/$lib$': ['lib/app.bottom_sheets.dart'] }
+    auto_apply: root_package
+    build_to: source
+    defaults:
+      options:
+        output: 'lib/app.bottom_sheets.dart'

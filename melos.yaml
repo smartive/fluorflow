@@ -1,0 +1,44 @@
+name: fluorflow
+
+repository: https://github.com/smartive/fluorflow
+
+packages:
+  - packages/fluorflow
+  - packages/fluorflow_generator
+
+scripts:
+  build_runner:
+    description: Run build_runner
+    exec: dart run build_runner build --delete-conflicting-outputs
+    packageFilters:
+      dependsOn:
+        - build_runner
+
+  lint:
+    description: Run static analysis and code style checks
+    run: dart analyze && dart format --fix --set-exit-if-changed .
+    exec:
+      failFast: true
+
+  test:
+    run: melos run test:dart && melos run test:flutter
+
+  test:dart:
+    description: Run dart tests
+    run: dart test
+    packageFilters:
+      flutter: false
+    exec:
+      failFast: true
+
+  test:flutter:
+    description: Run flutter tests
+    run: flutter test
+    packageFilters:
+      flutter: true
+    exec:
+      failFast: true
+
+ide:
+  intellij:
+    enabled: false

@@ -1,0 +1,6 @@
+
+default: build-runner
+
+# Execute the build runner to generate dart related objects.
+build-runner:
+    dart run build_runner build --delete-conflicting-outputs

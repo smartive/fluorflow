@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json.schemastore.org/semantic-release",
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "packages/fluorflow/CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "packages/fluorflow_generator/CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "sed -i 's/^version: .*$/version: ${nextRelease.version}/' pubspec.yaml",
+        "publishCmd": "flutter pub publish -f",
+        "execCwd": "packages/fluorflow"
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "sed -i 's/^version: .*$/version: ${nextRelease.version}/' pubspec.yaml",
+        "publishCmd": "dart pub publish -f",
+        "execCwd": "packages/fluorflow_generator"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["packages/*/CHANGELOG.md", "packages/*/pubspec.yaml"]
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
