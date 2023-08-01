@@ -5,10 +5,10 @@ final class Singleton {
 }
 
 final class AsyncSingleton<T> {
-  final Future<T> Function() factory;
+  final Future<T> Function()? factory;
   final Iterable<Type>? dependencies;
 
-  const AsyncSingleton({required this.factory, this.dependencies});
+  const AsyncSingleton({this.factory, this.dependencies});
 }
 
 final class LazySingleton {
