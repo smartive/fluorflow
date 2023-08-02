@@ -1,9 +1,11 @@
+// ignore_for_file: type=lint
+
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:fluorflow/locator.dart' as _i1;
-import 'package:example/services/factory.dart' as _i2;
-import 'package:example/services/singleton.dart' as _i3;
 import 'package:example/services/async_singleton.dart' as _i4;
+import 'package:example/services/factory.dart' as _i2;
 import 'package:example/services/lazy_singleton.dart' as _i5;
+import 'package:example/services/singleton.dart' as _i3;
+import 'package:fluorflow/locator.dart' as _i1;
 
 Future<void> setupLocator() async {
   _i1.locator.registerFactory(() => _i2.constructedSvcFactory());
@@ -32,10 +34,7 @@ Future<void> setupLocator() async {
   _i1.locator.registerSingleton(_i3.SingletonService());
   _i1.locator.registerSingletonWithDependencies(
     () => _i3.SingletonWithDependenciesService(),
-    dependsOn: [
-      _i3.SingletonService,
-      _i4.AsyncSingletonService,
-    ],
+    dependsOn: [_i4.AsyncSingletonService],
   );
   await _i1.locator.allReady();
 }

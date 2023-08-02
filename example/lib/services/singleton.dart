@@ -6,7 +6,7 @@ import 'async_singleton.dart';
 @Singleton()
 class SingletonService {}
 
-@Singleton(dependencies: [SingletonService, AsyncSingletonService])
+@Singleton(dependencies: [AsyncSingletonService])
 class SingletonWithDependenciesService {
   final svc = locator<SingletonService>();
   final asyncSvc = locator<AsyncSingletonService>();
