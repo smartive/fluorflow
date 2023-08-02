@@ -1,4 +1,4 @@
-import 'package:fluorflow/fluorflow.dart';
+import 'package:fluorflow/ui.dart';
 
 class HomeViewModel extends BaseViewModel {
   var _counter = 0;

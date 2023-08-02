@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-abstract class FluorFlowView<TViewModel extends ChangeNotifier>
+import '../viewmodels/base_viewmodel.dart';
+
+abstract class FluorFlowView<TViewModel extends BaseViewModel>
     extends StatelessWidget {
   const FluorFlowView({super.key});
 
@@ -13,6 +15,7 @@ abstract class FluorFlowView<TViewModel extends ChangeNotifier>
   @override
   Widget build(BuildContext context) {
     final viewModel = viewModelBuilder(context);
+    viewModel.initialize();
     return ListenableBuilder(
       listenable: viewModel,
       builder: (context, child) => builder(context, viewModel, child),

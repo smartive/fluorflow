@@ -1,4 +1,4 @@
-import 'package:fluorflow/fluorflow.dart';
+import 'package:fluorflow/ui.dart';
 import 'package:flutter/material.dart';
 
 import 'home_viewmodel.dart';
@@ -11,7 +11,7 @@ class HomeView extends FluorFlowView<HomeViewModel> {
           BuildContext context, HomeViewModel viewModel, Widget? child) =>
       Scaffold(
           appBar: AppBar(
-            title: const Text('FluorFlow'),
+            title: const Text('FluorFlow - Counter'),
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
