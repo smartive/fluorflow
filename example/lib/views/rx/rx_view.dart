@@ -1,8 +1,11 @@
+import 'package:fluorflow/annotations.dart';
 import 'package:fluorflow/ui.dart';
 import 'package:flutter/material.dart';
 
+import '../../navigation.dart';
 import 'rx_viewmodel.dart';
 
+@Routable()
 class RxView extends FluorFlowView<RxViewModel> {
   const RxView({super.key});
 
@@ -12,6 +15,7 @@ class RxView extends FluorFlowView<RxViewModel> {
           appBar: AppBar(
             title: const Text('FluorFlow - Reactive Counter'),
           ),
+          bottomNavigationBar: Navigation(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,

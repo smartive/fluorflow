@@ -1,7 +1,8 @@
 import 'package:example/app.locator.dart';
-import 'package:example/views/home/home_view.dart';
-import 'package:example/views/rx/rx_view.dart';
+import 'package:fluorflow/services.dart';
 import 'package:flutter/material.dart';
+
+import 'app.router.dart';
 
 void main() async {
   await setupLocator();
@@ -19,7 +20,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const RxView(),
+      initialRoute: AppRoute.homeView.path,
+      onGenerateRoute: onGenerateRoute,
+      navigatorKey: NavigationService.navigatorKey,
+      navigatorObservers: [NavigationService.observer()],
     );
   }
 }

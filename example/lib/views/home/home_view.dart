@@ -1,8 +1,11 @@
+import 'package:fluorflow/annotations.dart';
 import 'package:fluorflow/ui.dart';
 import 'package:flutter/material.dart';
 
+import '../../navigation.dart';
 import 'home_viewmodel.dart';
 
+@Routable()
 class HomeView extends FluorFlowView<HomeViewModel> {
   const HomeView({super.key});
 
@@ -13,6 +16,7 @@ class HomeView extends FluorFlowView<HomeViewModel> {
           appBar: AppBar(
             title: const Text('FluorFlow - Counter'),
           ),
+          bottomNavigationBar: Navigation(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
