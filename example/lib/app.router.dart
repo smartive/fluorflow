@@ -82,8 +82,7 @@ class DetailViewArguments {
   final String defaultedArg;
 }
 
-_i1.Route? onGenerateRoute(_i1.RouteSettings settings) =>
-    _pages[settings.name]?.call(settings);
+final onGenerateRoute = _i6.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i6.NavigationService {
   Future<T?>? navigateToHomeView<T>({

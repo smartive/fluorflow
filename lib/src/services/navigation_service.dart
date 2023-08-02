@@ -1,6 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+typedef RouteMap = Map<String, RouteFactory>;
+RouteFactory generateRouteFactory(RouteMap map) =>
+    (settings) => map[settings.name]?.call(settings);
+
 final class NavigationService {
   static GlobalKey<NavigatorState> get navigatorKey => Get.key;
 
