@@ -21,7 +21,7 @@ enum AppRoute {
 }
 
 final _pages = <String, _i1.RouteFactory>{
-  '/home-view': (data) => _i2.NoTransitionPageRouteBuilder(
+  AppRoute.homeView.path: (data) => _i2.NoTransitionPageRouteBuilder(
         settings: data,
         pageBuilder: (
           _,
@@ -30,7 +30,7 @@ final _pages = <String, _i1.RouteFactory>{
         ) =>
             const _i3.HomeView(),
       ),
-  '/detail-view': (data) => _i4.FadeInPageRouteBuilder(
+  AppRoute.detailView.path: (data) => _i4.FadeInPageRouteBuilder(
         settings: data,
         pageBuilder: (
           _,
@@ -46,7 +46,7 @@ final _pages = <String, _i1.RouteFactory>{
           );
         },
       ),
-  '/master-view': (data) => _i2.NoTransitionPageRouteBuilder(
+  AppRoute.masterView.path: (data) => _i2.NoTransitionPageRouteBuilder(
         settings: data,
         pageBuilder: (
           _,
@@ -55,7 +55,7 @@ final _pages = <String, _i1.RouteFactory>{
         ) =>
             const _i6.MasterView(),
       ),
-  '/rx-view': (data) => _i2.NoTransitionPageRouteBuilder(
+  AppRoute.rxView.path: (data) => _i2.NoTransitionPageRouteBuilder(
         settings: data,
         pageBuilder: (
           _,
