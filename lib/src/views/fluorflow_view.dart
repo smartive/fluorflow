@@ -12,9 +12,12 @@ abstract class FluorFlowView<TViewModel extends BaseViewModel>
 
   Widget? staticChildBuilder(BuildContext context) => null;
 
+  void onViewModelCreated(TViewModel viewModel) {}
+
   @override
   Widget build(BuildContext context) {
     final viewModel = viewModelBuilder(context);
+    onViewModelCreated(viewModel);
     viewModel.initialize();
     return ListenableBuilder(
       listenable: viewModel,
