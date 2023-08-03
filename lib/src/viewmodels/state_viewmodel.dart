@@ -15,6 +15,9 @@ abstract class StateViewModel<TState> extends BaseViewModel {
   }
 
   @protected
+  bool get registerStateListener => true;
+
+  @protected
   Future<TState> initializeState();
 
   @protected
@@ -25,7 +28,9 @@ abstract class StateViewModel<TState> extends BaseViewModel {
   Future<void> initialize() async {
     try {
       _state = ValueNotifier(await initializeState());
-      _state.addListener(notifyListeners);
+      if (registerStateListener) {
+        _state.addListener(notifyListeners);
+      }
       super.initialize();
     } catch (e) {
       error = e;
