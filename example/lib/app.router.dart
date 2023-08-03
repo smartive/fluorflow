@@ -1,11 +1,12 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:example/views/home/home_view.dart' as _i2;
-import 'package:example/views/master_detail/detail_view.dart' as _i3;
-import 'package:example/views/master_detail/master_view.dart' as _i4;
-import 'package:example/views/rx/rx_view.dart' as _i5;
-import 'package:fluorflow/services.dart' as _i6;
+import 'package:example/views/home/home_view.dart' as _i3;
+import 'package:example/views/master_detail/detail_view.dart' as _i5;
+import 'package:example/views/master_detail/master_view.dart' as _i6;
+import 'package:example/views/rx/rx_view.dart' as _i7;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:fluorflow/src/navigation/page_route_builder.dart' as _i4;
 import 'package:flutter/widgets.dart' as _i1;
 
 enum AppRoute {
@@ -20,16 +21,16 @@ enum AppRoute {
 }
 
 final _pages = <String, _i1.RouteFactory>{
-  '/home-view': (data) => _i1.PageRouteBuilder(
+  '/home-view': (data) => _i2.NoTransitionPageRouteBuilder(
         settings: data,
         pageBuilder: (
           _,
           __,
           ___,
         ) =>
-            const _i2.HomeView(),
+            const _i3.HomeView(),
       ),
-  '/detail-view': (data) => _i1.PageRouteBuilder(
+  '/detail-view': (data) => _i4.FadeInPageRouteBuilder(
         settings: data,
         pageBuilder: (
           _,
@@ -37,7 +38,7 @@ final _pages = <String, _i1.RouteFactory>{
           ___,
         ) {
           final args = (data.arguments as DetailViewArguments);
-          return _i3.DetailView(
+          return _i5.DetailView(
             args.arg,
             namedArg: args.namedArg,
             optionalArg: args.optionalArg,
@@ -45,23 +46,23 @@ final _pages = <String, _i1.RouteFactory>{
           );
         },
       ),
-  '/master-view': (data) => _i1.PageRouteBuilder(
+  '/master-view': (data) => _i2.NoTransitionPageRouteBuilder(
         settings: data,
         pageBuilder: (
           _,
           __,
           ___,
         ) =>
-            const _i4.MasterView(),
+            const _i6.MasterView(),
       ),
-  '/rx-view': (data) => _i1.PageRouteBuilder(
+  '/rx-view': (data) => _i2.NoTransitionPageRouteBuilder(
         settings: data,
         pageBuilder: (
           _,
           __,
           ___,
         ) =>
-            const _i5.RxView(),
+            const _i7.RxView(),
       ),
 };
 
@@ -82,9 +83,9 @@ class DetailViewArguments {
   final String defaultedArg;
 }
 
-final onGenerateRoute = _i6.generateRouteFactory(_pages);
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
-extension RouteNavigation on _i6.NavigationService {
+extension RouteNavigation on _i2.NavigationService {
   Future<T?>? navigateToHomeView<T>({
     int? id,
     bool preventDuplicates = true,

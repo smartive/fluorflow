@@ -1,7 +1,6 @@
 import 'package:example/app.router.dart';
 import 'package:fluorflow/annotations.dart';
-import 'package:fluorflow/locator.dart';
-import 'package:fluorflow/services.dart';
+import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
 
 import '../../navigation.dart';

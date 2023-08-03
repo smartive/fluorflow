@@ -1,5 +1,5 @@
 import 'package:fluorflow/annotations.dart';
-import 'package:fluorflow/locator.dart';
+import 'package:fluorflow/fluorflow.dart';
 
 @AsyncSingleton(factory: AsyncSingletonService.create)
 class AsyncSingletonService {

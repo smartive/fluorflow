@@ -1,5 +1,5 @@
 import 'package:example/app.locator.dart';
-import 'package:fluorflow/services.dart';
+import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
 
 import 'app.router.dart';

@@ -1,9 +1,8 @@
 import 'package:fluorflow/annotations.dart';
-import 'package:fluorflow/locator.dart';
-import 'package:fluorflow/services.dart';
+import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
 
-@Routable()
+@Routable(pageBuilder: FadeInPageRouteBuilder)
 class DetailView extends StatelessWidget {
   final String arg;
   final String namedArg;

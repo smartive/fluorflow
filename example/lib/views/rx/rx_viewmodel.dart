@@ -1,4 +1,4 @@
-import 'package:fluorflow/ui.dart';
+import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
 
 class RxViewModel extends BaseViewModel {

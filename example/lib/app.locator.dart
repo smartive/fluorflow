@@ -5,8 +5,7 @@ import 'package:example/services/async_singleton.dart' as _i4;
 import 'package:example/services/factory.dart' as _i2;
 import 'package:example/services/lazy_singleton.dart' as _i5;
 import 'package:example/services/singleton.dart' as _i3;
-import 'package:fluorflow/locator.dart' as _i1;
-import 'package:fluorflow/services.dart' as _i6;
+import 'package:fluorflow/fluorflow.dart' as _i1;
 
 Future<void> setupLocator() async {
   _i1.locator.registerFactory(() => _i2.constructedSvcFactory());
@@ -37,7 +36,7 @@ Future<void> setupLocator() async {
     () => _i3.SingletonWithDependenciesService(),
     dependsOn: [_i4.AsyncSingletonService],
   );
-  _i1.locator.registerLazySingleton(() => _i6.NavigationService());
+  _i1.locator.registerLazySingleton(() => _i1.NavigationService());
   await _i1.locator.allReady();
 }
 
