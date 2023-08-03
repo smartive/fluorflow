@@ -4,6 +4,7 @@ abstract class BaseViewModel extends ChangeNotifier {
   var _disposed = false;
   var _initialized = false;
   var _busy = false;
+  dynamic _error;
 
   bool get disposed => _disposed;
 
@@ -16,6 +17,20 @@ abstract class BaseViewModel extends ChangeNotifier {
     _busy = value;
     notifyListeners();
   }
+
+  bool get hasError => _error != null;
+
+  dynamic get error => _error;
+
+  @protected
+  set error(dynamic value) {
+    _error = value;
+    onError(error);
+    notifyListeners();
+  }
+
+  @protected
+  void onError(dynamic error) {}
 
   @mustCallSuper
   Future<void> initialize() async {

@@ -21,23 +21,6 @@ final class NavigationService {
 
   T typedArguments<T>() => Get.arguments;
 
-  void config({
-    bool? enableLog,
-    bool? defaultPopGesture,
-    bool? defaultOpaqueRoute,
-    Duration? defaultDurationTransition,
-    bool? defaultGlobalState,
-    Transition? defaultTransition,
-  }) =>
-      Get.config(
-        enableLog: enableLog,
-        defaultPopGesture: defaultPopGesture,
-        defaultOpaqueRoute: defaultOpaqueRoute,
-        defaultDurationTransition: defaultDurationTransition,
-        defaultGlobalState: defaultGlobalState,
-        defaultTransition: defaultTransition,
-      );
-
   void back<T>({T? result, int? id}) => Get.back<T>(result: result, id: id);
 
   void popUntil(RoutePredicate predicate, {int? id}) =>
