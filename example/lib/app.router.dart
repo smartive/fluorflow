@@ -85,39 +85,25 @@ class DetailViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToHomeView<T>({
-    int? id,
-    bool preventDuplicates = true,
-  }) =>
+  Future<T?>? navigateToHomeView<T>({bool preventDuplicates = true}) =>
       navigateTo(
         AppRoute.homeView.path,
-        id: id,
         preventDuplicates: preventDuplicates,
       );
-  Future<T?>? replaceWithHomeView<T>({
-    int? id,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithHomeView({bool preventDuplicates = true}) => replaceWith(
         AppRoute.homeView.path,
-        id: id,
         preventDuplicates: preventDuplicates,
       );
-  Future<T?>? rootToHomeView<T>({int? id}) => rootTo(
-        AppRoute.homeView.path,
-        id: id,
-      );
+  void rootToHomeView() => rootTo(AppRoute.homeView.path);
   Future<T?>? navigateToDetailView<T>({
     required String arg,
     required String namedArg,
     String? optionalArg,
     String defaultedArg = 'default',
-    int? id,
     bool preventDuplicates = true,
   }) =>
       navigateTo(
         AppRoute.detailView.path,
-        id: id,
         preventDuplicates: preventDuplicates,
         arguments: DetailViewArguments(
           arg: arg,
@@ -126,17 +112,15 @@ extension RouteNavigation on _i2.NavigationService {
           defaultedArg: defaultedArg,
         ),
       );
-  Future<T?>? replaceWithDetailView<T>({
+  void replaceWithDetailView({
     required String arg,
     required String namedArg,
     String? optionalArg,
     String defaultedArg = 'default',
-    int? id,
     bool preventDuplicates = true,
   }) =>
       replaceWith(
         AppRoute.detailView.path,
-        id: id,
         preventDuplicates: preventDuplicates,
         arguments: DetailViewArguments(
           arg: arg,
@@ -145,16 +129,14 @@ extension RouteNavigation on _i2.NavigationService {
           defaultedArg: defaultedArg,
         ),
       );
-  Future<T?>? rootToDetailView<T>({
+  void rootToDetailView({
     required String arg,
     required String namedArg,
     String? optionalArg,
     String defaultedArg = 'default',
-    int? id,
   }) =>
       rootTo(
         AppRoute.detailView.path,
-        id: id,
         arguments: DetailViewArguments(
           arg: arg,
           namedArg: namedArg,
@@ -162,48 +144,24 @@ extension RouteNavigation on _i2.NavigationService {
           defaultedArg: defaultedArg,
         ),
       );
-  Future<T?>? navigateToMasterView<T>({
-    int? id,
-    bool preventDuplicates = true,
-  }) =>
+  Future<T?>? navigateToMasterView<T>({bool preventDuplicates = true}) =>
       navigateTo(
         AppRoute.masterView.path,
-        id: id,
         preventDuplicates: preventDuplicates,
       );
-  Future<T?>? replaceWithMasterView<T>({
-    int? id,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithMasterView({bool preventDuplicates = true}) => replaceWith(
         AppRoute.masterView.path,
-        id: id,
         preventDuplicates: preventDuplicates,
       );
-  Future<T?>? rootToMasterView<T>({int? id}) => rootTo(
-        AppRoute.masterView.path,
-        id: id,
-      );
-  Future<T?>? navigateToRxView<T>({
-    int? id,
-    bool preventDuplicates = true,
-  }) =>
+  void rootToMasterView() => rootTo(AppRoute.masterView.path);
+  Future<T?>? navigateToRxView<T>({bool preventDuplicates = true}) =>
       navigateTo(
         AppRoute.rxView.path,
-        id: id,
         preventDuplicates: preventDuplicates,
       );
-  Future<T?>? replaceWithRxView<T>({
-    int? id,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithRxView({bool preventDuplicates = true}) => replaceWith(
         AppRoute.rxView.path,
-        id: id,
         preventDuplicates: preventDuplicates,
       );
-  Future<T?>? rootToRxView<T>({int? id}) => rootTo(
-        AppRoute.rxView.path,
-        id: id,
-      );
+  void rootToRxView() => rootTo(AppRoute.rxView.path);
 }
