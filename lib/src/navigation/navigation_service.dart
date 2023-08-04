@@ -25,44 +25,38 @@ final class NavigationService {
   Future<T?>? navigateTo<T>(
     String routeName, {
     dynamic arguments,
-    int? id,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
   }) =>
       Get.toNamed<T?>(
         routeName,
         arguments: arguments,
-        id: id,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
       );
 
-  Future<T?>? replaceWith<T>(
+  void replaceWith(
     String routeName, {
     dynamic arguments,
-    int? id,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     RouteTransitionsBuilder? transition,
   }) =>
-      Get.offNamed<T?>(
+      Get.offNamed(
         routeName,
         arguments: arguments,
-        id: id,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
       );
 
-  Future<T?>? rootTo<T>(
+  void rootTo(
     String routeName, {
     dynamic arguments,
-    int? id,
     Map<String, String>? parameters,
   }) =>
-      Get.offAllNamed<T?>(
+      Get.offAllNamed(
         routeName,
         arguments: arguments,
-        id: id,
         parameters: parameters,
       );
 }
