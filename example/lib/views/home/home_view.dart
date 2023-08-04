@@ -2,11 +2,10 @@ import 'package:fluorflow/annotations.dart';
 import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
 
-import '../../navigation.dart';
 import 'home_viewmodel.dart';
 
-@Routable()
-class HomeView extends FluorFlowView<HomeViewModel> {
+@Routable(navigateToExtension: false, replaceWithExtension: false)
+final class HomeView extends FluorFlowView<HomeViewModel> {
   const HomeView({super.key});
 
   @override
@@ -14,9 +13,8 @@ class HomeView extends FluorFlowView<HomeViewModel> {
           BuildContext context, HomeViewModel viewModel, Widget? child) =>
       Scaffold(
           appBar: AppBar(
-            title: const Text('FluorFlow - Counter'),
+            title: const Text('FluorFlow'),
           ),
-          bottomNavigationBar: Navigation(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,

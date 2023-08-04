@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../viewmodels/base_viewmodel.dart';
 
-abstract class FluorFlowView<TViewModel extends BaseViewModel>
+abstract base class FluorFlowView<TViewModel extends BaseViewModel>
     extends StatelessWidget {
   const FluorFlowView({super.key});
 

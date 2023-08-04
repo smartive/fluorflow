@@ -1,3 +1,6 @@
+export 'src/dialogs/completer.dart';
+export 'src/dialogs/dialog.dart';
+export 'src/dialogs/simple_dialog.dart';
 export 'src/locator/locator.dart';
 export 'src/navigation/navigation_service.dart';
 export 'src/navigation/page_route_builder.dart';

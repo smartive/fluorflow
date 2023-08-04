@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-abstract class BaseViewModel extends ChangeNotifier {
+abstract base class BaseViewModel extends ChangeNotifier {
   var _disposed = false;
   var _initialized = false;
   var _busy = false;

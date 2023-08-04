@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import 'base_viewmodel.dart';
 
-abstract class DataViewModel<TData> extends BaseViewModel {
+abstract base class DataViewModel<TData> extends BaseViewModel {
   late final ValueNotifier<TData> _data;
 
   ValueNotifier<TData> get dataNotifier =>
