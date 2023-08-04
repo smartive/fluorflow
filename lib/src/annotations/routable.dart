@@ -1,15 +1,21 @@
+import '../navigation/route_builder.dart';
+
 final class Routable {
-  final String? path;
   final bool navigateToExtension;
   final bool replaceWithExtension;
   final bool rootToExtension;
-  final Type? pageBuilder;
+
+  final String? path;
+
+  final Type? pageRouteBuilder;
+  final RouteBuilder routeBuilder;
 
   const Routable({
-    this.path,
     this.navigateToExtension = true,
     this.replaceWithExtension = true,
     this.rootToExtension = true,
-    this.pageBuilder,
+    this.path,
+    this.pageRouteBuilder,
+    this.routeBuilder = RouteBuilder.noTransition,
   });
 }

@@ -2,7 +2,7 @@ import 'package:fluorflow/annotations.dart';
 import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
 
-@Routable(pageBuilder: FadeInPageRouteBuilder)
+@Routable(routeBuilder: RouteBuilder.zoomIn)
 class DetailView extends StatelessWidget {
   final String arg;
   final String namedArg;

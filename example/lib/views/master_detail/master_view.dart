@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../navigation.dart';
 
-@Routable()
+@Routable(routeBuilder: RouteBuilder.fadeIn)
 class MasterView extends StatelessWidget {
   const MasterView({super.key});
 

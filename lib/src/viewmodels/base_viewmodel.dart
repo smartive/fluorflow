@@ -12,6 +12,7 @@ abstract class BaseViewModel extends ChangeNotifier {
 
   bool get busy => _busy;
 
+  @nonVirtual
   @protected
   set busy(bool value) {
     _busy = value;
@@ -22,6 +23,7 @@ abstract class BaseViewModel extends ChangeNotifier {
 
   dynamic get error => _error;
 
+  @nonVirtual
   @protected
   set error(dynamic value) {
     _error = value;
@@ -38,6 +40,7 @@ abstract class BaseViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  @nonVirtual
   @override
   void notifyListeners() {
     if (!_disposed) {
