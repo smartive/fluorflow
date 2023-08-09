@@ -5,5 +5,6 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 
 Future<void> setupLocator() async {
   _i1.locator.registerLazySingleton(() => _i1.NavigationService());
+  _i1.locator.registerLazySingleton(() => _i1.DialogService());
   await _i1.locator.allReady();
 }

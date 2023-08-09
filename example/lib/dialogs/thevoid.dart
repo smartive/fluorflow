@@ -1,8 +1,8 @@
 import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
 
-final class SearchFilterDialog extends FluorFlowSimpleDialog {
-  const SearchFilterDialog({super.key, required super.completer});
+final class VoidDialog extends FluorFlowSimpleDialog<void> {
+  const VoidDialog({super.key, required super.completer});
 
   @override
   Widget build(BuildContext context) => Container(
@@ -10,7 +10,7 @@ final class SearchFilterDialog extends FluorFlowSimpleDialog {
         child: SafeArea(
           child: Column(
             children: [
-              const Text('simple dialog'),
+              const Text('void dialog'),
               TextButton(
                   onPressed: () => completer.confirm(),
                   child: const Text('Confirm')),

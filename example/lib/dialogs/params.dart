@@ -1,8 +1,10 @@
 import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
 
-final class SearchFilterDialog extends FluorFlowSimpleDialog {
-  const SearchFilterDialog({super.key, required super.completer});
+final class ParamDialog extends FluorFlowSimpleDialog<String> {
+  final String name;
+
+  const ParamDialog(this.name, {super.key, required super.completer});
 
   @override
   Widget build(BuildContext context) => Container(
@@ -10,9 +12,9 @@ final class SearchFilterDialog extends FluorFlowSimpleDialog {
         child: SafeArea(
           child: Column(
             children: [
-              const Text('simple dialog'),
+              Text('param dialog $name'),
               TextButton(
-                  onPressed: () => completer.confirm(),
+                  onPressed: () => completer.confirm(name),
                   child: const Text('Confirm')),
               TextButton(
                   onPressed: () => completer.cancel(),
