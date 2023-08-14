@@ -1,3 +1,4 @@
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 
 import '../viewmodels/base_viewmodel.dart';
@@ -18,7 +19,8 @@ abstract base class FluorFlowView<TViewModel extends BaseViewModel>
   Widget build(BuildContext context) {
     final viewModel = viewModelBuilder(context);
     onViewModelCreated(viewModel);
-    viewModel.initialize();
+    SchedulerBinding.instance
+        .addPostFrameCallback((timeStamp) => viewModel.initialize());
     return ListenableBuilder(
       listenable: viewModel,
       builder: (context, child) => builder(context, viewModel, child),
