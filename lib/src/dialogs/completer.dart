@@ -1,5 +1,3 @@
-typedef DialogResult<T> = ({bool? confirmed, T? result});
-
 typedef DialogCompleter<T> = void Function({bool? confirmed, T? result});
 
 extension CompleterExtensions<T> on DialogCompleter<T> {

@@ -1,4 +1,3 @@
-import 'package:example/app.dialogs.dart';
 import 'package:fluorflow/annotations.dart';
 import 'package:fluorflow/fluorflow.dart';
 import 'package:flutter/material.dart';
@@ -25,12 +24,7 @@ final class HomeView extends FluorFlowView<HomeViewModel> {
                   onPressed: viewModel.increment,
                   child: const Text('increment')),
               TextButton(
-                  onPressed: () async {
-                    final r = await locator<DialogService>()
-                        .showParamDialog(name: 'asdf');
-                    print(r);
-                  },
-                  child: const Text('Show Dialog')),
+                  onPressed: () async {}, child: const Text('Show Dialog')),
             ],
           ));
 
