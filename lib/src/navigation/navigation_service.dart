@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-final class NavigationService {
+// TODO: think about "final".
+class NavigationService {
   static GlobalKey<NavigatorState> get navigatorKey => Get.key;
 
   static GlobalKey<NavigatorState>? nestedNavigationKey(int index) =>
