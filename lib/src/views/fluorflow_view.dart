@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import '../viewmodels/base_viewmodel.dart';
 
 abstract base class FluorFlowView<TViewModel extends BaseViewModel>
-    extends StatelessWidget {
+    extends StatefulWidget {
   const FluorFlowView({super.key});
 
   @protected
@@ -22,15 +22,32 @@ abstract base class FluorFlowView<TViewModel extends BaseViewModel>
 
   @override
   @nonVirtual
-  Widget build(BuildContext context) {
-    final viewModel = viewModelBuilder(context);
-    onViewModelCreated(viewModel);
+  State<FluorFlowView> createState() => _FluorFlowViewState();
+}
+
+class _FluorFlowViewState<TViewModel extends BaseViewModel>
+    extends State<FluorFlowView<TViewModel>> {
+  late final TViewModel viewModel;
+
+  @override
+  void initState() {
+    viewModel = widget.viewModelBuilder(context);
+    widget.onViewModelCreated(viewModel);
     SchedulerBinding.instance
         .addPostFrameCallback((timeStamp) => viewModel.initialize());
-    return ListenableBuilder(
-      listenable: viewModel,
-      builder: (context, child) => builder(context, viewModel, child),
-      child: staticChildBuilder(context),
-    );
+    super.initState();
   }
+
+  @override
+  void dispose() {
+    viewModel.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => ListenableBuilder(
+        listenable: viewModel,
+        builder: (context, child) => widget.builder(context, viewModel, child),
+        child: widget.staticChildBuilder(context),
+      );
 }
