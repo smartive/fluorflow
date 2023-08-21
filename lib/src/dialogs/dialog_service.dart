@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-// TODO: think about "final".
-class DialogService {
+final class DialogService {
   bool get isDialogOpen => Get.isDialogOpen ?? false;
 
   Future<TResult?> showDialog<TResult>({
@@ -20,3 +19,6 @@ class DialogService {
   void closeDialog<T>({bool? confirmed, T? result}) =>
       Get.back(result: (confirmed, result));
 }
+
+@visibleForTesting
+base mixin MockableDialogService implements DialogService {}

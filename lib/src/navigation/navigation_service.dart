@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-// TODO: think about "final".
-class NavigationService {
+final class NavigationService {
   static GlobalKey<NavigatorState> get navigatorKey => Get.key;
 
   static GlobalKey<NavigatorState>? nestedNavigationKey(int index) =>
@@ -61,3 +60,6 @@ class NavigationService {
         parameters: parameters,
       );
 }
+
+@visibleForTesting
+base mixin MockableNavigationService implements NavigationService {}
