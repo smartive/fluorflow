@@ -18,3 +18,18 @@ final class LazySingleton {
 final class Factory {
   const Factory();
 }
+
+final class IgnoreDependency {
+  final bool inLocator;
+  final bool inTestLocator;
+
+  const IgnoreDependency({this.inLocator = true, this.inTestLocator = true});
+}
+
+final class CustomLocatorFunction {
+  final bool includeInLocator;
+  final bool includeInTestLocator;
+
+  const CustomLocatorFunction(
+      {this.includeInLocator = true, this.includeInTestLocator = true});
+}
