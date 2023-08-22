@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 
-import '../viewmodels/base_viewmodel.dart';
+import '../viewmodels/viewmodel.dart';
 
-abstract base class FluorFlowView<TViewModel extends BaseViewModel>
+abstract base class FluorFlowView<TViewModel extends ViewModel>
     extends StatefulWidget {
   const FluorFlowView({super.key});
 
@@ -25,7 +25,7 @@ abstract base class FluorFlowView<TViewModel extends BaseViewModel>
   State<FluorFlowView> createState() => _FluorFlowViewState();
 }
 
-class _FluorFlowViewState<TViewModel extends BaseViewModel>
+class _FluorFlowViewState<TViewModel extends ViewModel>
     extends State<FluorFlowView<TViewModel>> {
   late final TViewModel viewModel;
 

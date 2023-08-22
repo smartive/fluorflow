@@ -5,9 +5,11 @@ import 'base_viewmodel.dart';
 abstract base class DataViewModel<TData> extends BaseViewModel {
   late final ValueNotifier<TData> _data;
 
+  @nonVirtual
   ValueNotifier<TData> get dataNotifier =>
       initialized ? _data : (throw StateError('ViewModel is not initialized.'));
 
+  @nonVirtual
   TData get data => initialized
       ? _data.value
       : (throw StateError('ViewModel is not initialized.'));

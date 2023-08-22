@@ -1,15 +1,23 @@
 import 'package:flutter/foundation.dart';
 
-abstract base class BaseViewModel extends ChangeNotifier {
+import 'viewmodel.dart';
+
+abstract base class BaseViewModel extends ChangeNotifier implements ViewModel {
   var _disposed = false;
   var _initialized = false;
   var _busy = false;
   dynamic _error;
 
+  @nonVirtual
+  @override
   bool get disposed => _disposed;
 
+  @nonVirtual
+  @override
   bool get initialized => _initialized;
 
+  @nonVirtual
+  @override
   bool get busy => _busy;
 
   @nonVirtual
@@ -19,8 +27,12 @@ abstract base class BaseViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  @nonVirtual
+  @override
   bool get hasError => _error != null;
 
+  @nonVirtual
+  @override
   dynamic get error => _error;
 
   @nonVirtual
@@ -34,6 +46,7 @@ abstract base class BaseViewModel extends ChangeNotifier {
   @protected
   void onError(dynamic error) {}
 
+  @override
   @mustCallSuper
   Future<void> initialize() async {
     _initialized = true;
@@ -49,6 +62,7 @@ abstract base class BaseViewModel extends ChangeNotifier {
   }
 
   @override
+  @mustCallSuper
   void dispose() {
     _disposed = true;
     super.dispose();
