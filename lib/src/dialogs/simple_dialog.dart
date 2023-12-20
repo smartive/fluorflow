@@ -1,9 +1,6 @@
-import 'package:flutter/widgets.dart';
+import '../overlays/simple_overlay.dart';
 
-import 'completer.dart';
-
-abstract base class FluorFlowSimpleDialog<TResult> extends StatelessWidget {
-  final DialogCompleter<TResult> completer;
-
-  const FluorFlowSimpleDialog({super.key, required this.completer});
+abstract base class FluorFlowSimpleDialog<TResult>
+    extends FluorFlowSimpleOverlay<TResult> {
+  const FluorFlowSimpleDialog({super.key, required super.completer});
 }
