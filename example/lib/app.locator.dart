@@ -8,5 +8,6 @@ Future<void> setupLocator() async {
   _i1.locator.registerLazySingleton(() => _i2.DemoService());
   _i1.locator.registerLazySingleton(() => _i1.NavigationService());
   _i1.locator.registerLazySingleton(() => _i1.DialogService());
+  _i1.locator.registerLazySingleton(() => _i1.BottomSheetService());
   await _i1.locator.allReady();
 }

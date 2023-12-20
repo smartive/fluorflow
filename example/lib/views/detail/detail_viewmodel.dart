@@ -1,13 +1,11 @@
+import 'package:example/app.bottom_sheets.dart';
 import 'package:fluorflow/fluorflow.dart';
-
-import '../../bottom_sheets/greeting_bottom_sheet.dart';
 
 final class DetailViewModel extends BaseViewModel {
   final _navService = locator<NavigationService>();
-  final _svc = BottomSheetService();
+  final _sheets = locator<BottomSheetService>();
 
-  void showBottomSheet() =>
-      _svc.showBottomSheet(GreetingBottomSheet(completer: _svc.closeSheet));
+  void showBottomSheet() => _sheets.showGreetingBottomSheet();
 
   void back() => _navService.back();
 }

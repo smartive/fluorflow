@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-// TODO: think about "final".
 class NavigationService {
   static GlobalKey<NavigatorState> get navigatorKey => Get.key;
 
