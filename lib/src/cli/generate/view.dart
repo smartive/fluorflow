@@ -142,7 +142,7 @@ class View extends BaseCommand {
             ..name = 'context'
             ..type = refer('BuildContext', 'package:flutter/widgets.dart')))
           ..requiredParameters.add(Parameter((b) => b
-            ..name = 'model'
+            ..name = 'viewModel'
             ..type = refer('${name}Model')))
           ..requiredParameters.add(Parameter((b) => b
             ..name = 'child'

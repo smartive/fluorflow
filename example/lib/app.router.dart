@@ -1,12 +1,14 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:example/views/detail/detail_view.dart' as _i4;
 import 'package:example/views/home/home_view.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i2;
 import 'package:flutter/widgets.dart' as _i1;
 
 enum AppRoute {
-  homeView('/home-view');
+  homeView('/home-view'),
+  detailView('/detail-view');
 
   const AppRoute(this.path);
 
@@ -22,10 +24,24 @@ final _pages = <String, _i1.RouteFactory>{
           ___,
         ) =>
             const _i3.HomeView(),
-      )
+      ),
+  AppRoute.detailView.path: (data) => _i2.LeftToRightPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) =>
+            const _i4.DetailView(),
+      ),
 };
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
   void rootToHomeView() => rootTo(AppRoute.homeView.path);
+  Future<T?>? navigateToDetailView<T>({bool preventDuplicates = true}) =>
+      navigateTo(
+        AppRoute.detailView.path,
+        preventDuplicates: preventDuplicates,
+      );
 }
