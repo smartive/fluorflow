@@ -75,7 +75,7 @@ class View extends BaseCommand {
     final baseName = name.replaceFirst(RegExp(r'[Vv]iew$'), '');
     final viewName = '${baseName}View'.pascalCase;
     final viewFile = '${viewName.snakeCase}.dart';
-    final viewModelFile = '${baseName}_viewmodel.dart';
+    final viewModelFile = '${baseName.toLowerCase()}_viewmodel.dart';
     final viewTestFile = p.setExtension(viewFile, '_test.dart');
     final viewModelTestFile = p.setExtension(viewModelFile, '_test.dart');
 
