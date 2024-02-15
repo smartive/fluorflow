@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/smartive/fluorflow/compare/v1.0.1...v1.0.2) (2024-02-15)
+
+
+### Bug Fixes
+
+* **deployment:** fix mapping value in yaml ([c3a3209](https://github.com/smartive/fluorflow/commit/c3a3209b044d3330d97d2e018b690484e5d4a821))
+* pubspec yaml is invalid ([b03e78c](https://github.com/smartive/fluorflow/commit/b03e78cb8b93a181c6863f65811699bdacc8f20a))
+
 ## [1.0.1](https://github.com/smartive/fluorflow/compare/v1.0.0...v1.0.1) (2024-02-15)
 
 

@@ -3,7 +3,7 @@ description: >-
   An MVVM framework for Flutter that allows easy to use MVVM based views in
   Flutter apps. The package shines in combination with the generator (fluorflow_generator)
   to generate extension methods for bottom sheets, routings, dialogs and services.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/smartive/fluorflow
 repository: https://github.com/smartive/fluorflow.git
 
