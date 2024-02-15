@@ -1,8 +1,8 @@
 name: fluorflow_generator
 description: >-
-  Generator (build runner generator) for the fluorflow package. This is
-  the companion package that helps with generating extension methods for
-  bottom sheets, routings, dialogs and services.
+  Generator (build runner generator) for the fluorflow package. This is the
+  companion package that helps with generating extension methods for bottom
+  sheets, routings, dialogs and services.
 version: 1.0.3
 homepage: https://github.com/smartive/fluorflow
 repository: https://github.com/smartive/fluorflow.git
@@ -17,6 +17,8 @@ dependencies:
   code_builder: ^4.0.0
   dart_style: ^2.0.0
   fluorflow: ^1.0.0
+  flutter:
+    sdk: flutter
   glob: ^2.0.0
   path: ^1.0.0
   recase: ^4.0.0
