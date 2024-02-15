@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/smartive/fluorflow/compare/v1.0.0...v1.0.1) (2024-02-15)
+
+
+### Bug Fixes
+
+* **generator:** correctly set fluorflow version dependency ([93a833d](https://github.com/smartive/fluorflow/commit/93a833d0a147b765267fd1948e9eed08148db0e9))
+
 # 1.0.0 (2024-02-15)
 
 
