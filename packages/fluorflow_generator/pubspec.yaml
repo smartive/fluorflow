@@ -3,7 +3,7 @@ description: >-
   Generator (build runner generator) for the fluorflow package. This is the
   companion package that helps with generating extension methods for bottom
   sheets, routings, dialogs and services.
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/smartive/fluorflow
 repository: https://github.com/smartive/fluorflow.git
 

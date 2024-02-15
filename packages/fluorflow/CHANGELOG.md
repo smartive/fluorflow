@@ -1,3 +1,12 @@
+## [1.0.4](https://github.com/smartive/fluorflow/compare/v1.0.3...v1.0.4) (2024-02-15)
+
+
+### Bug Fixes
+
+* **fluorflow:** soften dependency requirements ([3d5440c](https://github.com/smartive/fluorflow/commit/3d5440c205404bd36fbe06ed3f769342c2b23031))
+* **generator:** add flutter as dependency ([452564f](https://github.com/smartive/fluorflow/commit/452564f626660c0ff4c9f86a35bfee32a4219819))
+* **generator:** set base dependencies lower ([f96af64](https://github.com/smartive/fluorflow/commit/f96af6443440296313e5c39aaab8630f83d223e4))
+
 ## [1.0.3](https://github.com/smartive/fluorflow/compare/v1.0.2...v1.0.3) (2024-02-15)
 
 
