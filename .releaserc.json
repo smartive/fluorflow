@@ -27,8 +27,8 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "sed -i 's/^version: .*$/version: ${nextRelease.version}/' pubspec.yaml && sed -i 's/^  fluorflow: .*$/  fluorflow: ^${nextRelease.version}/' pubspec.yaml",
-        "publishCmd": "dart pub publish -f",
+        "prepareCmd": "sed -i 's/^version: .*$/version: ${nextRelease.version}/' pubspec.yaml",
+        "publishCmd": "flutter pub publish -f",
         "execCwd": "packages/fluorflow_generator"
       }
     ],
