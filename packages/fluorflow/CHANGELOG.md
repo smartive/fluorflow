@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/smartive/fluorflow/compare/v1.0.2...v1.0.3) (2024-02-15)
+
+
+### Bug Fixes
+
+* use next major version for generator ([812dd02](https://github.com/smartive/fluorflow/commit/812dd0282cc0aaea10b213bbd527e5c4f4cf5c5b))
+
 ## [1.0.2](https://github.com/smartive/fluorflow/compare/v1.0.1...v1.0.2) (2024-02-15)
 
 
