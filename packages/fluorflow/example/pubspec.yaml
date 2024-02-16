@@ -7,24 +7,22 @@ environment:
   sdk: '>=3.0.6 <4.0.0'
 
 dependencies:
-  fluorflow:
-    git:
-      url: https://github.com/smartive/fluorflow.git
-      path: packages/fluorflow
-      ref: main
+  fluorflow: ^1.0.0
   flutter:
     sdk: flutter
 
 dev_dependencies:
   build_runner: ^2.4.6
-  fluorflow_generator:
-    git:
-      url: https://github.com/smartive/fluorflow.git
-      path: packages/fluorflow_generator
-      ref: main
+  fluorflow_generator: ^1.0.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
 
 flutter:
   uses-material-design: true
+
+dependency_overrides:
+  fluorflow:
+    path: ../
+  fluorflow_generator:
+    path: ../../fluorflow_generator
