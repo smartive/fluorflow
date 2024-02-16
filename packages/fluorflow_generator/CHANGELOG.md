@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/smartive/fluorflow/compare/v1.0.4...v1.0.5) (2024-02-16)
+
+
+### Bug Fixes
+
+* **generator:** remove flutter dependency ([56558b4](https://github.com/smartive/fluorflow/commit/56558b41a50a0142020d09336f7f940c2c176445))
+
 ## [1.0.4](https://github.com/smartive/fluorflow/compare/v1.0.3...v1.0.4) (2024-02-15)
 
 
