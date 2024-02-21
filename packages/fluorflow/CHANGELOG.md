@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/smartive/fluorflow/compare/v1.0.5...v1.1.0) (2024-02-21)
+
+
+### Features
+
+* allow safe area configuration for bottom sheets ([#2](https://github.com/smartive/fluorflow/issues/2)) ([ebd2cce](https://github.com/smartive/fluorflow/commit/ebd2ccef94d533c5d12574c3084561e8cab3ddfc))
+
 ## [1.0.5](https://github.com/smartive/fluorflow/compare/v1.0.4...v1.0.5) (2024-02-16)
 
 
