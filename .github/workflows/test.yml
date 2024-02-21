@@ -21,6 +21,7 @@ jobs:
           channel: stable
       - run: dart pub global activate melos
       - run: melos bootstrap
+      - run: melos run build_runner
       - run: melos run lint
 
   test:
@@ -39,6 +40,9 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+      - run: dart pub global activate melos
+      - run: melos bootstrap
+      - run: melos run build_runner
       - run: ${{ matrix.executor }} pub get
         working-directory: packages/${{ matrix.package }}
       - run: ${{ matrix.executor }} test

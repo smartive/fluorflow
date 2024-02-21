@@ -13,7 +13,3 @@ linter:
     prefer_relative_imports: true
     prefer_single_quotes: true
     prefer_expression_function_bodies: true
-
-analyzer:
-  exclude:
-    - example/
