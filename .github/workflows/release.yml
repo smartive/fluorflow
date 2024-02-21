@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: release
+  cancel-in-progress: true
+
 jobs:
   package_and_publish:
     name: Package and Publish
