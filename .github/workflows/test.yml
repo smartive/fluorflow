@@ -1,0 +1,60 @@
+name: Test Packages
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint and Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: dart pub global activate melos
+      - run: melos bootstrap
+      - run: melos run build_runner
+      - run: melos run lint
+
+  test:
+    name: Test Package "${{ matrix.package }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - package: fluorflow
+            executor: flutter
+          - package: fluorflow_generator
+            executor: dart
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: dart pub global activate melos
+      - run: melos bootstrap
+      - run: melos run build_runner
+      - run: ${{ matrix.executor }} pub get
+        working-directory: packages/${{ matrix.package }}
+      - run: ${{ matrix.executor }} test
+        working-directory: packages/${{ matrix.package }}
+
+  test_result:
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    name: Test Results
+    needs:
+      - test
+    steps:
+      - name: Check test matrix status
+        if: ${{ needs.test.result != 'success' }}
+        run: exit 1

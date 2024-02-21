@@ -46,6 +46,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
@@ -53,6 +54,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -86,6 +88,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, void)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, void), _i3.MySheet>(
@@ -93,6 +96,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, null));
 }
 '''
@@ -126,6 +130,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, String?)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, String?), _i3.MySheet>(
@@ -133,6 +138,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -172,6 +178,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, _i2.DialogResultType?)> showMySheet({
     _i3.Color barrierColor = const _i3.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, _i2.DialogResultType?), _i4.MySheet>(
@@ -179,6 +186,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -214,6 +222,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
@@ -221,6 +230,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -254,6 +264,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, void)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, void), _i3.MySheet>(
@@ -261,6 +272,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, null));
 }
 '''
@@ -294,6 +306,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, String?)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, String?), _i3.MySheet>(
@@ -301,6 +314,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -340,6 +354,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, _i2.DialogResultType?)> showMySheet({
     _i3.Color barrierColor = const _i3.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, _i2.DialogResultType?), _i4.MySheet>(
@@ -347,6 +362,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -383,6 +399,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required String pos,
   }) =>
@@ -394,6 +411,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -428,6 +446,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required String? pos,
   }) =>
@@ -439,6 +458,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -473,6 +493,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required String pos,
   }) =>
@@ -484,6 +505,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -518,6 +540,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     String? pos,
   }) =>
@@ -529,6 +552,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -563,6 +587,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     String pos = 'default',
   }) =>
@@ -574,6 +599,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -614,6 +640,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required _i3.MySheetRef pos,
   }) =>
@@ -625,6 +652,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -661,6 +689,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required List<String> pos,
   }) =>
@@ -672,6 +701,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -708,6 +738,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required List<_i3.Foobar> pos,
   }) =>
@@ -719,6 +750,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -761,6 +793,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required _i3.Foo<_i3.Bar<_i4.Baz, int>> pos,
   }) =>
@@ -772,6 +805,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -813,6 +847,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required _i3.Foo<_i4.Baz> pos,
   }) =>
@@ -824,6 +859,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -858,6 +894,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required void Function() pos,
   }) =>
@@ -869,6 +906,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -912,6 +950,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required _i3.Foo Function(_i3.Bar<_i4.Baz>) pos,
   }) =>
@@ -923,6 +962,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -966,6 +1006,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required _i3.Foo Function(
       _i3.Bar<_i4.Baz>, {
@@ -981,6 +1022,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1024,6 +1066,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required _i3.Foo Function(
       _i3.Bar<_i4.Baz>, [
@@ -1038,6 +1081,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1079,6 +1123,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
     required _i3.MyCallback pos,
   }) =>
@@ -1090,6 +1135,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1110,6 +1156,7 @@ extension BottomSheets on _i1.BottomSheetService {
                 @BottomSheetConfig(
                   defaultBarrierColor: 0x34ff0000,
                   defaultFullscreen: true,
+                  defaultIgnoreSafeArea: false,
                   defaultDraggable: false,
                 )
                 class MySheet extends FluorFlowSimpleBottomSheet {
@@ -1131,6 +1178,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x34ff0000),
     bool fullscreen = true,
+    bool ignoreSafeArea = false,
     bool draggable = false,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
@@ -1138,6 +1186,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1175,6 +1224,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
+    bool ignoreSafeArea = true,
     bool draggable = true,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
@@ -1182,6 +1232,7 @@ extension BottomSheets on _i1.BottomSheetService {
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''

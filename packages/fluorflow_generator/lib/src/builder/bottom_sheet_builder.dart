@@ -92,6 +92,14 @@ class BottomSheetBuilder implements Builder {
                         false)
                 .code))
           ..optionalParameters.add(Parameter((b) => b
+            ..name = 'ignoreSafeArea'
+            ..type = refer('bool')
+            ..named = true
+            ..defaultTo = literalBool(
+                    configAnnotation?.read('defaultIgnoreSafeArea').boolValue ??
+                        true)
+                .code))
+          ..optionalParameters.add(Parameter((b) => b
             ..name = 'draggable'
             ..type = refer('bool')
             ..named = true
@@ -121,6 +129,7 @@ class BottomSheetBuilder implements Builder {
                 'barrierColor': refer('barrierColor'),
                 'fullscreen': refer('fullscreen'),
                 'draggable': refer('draggable'),
+                'ignoreSafeArea': refer('ignoreSafeArea'),
               }, [
                 methodTupleRef,
                 refer(sheetClass.displayName, assetId.uri.toString()),
