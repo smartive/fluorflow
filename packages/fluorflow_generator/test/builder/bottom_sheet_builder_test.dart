@@ -1156,6 +1156,7 @@ extension BottomSheets on _i1.BottomSheetService {
                 @BottomSheetConfig(
                   defaultBarrierColor: 0x34ff0000,
                   defaultFullscreen: true,
+                  defaultIgnoreSafeArea: false,
                   defaultDraggable: false,
                 )
                 class MySheet extends FluorFlowSimpleBottomSheet {
@@ -1177,7 +1178,7 @@ extension BottomSheets on _i1.BottomSheetService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x34ff0000),
     bool fullscreen = true,
-    bool ignoreSafeArea = true,
+    bool ignoreSafeArea = false,
     bool draggable = false,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
