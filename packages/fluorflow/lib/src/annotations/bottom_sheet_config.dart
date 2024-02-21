@@ -11,6 +11,10 @@ class BottomSheetConfig {
   /// If set to false, the bottom sheet will be displayed at the bottom third(-ish) of the screen.
   final bool defaultFullscreen;
 
+  /// Whether the bottom sheet should ignore the safe area and take up the entire screen.
+  /// This is most likely used in combination with [defaultFullscreen].
+  final bool defaultIgnoreSafeArea;
+
   /// Whether the bottom sheet can be dragged by the user.
   final bool defaultDraggable;
 
@@ -18,6 +22,7 @@ class BottomSheetConfig {
   const BottomSheetConfig({
     this.defaultBarrierColor = 0x80000000,
     this.defaultFullscreen = false,
+    this.defaultIgnoreSafeArea = true,
     this.defaultDraggable = true,
   });
 }
