@@ -183,6 +183,16 @@ when used with the fluorflow generator.
 Dialogs work exactly the same way as bottom sheets, but are shown via the
 `DialogService` and have another base class.
 
+**Important:** Bottom sheets are always wrapped in a `Scaffold` widget. Thus,
+they inherit your styles. `Dialogs` do not have this behavior (by design).
+So you may create a full screen dialog and wrap it in a `Scaffold`, or
+if you want a small "modal dialog" that has a backdrop and is dismissible
+on click of the backdrop, it is also possible. However, you need
+to wrap some parts of the content into a `Material` (or Theme provider)
+widget to provide some decent default styles. Otherwise, some styles
+are weird (e.g. Text Styles are big, red, and underlined).
+You can see this in the examples (`SmallDialog`).
+
 ## CLI
 
 FluorFlow comes with a CLI that can be used to generate views and other things.

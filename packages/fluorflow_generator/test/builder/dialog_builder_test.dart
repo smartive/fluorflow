@@ -46,10 +46,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, dynamic)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, dynamic)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -87,10 +90,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, void)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, void)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, void)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -128,10 +134,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, String?)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, String?)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, String?)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -175,10 +184,13 @@ import 'package:a/b.dart' as _i2;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, _i2.DialogResultType?)> showMyDialog(
-          {_i3.Color barrierColor = const _i3.Color(0x80000000)}) =>
+  Future<(bool?, _i2.DialogResultType?)> showMyDialog({
+    _i3.Color barrierColor = const _i3.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, _i2.DialogResultType?)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -218,10 +230,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, dynamic)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, dynamic)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -259,10 +274,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, void)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, void)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, void)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -300,10 +318,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, String?)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, String?)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, String?)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -347,10 +368,13 @@ import 'package:a/b.dart' as _i2;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, _i2.DialogResultType?)> showMyDialog(
-          {_i3.Color barrierColor = const _i3.Color(0x80000000)}) =>
+  Future<(bool?, _i2.DialogResultType?)> showMyDialog({
+    _i3.Color barrierColor = const _i3.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, _i2.DialogResultType?)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -393,10 +417,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required String pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -440,10 +466,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required String? pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -487,10 +515,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required String pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -534,10 +564,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     String? pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -581,10 +613,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     String pos = 'default',
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -634,10 +668,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required _i3.MyDialogRef pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -683,10 +719,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required List<String> pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -732,10 +770,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required List<_i3.Foobar> pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -787,10 +827,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required _i3.Foo<_i3.Bar<_i4.Baz, int>> pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -841,10 +883,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required _i3.Foo<_i4.Baz> pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -888,10 +932,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required void Function() pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -944,10 +990,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required _i3.Foo Function(_i3.Bar<_i4.Baz>) pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -1000,6 +1048,7 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required _i3.Foo Function(
       _i3.Bar<_i4.Baz>, {
       required _i3.Foo f,
@@ -1008,6 +1057,7 @@ extension Dialogs on _i1.DialogService {
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -1060,6 +1110,7 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required _i3.Foo Function(
       _i3.Bar<_i4.Baz>, [
       _i3.Foo?,
@@ -1067,6 +1118,7 @@ extension Dialogs on _i1.DialogService {
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -1117,10 +1169,12 @@ import 'package:fluorflow/fluorflow.dart' as _i1;
 extension Dialogs on _i1.DialogService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
     required _i3.MyCallback pos,
   }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -1150,6 +1204,7 @@ extension Dialogs on _i1.DialogService {
 
                 @DialogConfig(
                   defaultBarrierColor: 0x34ff0000,
+                  defaultBarrierDismissible: true,
                 )
                 class MyDialog extends FluorFlowSimpleDialog {
                   const MyDialog({super.key, required this.completer});
@@ -1167,10 +1222,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, dynamic)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x34ff0000)}) =>
+  Future<(bool?, dynamic)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x34ff0000),
+    bool barrierDismissible = true,
+  }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,
@@ -1221,10 +1279,13 @@ import 'package:a/b.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, dynamic)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, dynamic)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i3.CustomBuilder(
             pageBuilder: (
           _,
@@ -1300,10 +1361,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, dynamic)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, dynamic)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.$resultBuilder(
             pageBuilder: (
           _,
@@ -1346,10 +1410,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
 extension Dialogs on _i1.DialogService {
-  Future<(bool?, dynamic)> showMyDialog(
-          {_i2.Color barrierColor = const _i2.Color(0x80000000)}) =>
+  Future<(bool?, dynamic)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
       showDialog<(bool?, dynamic)>(
         barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
         dialogBuilder: _i1.NoTransitionPageRouteBuilder(
             pageBuilder: (
           _,

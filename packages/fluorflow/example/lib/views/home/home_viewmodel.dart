@@ -1,6 +1,7 @@
-import 'package:example/app.dialogs.dart';
-import 'package:example/app.router.dart';
 import 'package:fluorflow/fluorflow.dart';
+
+import '../../app.dialogs.dart';
+import '../../app.router.dart';
 
 final class HomeViewModel extends BaseViewModel {
   final _dialogService = locator<DialogService>();
@@ -16,6 +17,8 @@ final class HomeViewModel extends BaseViewModel {
   }
 
   void showTestDialog() => _dialogService.showRedDialog(elements: []);
+
+  void showSmallDialog() => _dialogService.showSmallDialog();
 
   void goToDetail() => _navService.navigateToDetailView();
 }

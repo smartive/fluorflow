@@ -111,6 +111,15 @@ class DialogBuilder implements Builder {
               CodeExpression(Code(
                   '0x${(configAnnotation?.read('defaultBarrierColor').intValue ?? 0x80000000).toRadixString(16).padLeft(8, '0')}'))
             ]).code))
+          ..optionalParameters.add(Parameter((b) => b
+            ..name = 'barrierDismissible'
+            ..type = refer('bool')
+            ..named = true
+            ..defaultTo = literalBool(configAnnotation
+                        ?.read('defaultBarrierDismissible')
+                        .boolValue ??
+                    false)
+                .code))
           ..optionalParameters.addAll(params.map((p) => Parameter((b) => b
             ..name = p.name
             ..type = recursiveTypeReference(lib, p.type)
@@ -120,6 +129,7 @@ class DialogBuilder implements Builder {
           ..body = refer('showDialog')
               .call([], {
                 'barrierColor': refer('barrierColor'),
+                'barrierDismissible': refer('barrierDismissible'),
                 'dialogBuilder': dialogBuilder.newInstance([], {
                   'pageBuilder': Method((b) => b
                     ..requiredParameters.add(Parameter((b) => b.name = '_'))
