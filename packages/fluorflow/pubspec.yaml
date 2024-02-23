@@ -1,6 +1,6 @@
 name: fluorflow
 description: An MVVM framework for Flutter to build scalable and maintainable applications.
-version: 1.1.0
+version: 1.2.0
 homepage: https://github.com/smartive/fluorflow
 repository: https://github.com/smartive/fluorflow.git
 

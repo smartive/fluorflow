@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/smartive/fluorflow/compare/v1.1.0...v1.2.0) (2024-02-23)
+
+
+### Features
+
+* allow barrier dismiss in dialogs ([#3](https://github.com/smartive/fluorflow/issues/3)) ([efe034f](https://github.com/smartive/fluorflow/commit/efe034fe18f33174a057e8dc378a0f522a64d407))
+
 # [1.1.0](https://github.com/smartive/fluorflow/compare/v1.0.5...v1.1.0) (2024-02-21)
 
 
