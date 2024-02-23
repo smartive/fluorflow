@@ -29,6 +29,10 @@ final class HomeView extends FluorFlowView<HomeViewModel> {
                 onPressed: viewModel.showTestDialog,
                 child: const Text('Show Dialog'),
               ),
+              ElevatedButton(
+                onPressed: viewModel.showSmallDialog,
+                child: const Text('Show Small Dialog'),
+              ),
             ],
           ),
         ),

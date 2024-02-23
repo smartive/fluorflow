@@ -5,9 +5,9 @@ class DialogConfig {
   /// The default barrier (background) color for the dialog.
   final int defaultBarrierColor;
 
-  /// The default value for "barrierDismissable" for the dialog.
+  /// The default value for "barrierDismissible" for the dialog.
   /// Defines whether the dialog can be dismissed by tapping the barrier.
-  final bool defaultBarrierDismissable;
+  final bool defaultBarrierDismissible;
 
   /// The page route builder for the dialog.
   final Type? pageRouteBuilder;
@@ -22,6 +22,6 @@ class DialogConfig {
     this.pageRouteBuilder,
     this.routeBuilder = RouteBuilder.noTransition,
     this.defaultBarrierColor = 0x80000000,
-    this.defaultBarrierDismissable = false,
+    this.defaultBarrierDismissible = false,
   });
 }
