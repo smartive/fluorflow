@@ -17,7 +17,7 @@ TEnum getEnumFromAnnotation<TEnum extends Enum>(
 cb.Reference recursiveTypeReference(
   LibraryReader lib,
   DartType t, {
-  dynamic Function(cb.TypeReferenceBuilder)? typeRefUpdates,
+  bool forceNullable = false,
 }) {
   cb.Reference mapRef(DartType t) => recursiveTypeReference(lib, t);
 
@@ -27,8 +27,15 @@ cb.Reference recursiveTypeReference(
       cb.refer(t.getDisplayString(withNullability: false)),
     DartType(alias: InstantiatedTypeAliasElement(:final element)) =>
       cb.refer(element.name, lib.pathToElement(element).toString()),
-    FunctionType(:final returnType, :final parameters, :final typeFormals) =>
+    FunctionType(
+      :final returnType,
+      :final parameters,
+      :final typeFormals,
+      :final nullabilitySuffix
+    ) =>
       cb.FunctionType((b) => b
+        ..isNullable =
+            forceNullable || nullabilitySuffix == NullabilitySuffix.question
         ..returnType = mapRef(returnType)
         ..requiredParameters.addAll(parameters
             .where((p) => p.isRequiredPositional)
@@ -56,23 +63,22 @@ cb.Reference recursiveTypeReference(
       :final nullabilitySuffix
     ) =>
       cb.RecordType((b) => b
-        ..isNullable = nullabilitySuffix == NullabilitySuffix.question
+        ..isNullable =
+            forceNullable || nullabilitySuffix == NullabilitySuffix.question
         ..positionalFieldTypes
             .addAll(positionalFields.map((f) => mapRef(f.type)))
         ..namedFieldTypes.addIterable(namedFields,
             key: (f) => f.name, value: (f) => mapRef(f.type))),
     _ => cb.TypeReference((b) => b
-          ..isNullable = t.nullabilitySuffix == NullabilitySuffix.question
-          ..symbol =
-              t.element?.name ?? t.getDisplayString(withNullability: false)
-          ..types.addAll(switch (t) {
-            ParameterizedType(:final typeArguments) =>
-              typeArguments.map(mapRef).toList(),
-            _ => [],
-          })
-          ..url = t.element == null
-              ? null
-              : lib.pathToElement(t.element!).toString())
-        .rebuild(typeRefUpdates ?? (b) => b),
+      ..isNullable =
+          forceNullable || t.nullabilitySuffix == NullabilitySuffix.question
+      ..symbol = t.element?.name ?? t.getDisplayString(withNullability: false)
+      ..types.addAll(switch (t) {
+        ParameterizedType(:final typeArguments) =>
+          typeArguments.map(mapRef).toList(),
+        _ => [],
+      })
+      ..url =
+          t.element == null ? null : lib.pathToElement(t.element!).toString()),
   };
 }

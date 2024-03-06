@@ -64,7 +64,7 @@ class DialogBuilder implements Builder {
           ..positionalFieldTypes.add(refer('bool?'))
           ..positionalFieldTypes.add(recursiveTypeReference(
               lib, dialogReturnType,
-              typeRefUpdates: (b) => b.isNullable = true)));
+              forceNullable: true)));
         final params = dialogClass.constructors.first.parameters
             .where(
                 (p) => p.displayName != 'key' && p.displayName != 'completer')

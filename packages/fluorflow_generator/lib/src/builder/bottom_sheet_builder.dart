@@ -63,7 +63,7 @@ class BottomSheetBuilder implements Builder {
           ..positionalFieldTypes.add(refer('bool?'))
           ..positionalFieldTypes.add(recursiveTypeReference(
               lib, sheetReturnType,
-              typeRefUpdates: (b) => b.isNullable = true)));
+              forceNullable: true)));
         final params = sheetClass.constructors.first.parameters
             .where(
                 (p) => p.displayName != 'key' && p.displayName != 'completer')
