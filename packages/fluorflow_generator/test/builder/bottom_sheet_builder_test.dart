@@ -1143,6 +1143,134 @@ extension BottomSheets on _i1.BottomSheetService {
               reader: await PackageAssetReader.currentIsolate()));
     });
 
+    group('for Bottom Sheet with special return types', () {
+      test(
+          'should generate sheet method that returns record type.',
+          () async => await testBuilder(
+              BottomSheetBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                import 'package:fluorflow/fluorflow.dart';
+
+                class MySheet extends FluorFlowSimpleBottomSheet<(int, int)> {
+                  const MySheet({super.key, required this.completer});
+                }
+              '''
+              },
+              outputs: {
+                'a|lib/app.bottom_sheets.dart': r'''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:ui' as _i2;
+
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i1;
+
+extension BottomSheets on _i1.BottomSheetService {
+  Future<(bool?, (int, int)?)> showMySheet({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool fullscreen = false,
+    bool ignoreSafeArea = true,
+    bool draggable = true,
+  }) =>
+      showBottomSheet<(bool?, (int, int)?), _i3.MySheet>(
+        _i3.MySheet(completer: closeSheet),
+        barrierColor: barrierColor,
+        fullscreen: fullscreen,
+        draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
+      ).then((r) => (r?.$1, r?.$2));
+}
+'''
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate sheet method that returns named record type.',
+          () async => await testBuilder(
+              BottomSheetBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                import 'package:fluorflow/fluorflow.dart';
+
+                class MySheet extends FluorFlowSimpleBottomSheet<({int a})> {
+                  const MySheet({super.key, required this.completer});
+                }
+              '''
+              },
+              outputs: {
+                'a|lib/app.bottom_sheets.dart': r'''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:ui' as _i2;
+
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i1;
+
+extension BottomSheets on _i1.BottomSheetService {
+  Future<(bool?, ({int a})?)> showMySheet({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool fullscreen = false,
+    bool ignoreSafeArea = true,
+    bool draggable = true,
+  }) =>
+      showBottomSheet<(bool?, ({int a})?), _i3.MySheet>(
+        _i3.MySheet(completer: closeSheet),
+        barrierColor: barrierColor,
+        fullscreen: fullscreen,
+        draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
+      ).then((r) => (r?.$1, r?.$2));
+}
+'''
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate sheet method that returns function type.',
+          () async => await testBuilder(
+              BottomSheetBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                import 'package:fluorflow/fluorflow.dart';
+
+                class MySheet extends FluorFlowSimpleBottomSheet<void Function()> {
+                  const MySheet({super.key, required this.completer});
+                }
+              '''
+              },
+              outputs: {
+                'a|lib/app.bottom_sheets.dart': r'''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:ui' as _i2;
+
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i1;
+
+extension BottomSheets on _i1.BottomSheetService {
+  Future<(bool?, void Function()?)> showMySheet({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool fullscreen = false,
+    bool ignoreSafeArea = true,
+    bool draggable = true,
+  }) =>
+      showBottomSheet<(bool?, void Function()?), _i3.MySheet>(
+        _i3.MySheet(completer: closeSheet),
+        barrierColor: barrierColor,
+        fullscreen: fullscreen,
+        draggable: draggable,
+        ignoreSafeArea: ignoreSafeArea,
+      ).then((r) => (r?.$1, r?.$2));
+}
+'''
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+    });
+
     group('with @BottomSheetConfig()', () {
       test(
           'should generate sheet method with custom default options.',

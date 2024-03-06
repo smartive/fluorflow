@@ -1192,6 +1192,140 @@ extension Dialogs on _i1.DialogService {
               reader: await PackageAssetReader.currentIsolate()));
     });
 
+    group('for Dialog with special return types', () {
+      test(
+          'should generate dialog method that returns record type.',
+          () async => await testBuilder(
+              DialogBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                import 'package:fluorflow/fluorflow.dart';
+
+                class MyDialog extends FluorFlowSimpleDialog<(int, int)> {
+                  const MyDialog({super.key, required this.completer});
+                }
+              '''
+              },
+              outputs: {
+                'a|lib/app.dialogs.dart': r'''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:ui' as _i2;
+
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i1;
+
+extension Dialogs on _i1.DialogService {
+  Future<(bool?, (int, int)?)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
+      showDialog<(bool?, (int, int)?)>(
+        barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
+        dialogBuilder: _i1.NoTransitionPageRouteBuilder(
+            pageBuilder: (
+          _,
+          __,
+          ___,
+        ) =>
+                _i3.MyDialog(completer: closeDialog)),
+      ).then((r) => (r?.$1, r?.$2));
+}
+'''
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate dialog method that returns named record type.',
+          () async => await testBuilder(
+              DialogBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                import 'package:fluorflow/fluorflow.dart';
+
+                class MyDialog extends FluorFlowSimpleDialog<({int a})> {
+                  const MyDialog({super.key, required this.completer});
+                }
+              '''
+              },
+              outputs: {
+                'a|lib/app.dialogs.dart': r'''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:ui' as _i2;
+
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i1;
+
+extension Dialogs on _i1.DialogService {
+  Future<(bool?, ({int a})?)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
+      showDialog<(bool?, ({int a})?)>(
+        barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
+        dialogBuilder: _i1.NoTransitionPageRouteBuilder(
+            pageBuilder: (
+          _,
+          __,
+          ___,
+        ) =>
+                _i3.MyDialog(completer: closeDialog)),
+      ).then((r) => (r?.$1, r?.$2));
+}
+'''
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate dialog method that returns function type.',
+          () async => await testBuilder(
+              DialogBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                import 'package:fluorflow/fluorflow.dart';
+
+                class MyDialog extends FluorFlowSimpleDialog<void Function()> {
+                  const MyDialog({super.key, required this.completer});
+                }
+              '''
+              },
+              outputs: {
+                'a|lib/app.dialogs.dart': r'''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:ui' as _i2;
+
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i1;
+
+extension Dialogs on _i1.DialogService {
+  Future<(bool?, void Function()?)> showMyDialog({
+    _i2.Color barrierColor = const _i2.Color(0x80000000),
+    bool barrierDismissible = false,
+  }) =>
+      showDialog<(bool?, void Function()?)>(
+        barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
+        dialogBuilder: _i1.NoTransitionPageRouteBuilder(
+            pageBuilder: (
+          _,
+          __,
+          ___,
+        ) =>
+                _i3.MyDialog(completer: closeDialog)),
+      ).then((r) => (r?.$1, r?.$2));
+}
+'''
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+    });
+
     group('with @DialogConfig()', () {
       test(
           'should generate dialog method with custom default barrier color.',
