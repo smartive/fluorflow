@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/smartive/fluorflow/compare/v1.2.0...v1.2.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* allow record types as params and return types ([#4](https://github.com/smartive/fluorflow/issues/4)) ([fc946a5](https://github.com/smartive/fluorflow/commit/fc946a5b576c644c75a6c7c80302cf800b09b8f5))
+
 # [1.2.0](https://github.com/smartive/fluorflow/compare/v1.1.0...v1.2.0) (2024-02-23)
 
 

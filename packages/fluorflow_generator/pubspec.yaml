@@ -1,6 +1,6 @@
 name: fluorflow_generator
 description: Code Generator for the FluorFlow package.
-version: 1.2.0
+version: 1.2.1
 homepage: https://github.com/smartive/fluorflow
 repository: https://github.com/smartive/fluorflow.git
 
