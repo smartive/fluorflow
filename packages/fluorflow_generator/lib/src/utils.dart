@@ -27,28 +27,40 @@ cb.Reference recursiveTypeReference(
       cb.refer(t.getDisplayString(withNullability: false)),
     DartType(alias: InstantiatedTypeAliasElement(:final element)) =>
       cb.refer(element.name, lib.pathToElement(element).toString()),
-    final FunctionType f => cb.FunctionType((b) => b
-      ..returnType = mapRef(f.returnType)
-      ..requiredParameters.addAll(f.parameters
-          .where((p) => p.isRequiredPositional)
-          .map((p) => p.type)
-          .map(mapRef))
-      ..optionalParameters.addAll(f.parameters
-          .where((p) => p.isOptionalPositional)
-          .map((p) => p.type)
-          .map(mapRef))
-      ..namedRequiredParameters.addAll({
-        for (final p in f.parameters.where((p) => p.isRequiredNamed))
-          p.name: mapRef(p.type)
-      })
-      ..namedParameters.addAll({
-        for (final p in f.parameters.where((p) => p.isOptionalNamed))
-          p.name: mapRef(p.type)
-      })
-      ..types.addAll(f.typeFormals
-          .where((tf) => tf.bound != null)
-          .map((tf) => tf.bound!)
-          .map(mapRef))),
+    FunctionType(:final returnType, :final parameters, :final typeFormals) =>
+      cb.FunctionType((b) => b
+        ..returnType = mapRef(returnType)
+        ..requiredParameters.addAll(parameters
+            .where((p) => p.isRequiredPositional)
+            .map((p) => p.type)
+            .map(mapRef))
+        ..optionalParameters.addAll(parameters
+            .where((p) => p.isOptionalPositional)
+            .map((p) => p.type)
+            .map(mapRef))
+        ..namedRequiredParameters.addAll({
+          for (final p in parameters.where((p) => p.isRequiredNamed))
+            p.name: mapRef(p.type)
+        })
+        ..namedParameters.addAll({
+          for (final p in parameters.where((p) => p.isOptionalNamed))
+            p.name: mapRef(p.type)
+        })
+        ..types.addAll(typeFormals
+            .where((tf) => tf.bound != null)
+            .map((tf) => tf.bound!)
+            .map(mapRef))),
+    RecordType(
+      :final positionalFields,
+      :final namedFields,
+      :final nullabilitySuffix
+    ) =>
+      cb.RecordType((b) => b
+        ..isNullable = nullabilitySuffix == NullabilitySuffix.question
+        ..positionalFieldTypes
+            .addAll(positionalFields.map((f) => mapRef(f.type)))
+        ..namedFieldTypes.addIterable(namedFields,
+            key: (f) => f.name, value: (f) => mapRef(f.type))),
     _ => cb.TypeReference((b) => b
           ..isNullable = t.nullabilitySuffix == NullabilitySuffix.question
           ..symbol =
