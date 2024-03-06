@@ -83,8 +83,7 @@ class RouterBuilder implements Builder {
             ..fields.addAll(params.map((p) => Field((b) => b
               ..name = p.displayName
               ..modifier = FieldModifier.final$
-              ..type = refer(p.type.getDisplayString(withNullability: true),
-                  lib.pathToElement(p.type.element!).toString()))))
+              ..type = recursiveTypeReference(lib, p.type))))
             ..constructors.add(Constructor((b) => b
               ..constant = true
               ..optionalParameters.addAll(params.map((p) => Parameter((b) => b
@@ -229,8 +228,7 @@ class RouterBuilder implements Builder {
           ])
           ..optionalParameters.addAll(params.map((p) => Parameter((b) => b
             ..name = p.name
-            ..type = refer(p.type.getDisplayString(withNullability: true),
-                lib.pathToElement(p.type.element!).toString())
+            ..type = recursiveTypeReference(lib, p.type)
             ..required = p.isRequired
             ..defaultTo = p.hasDefaultValue ? Code(p.defaultValueCode!) : null
             ..named = true)))
