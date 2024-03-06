@@ -1228,5 +1228,1203 @@ extension RouteNavigation on _i2.NavigationService {
               },
               reader: await PackageAssetReader.currentIsolate()));
     });
+
+    group('with special view argument types', () {
+      test(
+          'should generate arguments for generic list with primitive type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final List<int> arg;
+                    const View(this.arg, {super.key});
+                  }
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final List<int> arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required List<int> arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required List<int> arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required List<int> arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for generic list with complex type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  class Foobar {}
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final List<Foobar> arg;
+                    const View(this.arg, {super.key});
+                  }
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final List<_i3.Foobar> arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required List<_i3.Foobar> arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required List<_i3.Foobar> arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required List<_i3.Foobar> arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for record type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  class Foobar {}
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final (Foobar, int, {String name, Foobar f}) arg;
+                    const View(this.arg, {super.key});
+                  }
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final (_i3.Foobar, int, {_i3.Foobar f, String name}) arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required (_i3.Foobar, int, {_i3.Foobar f, String name}) arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required (_i3.Foobar, int, {_i3.Foobar f, String name}) arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView(
+          {required (_i3.Foobar, int, {_i3.Foobar f, String name}) arg}) =>
+      rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for nullable record type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  class Foobar {}
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final (Foobar, int)? arg;
+                    const View({super.key, this.arg});
+                  }
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(arg: args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({this.arg});
+
+  final (_i3.Foobar, int)? arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    (_i3.Foobar, int)? arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    (_i3.Foobar, int)? arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({(_i3.Foobar, int)? arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for recursive generic type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  import 'b.dart';
+
+                  class Foo<T> {}
+                  class Bar<T, T2> {}
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final Foo<Bar<Baz, int>> arg;
+                    const View(this.arg, {super.key});
+                  }
+              ''',
+                'a|lib/b.dart': '''
+                class Baz {}
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:a/b.dart' as _i4;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final _i3.Foo<_i3.Bar<_i4.Baz, int>> arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required _i3.Foo<_i3.Bar<_i4.Baz, int>> arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required _i3.Foo<_i3.Bar<_i4.Baz, int>> arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required _i3.Foo<_i3.Bar<_i4.Baz, int>> arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for aliased import type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  import 'b.dart' as b;
+
+                  class Foo<T> {}
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final Foo<b.Baz> arg;
+                    const View(this.arg, {super.key});
+                  }
+              ''',
+                'a|lib/b.dart': '''
+                class Baz {}
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:a/b.dart' as _i4;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final _i3.Foo<_i4.Baz> arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required _i3.Foo<_i4.Baz> arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required _i3.Foo<_i4.Baz> arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required _i3.Foo<_i4.Baz> arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for function type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final void Function() arg;
+                    const View(this.arg, {super.key});
+                  }
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final void Function() arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required void Function() arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required void Function() arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required void Function() arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for complex function type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  import 'b.dart';
+
+                  class Foo {}
+                  
+                  class Bar<T> {}
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final Foo Function(Bar<Baz> i) arg;
+                    const View(this.arg, {super.key});
+                  }
+              ''',
+                'a|lib/b.dart': '''
+                class Baz {}
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:a/b.dart' as _i4;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final _i3.Foo Function(_i3.Bar<_i4.Baz>) arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required _i3.Foo Function(_i3.Bar<_i4.Baz>) arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required _i3.Foo Function(_i3.Bar<_i4.Baz>) arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required _i3.Foo Function(_i3.Bar<_i4.Baz>) arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for complex function with named parameters type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  import 'b.dart';
+
+                  class Foo {}
+                  
+                  class Bar<T> {}
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final Foo Function(Bar<Baz> i, { required Foo f, Baz? b }) arg;
+                    const View(this.arg, {super.key});
+                  }
+              ''',
+                'a|lib/b.dart': '''
+                class Baz {}
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:a/b.dart' as _i4;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final _i3.Foo Function(
+    _i3.Bar<_i4.Baz>, {
+    required _i3.Foo f,
+    _i4.Baz? b,
+  }) arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required _i3.Foo Function(
+      _i3.Bar<_i4.Baz>, {
+      required _i3.Foo f,
+      _i4.Baz? b,
+    }) arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required _i3.Foo Function(
+      _i3.Bar<_i4.Baz>, {
+      required _i3.Foo f,
+      _i4.Baz? b,
+    }) arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView(
+          {required _i3.Foo Function(
+            _i3.Bar<_i4.Baz>, {
+            required _i3.Foo f,
+            _i4.Baz? b,
+          }) arg}) =>
+      rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for complex function with optional parameters type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  import 'b.dart';
+
+                  class Foo {}
+                  
+                  class Bar<T> {}
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final Foo Function(Bar<Baz> i, [Foo? f]) arg;
+                    const View(this.arg, {super.key});
+                  }
+              ''',
+                'a|lib/b.dart': '''
+                class Baz {}
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:a/b.dart' as _i4;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final _i3.Foo Function(
+    _i3.Bar<_i4.Baz>, [
+    _i3.Foo?,
+  ]) arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required _i3.Foo Function(
+      _i3.Bar<_i4.Baz>, [
+      _i3.Foo?,
+    ]) arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required _i3.Foo Function(
+      _i3.Bar<_i4.Baz>, [
+      _i3.Foo?,
+    ]) arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView(
+          {required _i3.Foo Function(
+            _i3.Bar<_i4.Baz>, [
+            _i3.Foo?,
+          ]) arg}) =>
+      rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for aliased type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  import 'b.dart';
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final MyCallback arg;
+                    const View(this.arg, {super.key});
+                  }
+              ''',
+                'a|lib/b.dart': '''
+                class Foobar {}
+
+                typedef MyCallback = void Function(Foobar);
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:a/b.dart' as _i4;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final _i4.MyCallback arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required _i4.MyCallback arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required _i4.MyCallback arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required _i4.MyCallback arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for aliased tuple type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  import 'b.dart';
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final MyTuple arg;
+                    const View(this.arg, {super.key});
+                  }
+              ''',
+                'a|lib/b.dart': '''
+                import 'c.dart';
+
+                typedef MyTuple = (int, Foobar);
+              ''',
+                'a|lib/c.dart': '''
+                class Foobar {}
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:a/b.dart' as _i4;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final _i4.MyTuple arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required _i4.MyTuple arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required _i4.MyTuple arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required _i4.MyTuple arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+
+      test(
+          'should generate arguments for aliased record type.',
+          () async => await testBuilder(
+              RouterBuilder(BuilderOptions.empty),
+              {
+                'a|lib/a.dart': '''
+                  import 'package:fluorflow/annotations.dart';
+                  import 'package:flutter/material.dart';
+
+                  import 'b.dart';
+
+                  @Routable()
+                  class View extends StatelessWidget {
+                    final MyRecord arg;
+                    const View(this.arg, {super.key});
+                  }
+              ''',
+                'a|lib/b.dart': '''
+                import 'c.dart';
+
+                typedef MyRecord = ({int age, Foobar foo});
+              ''',
+                'a|lib/c.dart': '''
+                class Foobar {}
+              '''
+              },
+              outputs: {
+                'a|lib/app.router.dart': '''
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:a/a.dart' as _i3;
+import 'package:a/b.dart' as _i4;
+import 'package:fluorflow/fluorflow.dart' as _i2;
+import 'package:flutter/widgets.dart' as _i1;
+
+enum AppRoute {
+  view('/view');
+
+  const AppRoute(this.path);
+
+  final String path;
+}
+
+final _pages = <String, _i1.RouteFactory>{
+  AppRoute.view.path: (data) => _i2.NoTransitionPageRouteBuilder(
+        settings: data,
+        pageBuilder: (
+          _,
+          __,
+          ___,
+        ) {
+          final args = (data.arguments as ViewArguments);
+          return _i3.View(args.arg);
+        },
+      )
+};
+
+class ViewArguments {
+  const ViewArguments({required this.arg});
+
+  final _i4.MyRecord arg;
+}
+
+final onGenerateRoute = _i2.generateRouteFactory(_pages);
+
+extension RouteNavigation on _i2.NavigationService {
+  Future<T?>? navigateToView<T>({
+    required _i4.MyRecord arg,
+    bool preventDuplicates = true,
+  }) =>
+      navigateTo(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void replaceWithView({
+    required _i4.MyRecord arg,
+    bool preventDuplicates = true,
+  }) =>
+      replaceWith(
+        AppRoute.view.path,
+        preventDuplicates: preventDuplicates,
+        arguments: ViewArguments(arg: arg),
+      );
+  void rootToView({required _i4.MyRecord arg}) => rootTo(
+        AppRoute.view.path,
+        arguments: ViewArguments(arg: arg),
+      );
+}
+''',
+              },
+              reader: await PackageAssetReader.currentIsolate()));
+    });
   });
 }
