@@ -14,7 +14,7 @@ class DialogConfig {
 
   /// The route builder for the dialog.
   /// The routeBuilder defines the transition animations for the dialog.
-  /// If set to [RouteBuilder.custom], a [pageRouteBuilder] must be provided.
+  /// If a [pageRouteBuilder] is provided, the custom builder is used.
   final RouteBuilder routeBuilder;
 
   /// Customize the behaviour of a dialog / simple dialog with a [DialogConfig].

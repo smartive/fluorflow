@@ -32,7 +32,4 @@ enum RouteBuilder {
 
   /// Zoom in transition.
   zoomIn,
-
-  /// Custom transition.
-  custom,
 }

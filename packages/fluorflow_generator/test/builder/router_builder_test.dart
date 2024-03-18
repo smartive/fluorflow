@@ -3,7 +3,6 @@ import 'package:build_test/build_test.dart';
 import 'package:fluorflow/annotations.dart';
 import 'package:fluorflow_generator/src/builder/router_builder.dart';
 import 'package:recase/recase.dart';
-import 'package:source_gen/source_gen.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -313,7 +312,7 @@ extension RouteNavigation on _i2.NavigationService {
                   import 'package:flutter/material.dart';
                   import 'b.dart';
 
-                  @Routable(routeBuilder: RouteBuilder.custom, pageRouteBuilder: CustomBuilder)
+                  @Routable(pageRouteBuilder: CustomBuilder)
                   class View extends StatelessWidget {}
               ''',
                 'a|lib/b.dart': '''
@@ -368,36 +367,7 @@ extension RouteNavigation on _i4.NavigationService {
               },
               reader: await PackageAssetReader.currentIsolate()));
 
-      test(
-          'should throw when custom page is requested, but no page builder is provided.',
-          () async {
-        try {
-          await testBuilder(
-              RouterBuilder(BuilderOptions.empty),
-              {
-                'a|lib/a.dart': '''
-                  import 'package:fluorflow/annotations.dart';
-                  import 'package:flutter/material.dart';
-                  import 'b.dart';
-
-                  @Routable(routeBuilder: RouteBuilder.custom)
-                  class View extends StatelessWidget {}
-              ''',
-                'a|lib/b.dart': '''
-                import 'package:flutter/material.dart';
-
-                class CustomBuilder extends PageRouteBuilder {}
-              '''
-              },
-              reader: await PackageAssetReader.currentIsolate());
-          fail('Should have thrown');
-        } catch (e) {
-          expect(e, isA<InvalidGenerationSourceError>());
-        }
-      });
-
       for (final (transition, resultBuilder) in RouteBuilder.values
-          .where((t) => t != RouteBuilder.custom)
           .map((t) => (t, '${t.name.pascalCase}PageRouteBuilder'))) {
         test(
             'should use correct page route builder '

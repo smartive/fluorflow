@@ -79,10 +79,7 @@ class DialogBuilder implements Builder {
                     RouteBuilder.noTransition),
                 configAnnotation.read('pageRouteBuilder').isNull
               )) {
-                (RouteBuilder.custom, true) => throw InvalidGenerationSourceError(
-                    'You must provide a pageRouteBuilder when using a custom routeBuilder.',
-                    element: dialogClass),
-                (RouteBuilder.custom, false) => refer(
+                (_, false) => refer(
                     configAnnotation
                         .read('pageRouteBuilder')
                         .typeValue

@@ -128,10 +128,7 @@ class RouterBuilder implements Builder {
               RouteBuilder.noTransition),
           annotation.read('pageRouteBuilder').isNull
         )) {
-          (RouteBuilder.custom, true) => throw InvalidGenerationSourceError(
-              'You must provide a pageRouteBuilder when using a custom routeBuilder.',
-              element: element),
-          (RouteBuilder.custom, false) => refer(
+          (_, false) => refer(
               annotation
                   .read('pageRouteBuilder')
                   .typeValue
