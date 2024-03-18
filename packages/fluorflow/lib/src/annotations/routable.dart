@@ -9,6 +9,7 @@ import '../navigation/route_builder.dart';
 /// The [path] parameter can be used to specify a custom path for the routable class.
 /// The [pageRouteBuilder] parameter can be used to specify a custom page route builder for the routable class.
 /// The [routeBuilder] parameter can be used to specify a custom route builder for the routable class.
+/// When a [pageRouteBuilder] is provided, the [routeBuilder] is ignored.
 /// The [navigateToExtension] defines whether the method extension on the navigation service contains a navigateTo method.
 /// The [replaceWithExtension] defines whether the method extension on the navigation service contains a replaceWith method.
 /// The [rootToExtension] defines whether the method extension on the navigation service contains a rootTo method.

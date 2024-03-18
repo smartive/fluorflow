@@ -3,7 +3,6 @@ import 'package:build_test/build_test.dart';
 import 'package:fluorflow/annotations.dart';
 import 'package:fluorflow_generator/src/builder/dialog_builder.dart';
 import 'package:recase/recase.dart';
-import 'package:source_gen/source_gen.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -1388,7 +1387,6 @@ extension Dialogs on _i1.DialogService {
                 import 'b.dart';
 
                 @DialogConfig(
-                  routeBuilder: RouteBuilder.custom,
                   pageRouteBuilder: CustomBuilder,
                 )
                 class MyDialog extends FluorFlowSimpleDialog {
@@ -1433,37 +1431,7 @@ extension Dialogs on _i1.DialogService {
               },
               reader: await PackageAssetReader.currentIsolate()));
 
-      test(
-          'should throw when custom page is requested, but no page builder is provided.',
-          () async {
-        try {
-          await testBuilder(
-              DialogBuilder(BuilderOptions.empty),
-              {
-                'a|lib/a.dart': '''
-                  import 'package:fluorflow/annotations.dart';
-                  import 'package:fluorflow/fluorflow.dart';
-                  import 'package:flutter/material.dart';
-
-                  @DialogConfig(
-                    routeBuilder: RouteBuilder.custom,
-                  )
-                  class MyDialog extends FluorFlowSimpleDialog {
-                    const MyDialog({super.key, required this.completer});
-                  }
-
-                  class CustomBuilder extends PageRouteBuilder {}
-              '''
-              },
-              reader: await PackageAssetReader.currentIsolate());
-          fail('Should have thrown');
-        } catch (e) {
-          expect(e, isA<InvalidGenerationSourceError>());
-        }
-      });
-
       for (final (transition, resultBuilder) in RouteBuilder.values
-          .where((t) => t != RouteBuilder.custom)
           .map((t) => (t, '${t.name.pascalCase}PageRouteBuilder'))) {
         test(
             'should use correct page route builder '
