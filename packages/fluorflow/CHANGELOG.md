@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/smartive/fluorflow/compare/v2.0.0...v2.0.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* upgrade generator dependency to fluorflow ([fc8ed7b](https://github.com/smartive/fluorflow/commit/fc8ed7b8971bbeb3bcb2d372f7d3770e1dc92a29))
+
 # [2.0.0](https://github.com/smartive/fluorflow/compare/v1.2.1...v2.0.0) (2024-03-18)
 
 
