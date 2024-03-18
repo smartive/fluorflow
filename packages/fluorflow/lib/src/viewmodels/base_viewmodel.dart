@@ -81,6 +81,7 @@ abstract base class BaseViewModel extends ChangeNotifier implements ViewModel {
   /// reflected in the UI.
   @nonVirtual
   @override
+  @protected
   void notifyListeners() {
     if (!_disposed) {
       super.notifyListeners();

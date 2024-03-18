@@ -26,7 +26,12 @@ final class DetailView extends FluorFlowView<DetailViewModel> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text('Detail Page'),
+              Text('Count: ${viewModel.data}'),
               const SizedBox(height: 36),
+              ElevatedButton(
+                onPressed: viewModel.addOne,
+                child: const Text('plus one'),
+              ),
               ElevatedButton(
                 onPressed: viewModel.back,
                 child: const Text('Back'),

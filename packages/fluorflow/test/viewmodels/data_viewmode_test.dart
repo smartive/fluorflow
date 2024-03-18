@@ -7,21 +7,35 @@ final class _NormalViewModel extends DataViewModel<String> {
   _NormalViewModel() : super('Hello, World!');
 
   @override
-  FutureOr<String> initializeData() => 'Hello, brave new World!';
+  FutureOr<void> initialize() {
+    data = 'Hello, brave new World!';
+    return super.initialize();
+  }
 }
 
 final class _ErrorViewModel extends DataViewModel<String> {
   _ErrorViewModel() : super('Hello, World!');
 
   @override
-  FutureOr<String> initializeData() =>
-      throw StateError('Failed to initialize.');
+  FutureOr<void> initialize() async {
+    try {
+      throw StateError('Error');
+    } catch (e) {
+      error = e;
+    } finally {
+      await super.initialize();
+    }
+  }
 }
 
 void main() {
   group('DataViewModel<TData>', () {
-    test('should set the provided data of "initializeData" when initialized.',
-        () async {
+    test('should set the provided initial data.', () async {
+      final viewModel = _NormalViewModel();
+      expect(viewModel.data, 'Hello, World!');
+    });
+
+    test('should set the provided data of when initialized.', () async {
       final viewModel = _NormalViewModel();
       await viewModel.initialize();
       expect(viewModel.data, 'Hello, brave new World!');
@@ -34,7 +48,7 @@ void main() {
       expect(viewModel.initialized, true);
     });
 
-    test('should set initialized on error.', () async {
+    test('should set initialized on error (when coded).', () async {
       final viewModel = _ErrorViewModel();
       expect(viewModel.initialized, false);
       await viewModel.initialize();
