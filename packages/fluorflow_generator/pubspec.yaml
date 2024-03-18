@@ -12,7 +12,7 @@ dependencies:
   build: ^2.0.0
   code_builder: ^4.0.0
   dart_style: ^2.0.0
-  fluorflow: ^1.0.0
+  fluorflow: ^2.0.0
   glob: ^2.0.0
   path: ^1.0.0
   recase: ^4.0.0
