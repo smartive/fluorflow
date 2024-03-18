@@ -1,3 +1,30 @@
+# [2.0.0](https://github.com/smartive/fluorflow/compare/v1.2.1...v2.0.0) (2024-03-18)
+
+
+### Features
+
+* simplify data view model ([#5](https://github.com/smartive/fluorflow/issues/5)) ([fad3176](https://github.com/smartive/fluorflow/commit/fad3176a2a8baff45b6d86e4c89ea9d8de1097d2))
+
+
+### BREAKING CHANGES
+
+* This removes the complex initialization
+logic of the `DataViewModel<T>`. Instead of using the
+`initializeData` method, now the constructor of the view model
+requires some form of initial data. This requires developers to
+explicitely define nullable types and allows the `data` field to be
+initialized in all cases. To migrate, remove all `initializeData` calls
+and provide the constructor with some default data. It is still possible
+to load data asynchronously, by overwriting the `initialize` method and
+fetching data there. One is responsible to call `super.initialize` in
+error cases.
+* This simplifies the routable and dialog config by
+removing the `RouteBuilder.custom` variant. Basically, to use a custom
+page route builder, just use the provided property (`pageRouteBuilder`)
+and do not set the `routeBuilder` property. If the page route builder is
+provided,
+the route builder property is ignored.
+
 ## [1.2.1](https://github.com/smartive/fluorflow/compare/v1.2.0...v1.2.1) (2024-03-06)
 
 
