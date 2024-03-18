@@ -30,6 +30,8 @@ import 'base_viewmodel.dart';
 /// }
 ///
 /// final class HomeViewModel extends DataViewModel<HomeState> {
+///   HomeViewModel() : super(const LoadingState());
+///
 ///   @override
 ///   FutureOr<HomeState> initializeData() => const LoadingState();
 ///
@@ -40,7 +42,13 @@ import 'base_viewmodel.dart';
 /// }
 /// ```
 abstract base class DataViewModel<TData> extends BaseViewModel {
-  late final ValueNotifier<TData> _data;
+  final ValueNotifier<TData> _data;
+
+  /// Creates the data view model with the initial data.
+  /// The initial data is required to initialize the [data] value
+  /// notifier with some default value. If the initialization of data
+  /// ([initializeData]) fails, this default data is still available.
+  DataViewModel(TData initialData) : _data = ValueNotifier(initialData);
 
   /// Return the data notifier for the view model. This can be used
   /// to add additional listeners to data changes.
@@ -88,15 +96,18 @@ abstract base class DataViewModel<TData> extends BaseViewModel {
   @override
   @mustCallSuper
   FutureOr<void> initialize() async {
+    // Should we kill "initialize data?"
+    // ctor macht default, init chan async.
+    if (notifyOnDataChange) {
+      _data.addListener(notifyListeners);
+    }
     try {
-      _data = ValueNotifier(await initializeData());
-      if (notifyOnDataChange) {
-        _data.addListener(notifyListeners);
-      }
-      await super.initialize();
+      data = await initializeData();
     } catch (e) {
       error = e;
       onDataInitializeError(e);
+    } finally {
+      await super.initialize();
     }
   }
 }
