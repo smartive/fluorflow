@@ -14,7 +14,6 @@ dependencies:
   dart_style: ^2.0.0
   flutter:
     sdk: flutter
-  get: ^4.0.0
   get_it: ^7.0.0
   path: ^1.0.0
   recase: ^4.0.0

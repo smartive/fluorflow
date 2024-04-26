@@ -37,6 +37,10 @@ final class DetailView extends FluorFlowView<DetailViewModel> {
                 child: const Text('Back'),
               ),
               ElevatedButton(
+                onPressed: viewModel.rootBack,
+                child: const Text('Root to home view'),
+              ),
+              ElevatedButton(
                 onPressed: viewModel.showBottomSheet,
                 child: const Text('Show Bottom Sheet'),
               ),

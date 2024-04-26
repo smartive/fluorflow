@@ -22,6 +22,6 @@ class MyApp extends StatelessWidget {
         initialRoute: AppRoute.homeView.path,
         onGenerateRoute: onGenerateRoute,
         navigatorKey: NavigationService.navigatorKey,
-        navigatorObservers: [NavigationService.observer()],
+        navigatorObservers: [NavigationService.observer],
       );
 }

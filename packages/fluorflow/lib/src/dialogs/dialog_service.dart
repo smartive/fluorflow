@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 
 /// A service for showing and closing dialogs.
 /// Works with route builders. However, it is recommended to use the
@@ -10,7 +9,7 @@ class DialogService {
   final _random = Random();
 
   /// Returns whether a dialog is currently open.
-  bool get isDialogOpen => Get.isDialogOpen ?? false;
+  bool get isDialogOpen => false; //Get.isDialogOpen ?? false;
 
   /// Shows a dialog and returns a future with the (possible) result.
   ///
@@ -21,19 +20,19 @@ class DialogService {
     required PageRouteBuilder dialogBuilder,
     Color barrierColor = const Color(0x80000000),
     bool barrierDismissible = false,
-  }) =>
-      Get.generalDialog<TResult>(
-        barrierDismissible: barrierDismissible,
-        barrierLabel:
-            barrierDismissible ? 'dialog_${_random.nextInt(1000000)}' : null,
-        pageBuilder: dialogBuilder.pageBuilder,
-        barrierColor: barrierColor,
-        transitionDuration: dialogBuilder.transitionDuration,
-        routeSettings: dialogBuilder.settings,
-        transitionBuilder: dialogBuilder.transitionsBuilder,
-      );
+  }) async {}
+  // Get.generalDialog<TResult>(
+  //   barrierDismissible: barrierDismissible,
+  //   barrierLabel:
+  //       barrierDismissible ? 'dialog_${_random.nextInt(1000000)}' : null,
+  //   pageBuilder: dialogBuilder.pageBuilder,
+  //   barrierColor: barrierColor,
+  //   transitionDuration: dialogBuilder.transitionDuration,
+  //   routeSettings: dialogBuilder.settings,
+  //   transitionBuilder: dialogBuilder.transitionsBuilder,
+  // );
 
   /// Closes the currently open dialog.
-  void closeDialog<T>({bool? confirmed, T? result}) =>
-      Get.back(result: (confirmed, result));
+  void closeDialog<T>({bool? confirmed, T? result}) {}
+  // Get.back(result: (confirmed, result));
 }

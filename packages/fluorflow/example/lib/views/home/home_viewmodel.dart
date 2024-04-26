@@ -16,9 +16,9 @@ final class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void showTestDialog() => _dialogService.showRedDialog(elements: []);
+  void showTestDialog() => _navService.showRedDialog(elements: []);
 
-  void showSmallDialog() => _dialogService.showSmallDialog();
+  void showSmallDialog() => _navService.showSmallDialog();
 
   void goToDetail() => _navService.navigateToDetailView();
 }
