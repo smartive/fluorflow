@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoute.homeView.path,
       onGenerateRoute: onGenerateRoute,
       navigatorKey: NavigationService.navigatorKey,
-      navigatorObservers: [NavigationService.observer()],
+      navigatorObservers: [NavigationService.observer],
     );
   }
 }
@@ -41,12 +41,12 @@ Especially the part for routing is important (if you use FluorFlow views and rou
 initialRoute: AppRoute.homeView.path,
 onGenerateRoute: onGenerateRoute,
 navigatorKey: NavigationService.navigatorKey,
-navigatorObservers: [NavigationService.observer()],
+navigatorObservers: [NavigationService.observer],
 ```
 
-This enables the routing system of FluorFlow (which uses GetX underneath).
+This enables the routing system of FluorFlow.
 
-The other parts of the material app can be as you wish.
+The other parts of the app can be as you wish.
 
 ## Views
 
@@ -176,12 +176,12 @@ final class GreetingBottomSheet extends FluorFlowSimpleBottomSheet<void> {
 }
 ```
 
-Bottom sheets are shown via the `BottomSheetService` that has extension methods
+Bottom sheets are shown via the `NavigationService` that has extension methods
 attached for each bottom sheet. Parameters of sheets are taken into account
 when used with the fluorflow generator.
 
 Dialogs work exactly the same way as bottom sheets, but are shown via the
-`DialogService` and have another base class.
+`Dialogs` extension in the `NavigationService` and have another base class.
 
 **Important:** Bottom sheets are always wrapped in a `Scaffold` widget. Thus,
 they inherit your styles. `Dialogs` do not have this behavior (by design).

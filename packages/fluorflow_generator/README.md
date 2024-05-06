@@ -48,16 +48,12 @@ global_options:
 - `output` (String): The file path for the generated locator file. Default: `lib/app.locator.dart`.
 - `emitAllReady` (bool): Whether to emit the `await allReady()` method call in the locator setup method. Default: `true`.
 - `register_services`: Whether to register services in the locator.
-  - `bottomSheet` (bool): Whether to register the bottom sheet service. Default: `true`.
-  - `dialog` (bool): Whether to register the dialog service. Default: `true`.
   - `navigation` (bool): Whether to register the navigation service. Default: `true`.
 
 ### Test Locator Options
 
 - `output` (String): The file path for the generated locator file. Default: `test/test.locator.dart`.
 - `register_services`: Whether to register services in the locator.
-  - `bottomSheet` (bool): Whether to register the mock bottom sheet service. Default: `true`.
-  - `dialog` (bool): Whether to register the mock dialog service. Default: `true`.
   - `navigation` (bool): Whether to register the mock navigation service. Default: `true`.
 
 ### Router Options
@@ -76,7 +72,7 @@ global_options:
 
 Currently the following generators are supported:
 
-- Dependency Injection
+- Dependency Injection (For services and test services)
 - Routing
 - Dialogs
 - Bottom Sheets
@@ -133,13 +129,12 @@ Both of these work the same way. You just extend the `FluorFlowDialog`, `FluorFl
 `FluorFlowBottomSheet` or `FluorFlowSimpleBottomSheet` classes. There are special annotations
 for configuration of the generated code - if needed.
 
-When such extended classes are found, method extensions for the `DialogService` respectively
-`BottomSheetService` are generated.
+When such extended classes are found, method extensions for the `NavigationService` are generated.
 
 An example of such a dialog method:
 
 ```dart
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, int?)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
   }) =>
@@ -152,7 +147,7 @@ extension Dialogs on _i1.DialogService {
           ___,
         ) =>
                 _i4.MyDialog(
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
