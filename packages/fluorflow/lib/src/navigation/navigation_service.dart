@@ -61,7 +61,7 @@ class NavigationService {
 
   /// Navigate "back" and return an optional result.
   void back<T>([T? result]) => navigatorKey.currentState?.canPop() == true
-      ? navigatorKey.currentState?.pop(result)
+      ? navigatorKey.currentState!.pop(result)
       : null;
 
   /// Pops the route stack until the predicate is fulfilled.
@@ -105,8 +105,7 @@ class NavigationService {
     Color barrierColor = const Color(0x80000000),
     bool barrierDismissible = false,
   }) {
-    if (navigatorKey.currentState == null ||
-        navigatorKey.currentState!.overlay == null) {
+    if (navigatorKey.currentState?.overlay == null) {
       return Future.value(null);
     }
 
@@ -128,8 +127,7 @@ class NavigationService {
     bool showDragHandle = false,
     bool useSafeArea = false,
   }) {
-    if (navigatorKey.currentState == null ||
-        navigatorKey.currentState!.overlay == null) {
+    if (navigatorKey.currentState?.overlay == null) {
       return Future.value(null);
     }
 

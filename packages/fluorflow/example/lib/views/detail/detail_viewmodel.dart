@@ -5,7 +5,6 @@ import '../../app.router.dart';
 
 final class DetailViewModel extends DataViewModel<int> {
   final _navService = locator<NavigationService>();
-  final _sheets = locator<BottomSheetService>();
 
   DetailViewModel() : super(0);
 

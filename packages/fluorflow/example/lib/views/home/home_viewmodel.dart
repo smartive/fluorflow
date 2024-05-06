@@ -4,7 +4,6 @@ import '../../app.dialogs.dart';
 import '../../app.router.dart';
 
 final class HomeViewModel extends BaseViewModel {
-  final _dialogService = locator<DialogService>();
   final _navService = locator<NavigationService>();
 
   var _counter = 0;
