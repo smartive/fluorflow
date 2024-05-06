@@ -50,6 +50,8 @@ class NavigationService {
   /// Required for adjusting the navigation stack.
   static final NavigatorObserver observer = _navigator;
 
+  const NavigationService();
+
   /// Returns the current route name (or an empty string if no route
   /// matches).
   String get currentRoute => _navigator.currentRoute?.settings.name ?? '';

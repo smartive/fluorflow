@@ -1,7 +1,11 @@
 import 'dart:async';
 
 import 'package:fluorflow/src/viewmodels/data_viewmodel.dart';
+import 'package:fluorflow/src/views/fluorflow_view.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import '../helpers.dart';
 
 final class _NormalViewModel extends DataViewModel<String> {
   _NormalViewModel() : super('Hello, World!');
@@ -11,6 +15,8 @@ final class _NormalViewModel extends DataViewModel<String> {
     data = 'Hello, brave new World!';
     return super.initialize();
   }
+
+  void updateData() => data = 'Updated!';
 }
 
 final class _ErrorViewModel extends DataViewModel<String> {
@@ -26,6 +32,22 @@ final class _ErrorViewModel extends DataViewModel<String> {
       await super.initialize();
     }
   }
+}
+
+final class _TestView extends FluorFlowView<_NormalViewModel> {
+  @override
+  Widget builder(
+          BuildContext context, _NormalViewModel viewModel, Widget? child) =>
+      Column(
+        children: [
+          Text(viewModel.data),
+          TextButton(
+              onPressed: viewModel.updateData, child: const Text('update')),
+        ],
+      );
+
+  @override
+  _NormalViewModel viewModelBuilder(BuildContext context) => _NormalViewModel();
 }
 
 void main() {
@@ -66,6 +88,24 @@ void main() {
       final viewModel = _ErrorViewModel();
       await viewModel.initialize();
       expect(viewModel.error, isA<StateError>());
+    });
+
+    testWidgets('should show initial data on view.', (tester) async {
+      await tester.pumpWidget(mockApp(_TestView()));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Hello, brave new World!'), findsOneWidget);
+    });
+
+    testWidgets('should update ui after data change.', (tester) async {
+      await tester.pumpWidget(mockApp(_TestView()));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('update'));
+
+      await tester.pumpAndSettle();
+
+      expect(find.text('Updated!'), findsOneWidget);
     });
   });
 }
