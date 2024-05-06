@@ -74,7 +74,6 @@ class NavigationService {
   Future<T?>? navigateTo<T>(
     String routeName, {
     dynamic arguments,
-    bool preventDuplicates = true,
   }) =>
       navigatorKey.currentState?.pushNamed(routeName, arguments: arguments);
 
@@ -83,7 +82,6 @@ class NavigationService {
   void replaceWith(
     String routeName, {
     dynamic arguments,
-    bool preventDuplicates = true,
   }) =>
       navigatorKey.currentState?.pushReplacementNamed(
         routeName,
