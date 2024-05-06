@@ -126,6 +126,7 @@ class NavigationService {
     bool fullscreen = false,
     bool draggable = true,
     bool showDragHandle = false,
+    bool useSafeArea = false,
   }) {
     if (navigatorKey.currentState == null ||
         navigatorKey.currentState!.overlay == null) {
@@ -139,6 +140,8 @@ class NavigationService {
       isScrollControlled: fullscreen,
       enableDrag: draggable,
       showDragHandle: showDragHandle,
+      modalBarrierColor: barrierColor,
+      useSafeArea: useSafeArea,
     ));
   }
 

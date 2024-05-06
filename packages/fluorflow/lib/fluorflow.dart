@@ -2,10 +2,8 @@
 library fluorflow;
 
 export 'src/bottom_sheets/bottom_sheet.dart';
-export 'src/bottom_sheets/bottom_sheet_service.dart';
 export 'src/bottom_sheets/simple_bottom_sheet.dart';
 export 'src/dialogs/dialog.dart';
-export 'src/dialogs/dialog_service.dart';
 export 'src/dialogs/simple_dialog.dart';
 export 'src/locator/locator.dart';
 export 'src/navigation/navigation_service.dart';
