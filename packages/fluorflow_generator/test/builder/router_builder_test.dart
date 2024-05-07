@@ -65,14 +65,8 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
+  void replaceWithView() => replaceWith(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -123,14 +117,8 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
+  void replaceWithView() => replaceWith(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -181,10 +169,7 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  void replaceWithView() => replaceWith(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -235,10 +220,7 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -289,14 +271,8 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
+  void replaceWithView() => replaceWith(AppRoute.view.path);
 }
 ''',
               },
@@ -353,14 +329,8 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i4.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i4.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
+  void replaceWithView() => replaceWith(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -414,14 +384,8 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
+  void replaceWithView() => replaceWith(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -475,14 +439,8 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
+  void replaceWithView() => replaceWith(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -535,14 +493,8 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
+  void replaceWithView() => replaceWith(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -605,22 +557,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required String arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required String arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required String arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required String arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required String arg}) => rootTo(
@@ -688,22 +630,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required String? arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required String? arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required String? arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required String? arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required String? arg}) => rootTo(
@@ -771,22 +703,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    String arg = 'default',
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({String arg = 'default'}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    String arg = 'default',
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({String arg = 'default'}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({String arg = 'default'}) => rootTo(
@@ -854,22 +776,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required String arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required String arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required String arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required String arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required String arg}) => rootTo(
@@ -937,22 +849,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    String? arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({String? arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    String? arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({String? arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({String? arg}) => rootTo(
@@ -1020,22 +922,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    String arg = 'default',
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({String arg = 'default'}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    String arg = 'default',
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({String arg = 'default'}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({String arg = 'default'}) => rootTo(
@@ -1109,22 +1001,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i4.Arg arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required _i4.Arg arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i4.Arg arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required _i4.Arg arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required _i4.Arg arg}) => rootTo(
@@ -1184,14 +1066,8 @@ final _pages = <String, _i1.RouteFactory>{
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({bool preventDuplicates = true}) => navigateTo(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
-  void replaceWithView({bool preventDuplicates = true}) => replaceWith(
-        AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
-      );
+  Future<T?>? navigateToView<T>() => navigateTo(AppRoute.view.path);
+  void replaceWithView() => replaceWith(AppRoute.view.path);
   void rootToView() => rootTo(AppRoute.view.path);
 }
 ''',
@@ -1256,22 +1132,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required List<int> arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required List<int> arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required List<int> arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required List<int> arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required List<int> arg}) => rootTo(
@@ -1341,22 +1207,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required List<_i3.Foobar> arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required List<_i3.Foobar> arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required List<_i3.Foobar> arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required List<_i3.Foobar> arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required List<_i3.Foobar> arg}) => rootTo(
@@ -1426,22 +1282,16 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required (_i3.Foobar, int, {_i3.Foobar f, String name}) arg,
-    bool preventDuplicates = true,
-  }) =>
+  Future<T?>? navigateToView<T>(
+          {required (_i3.Foobar, int, {_i3.Foobar f, String name}) arg}) =>
       navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required (_i3.Foobar, int, {_i3.Foobar f, String name}) arg,
-    bool preventDuplicates = true,
-  }) =>
+  void replaceWithView(
+          {required (_i3.Foobar, int, {_i3.Foobar f, String name}) arg}) =>
       replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView(
@@ -1513,22 +1363,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    (_i3.Foobar, int)? arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({(_i3.Foobar, int)? arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    (_i3.Foobar, int)? arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({(_i3.Foobar, int)? arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({(_i3.Foobar, int)? arg}) => rootTo(
@@ -1605,22 +1445,15 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i3.Foo<_i3.Bar<_i4.Baz, int>> arg,
-    bool preventDuplicates = true,
-  }) =>
+  Future<T?>? navigateToView<T>(
+          {required _i3.Foo<_i3.Bar<_i4.Baz, int>> arg}) =>
       navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i3.Foo<_i3.Bar<_i4.Baz, int>> arg,
-    bool preventDuplicates = true,
-  }) =>
+  void replaceWithView({required _i3.Foo<_i3.Bar<_i4.Baz, int>> arg}) =>
       replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required _i3.Foo<_i3.Bar<_i4.Baz, int>> arg}) => rootTo(
@@ -1696,22 +1529,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i3.Foo<_i4.Baz> arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required _i3.Foo<_i4.Baz> arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i3.Foo<_i4.Baz> arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required _i3.Foo<_i4.Baz> arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required _i3.Foo<_i4.Baz> arg}) => rootTo(
@@ -1779,22 +1602,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required void Function() arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required void Function() arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required void Function() arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required void Function() arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required void Function() arg}) => rootTo(
@@ -1872,22 +1685,15 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i3.Foo Function(_i3.Bar<_i4.Baz>) arg,
-    bool preventDuplicates = true,
-  }) =>
+  Future<T?>? navigateToView<T>(
+          {required _i3.Foo Function(_i3.Bar<_i4.Baz>) arg}) =>
       navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i3.Foo Function(_i3.Bar<_i4.Baz>) arg,
-    bool preventDuplicates = true,
-  }) =>
+  void replaceWithView({required _i3.Foo Function(_i3.Bar<_i4.Baz>) arg}) =>
       replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required _i3.Foo Function(_i3.Bar<_i4.Baz>) arg}) => rootTo(
@@ -1969,30 +1775,24 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i3.Foo Function(
-      _i3.Bar<_i4.Baz>, {
-      required _i3.Foo f,
-      _i4.Baz? b,
-    }) arg,
-    bool preventDuplicates = true,
-  }) =>
+  Future<T?>? navigateToView<T>(
+          {required _i3.Foo Function(
+            _i3.Bar<_i4.Baz>, {
+            required _i3.Foo f,
+            _i4.Baz? b,
+          }) arg}) =>
       navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i3.Foo Function(
-      _i3.Bar<_i4.Baz>, {
-      required _i3.Foo f,
-      _i4.Baz? b,
-    }) arg,
-    bool preventDuplicates = true,
-  }) =>
+  void replaceWithView(
+          {required _i3.Foo Function(
+            _i3.Bar<_i4.Baz>, {
+            required _i3.Foo f,
+            _i4.Baz? b,
+          }) arg}) =>
       replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView(
@@ -2079,28 +1879,22 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i3.Foo Function(
-      _i3.Bar<_i4.Baz>, [
-      _i3.Foo?,
-    ]) arg,
-    bool preventDuplicates = true,
-  }) =>
+  Future<T?>? navigateToView<T>(
+          {required _i3.Foo Function(
+            _i3.Bar<_i4.Baz>, [
+            _i3.Foo?,
+          ]) arg}) =>
       navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i3.Foo Function(
-      _i3.Bar<_i4.Baz>, [
-      _i3.Foo?,
-    ]) arg,
-    bool preventDuplicates = true,
-  }) =>
+  void replaceWithView(
+          {required _i3.Foo Function(
+            _i3.Bar<_i4.Baz>, [
+            _i3.Foo?,
+          ]) arg}) =>
       replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView(
@@ -2181,22 +1975,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i4.MyCallback arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required _i4.MyCallback arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i4.MyCallback arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required _i4.MyCallback arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required _i4.MyCallback arg}) => rootTo(
@@ -2275,22 +2059,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i4.MyTuple arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required _i4.MyTuple arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i4.MyTuple arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required _i4.MyTuple arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required _i4.MyTuple arg}) => rootTo(
@@ -2369,22 +2143,12 @@ class ViewArguments {
 final onGenerateRoute = _i2.generateRouteFactory(_pages);
 
 extension RouteNavigation on _i2.NavigationService {
-  Future<T?>? navigateToView<T>({
-    required _i4.MyRecord arg,
-    bool preventDuplicates = true,
-  }) =>
-      navigateTo(
+  Future<T?>? navigateToView<T>({required _i4.MyRecord arg}) => navigateTo(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
-  void replaceWithView({
-    required _i4.MyRecord arg,
-    bool preventDuplicates = true,
-  }) =>
-      replaceWith(
+  void replaceWithView({required _i4.MyRecord arg}) => replaceWith(
         AppRoute.view.path,
-        preventDuplicates: preventDuplicates,
         arguments: ViewArguments(arg: arg),
       );
   void rootToView({required _i4.MyRecord arg}) => rootTo(
