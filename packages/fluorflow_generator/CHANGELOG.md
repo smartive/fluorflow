@@ -1,3 +1,30 @@
+# [3.0.0](https://github.com/smartive/fluorflow/compare/v2.0.1...v3.0.0) (2024-05-07)
+
+
+### Features
+
+* use native navigation instead of getX navigation ([#6](https://github.com/smartive/fluorflow/issues/6)) ([e9cf309](https://github.com/smartive/fluorflow/commit/e9cf309a02825c772cba35cd2c5170ba7aa3441e))
+
+
+### BREAKING CHANGES
+
+* The `DialogService` was deleted.
+Dialog related methods are now in the `NavigationService`.
+* The `BottomSheetService` was deleted.
+All related methods are now in the `NavigationService`.
+* the close methods for dialog and
+sheet (`closeDialog` and `closeSheet`) are removed. They
+are unified in the method `closeOverlay` in the `NavigationService`.
+* Since getX is removed, the base logic of
+the entry point in the app could be simplified. Instead of
+the key and observer being methods, they are now static
+initialized fields on the navigation service.
+
+BRAKING CHANGE: The `preventDuplicates` parameter for the
+navigation method is gone. Currently, with native
+navigation, the user of the package is responsible to
+have an overview of the navigation stack.
+
 ## [2.0.1](https://github.com/smartive/fluorflow/compare/v2.0.0...v2.0.1) (2024-03-18)
 
 
