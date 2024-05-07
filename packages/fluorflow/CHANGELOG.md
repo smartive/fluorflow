@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/smartive/fluorflow/compare/v3.0.0...v3.0.1) (2024-05-07)
+
+
+### Bug Fixes
+
+* **generator:** upgrade fluorflow dep ([c8a7c7f](https://github.com/smartive/fluorflow/commit/c8a7c7f64c1c2fdb965cf187cb2aa7fa84d05c5f))
+
 # [3.0.0](https://github.com/smartive/fluorflow/compare/v2.0.1...v3.0.0) (2024-05-07)
 
 
