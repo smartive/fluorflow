@@ -33,7 +33,7 @@ class BottomSheetBuilder implements Builder {
 
     var extension = Extension((b) => b
       ..name = 'BottomSheets'
-      ..on = refer('BottomSheetService', 'package:fluorflow/fluorflow.dart'));
+      ..on = refer('NavigationService', 'package:fluorflow/fluorflow.dart'));
 
     await for (final assetId in buildStep.findAssets(_allDartFilesInLib)) {
       if (!await resolver.isLibrary(assetId)) {
@@ -92,12 +92,12 @@ class BottomSheetBuilder implements Builder {
                         false)
                 .code))
           ..optionalParameters.add(Parameter((b) => b
-            ..name = 'ignoreSafeArea'
+            ..name = 'useSafeArea'
             ..type = refer('bool')
             ..named = true
             ..defaultTo = literalBool(
-                    configAnnotation?.read('defaultIgnoreSafeArea').boolValue ??
-                        true)
+                    configAnnotation?.read('defaultUseSafeArea').boolValue ??
+                        false)
                 .code))
           ..optionalParameters.add(Parameter((b) => b
             ..name = 'draggable'
@@ -106,6 +106,14 @@ class BottomSheetBuilder implements Builder {
             ..defaultTo = literalBool(
                     configAnnotation?.read('defaultDraggable').boolValue ??
                         true)
+                .code))
+          ..optionalParameters.add(Parameter((b) => b
+            ..name = 'showDragHandle'
+            ..type = refer('bool')
+            ..named = true
+            ..defaultTo = literalBool(
+                    configAnnotation?.read('defaultShowDragHandle').boolValue ??
+                        false)
                 .code))
           ..optionalParameters.addAll(params.map((p) => Parameter((b) => b
             ..name = p.name
@@ -121,7 +129,7 @@ class BottomSheetBuilder implements Builder {
                             .where((p) => p.isPositional)
                             .map((p) => refer(p.name)),
                         {
-                      'completer': refer('closeSheet'),
+                      'completer': refer('closeOverlay'),
                       for (final p in params.where((p) => p.isNamed))
                         p.name: refer(p.name)
                     }),
@@ -129,7 +137,8 @@ class BottomSheetBuilder implements Builder {
                 'barrierColor': refer('barrierColor'),
                 'fullscreen': refer('fullscreen'),
                 'draggable': refer('draggable'),
-                'ignoreSafeArea': refer('ignoreSafeArea'),
+                'showDragHandle': refer('showDragHandle'),
+                'useSafeArea': refer('useSafeArea'),
               }, [
                 methodTupleRef,
                 refer(sheetClass.displayName, assetId.uri.toString()),

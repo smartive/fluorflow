@@ -42,19 +42,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -84,19 +86,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, void)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, void), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, null));
 }
 '''
@@ -126,19 +130,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, String?)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, String?), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -174,19 +180,21 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i2;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, _i2.DialogResultType?)> showMySheet({
     _i3.Color barrierColor = const _i3.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, _i2.DialogResultType?), _i4.MySheet>(
-        _i4.MySheet(completer: closeSheet),
+        _i4.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -218,19 +226,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -260,19 +270,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, void)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, void), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, null));
 }
 '''
@@ -302,19 +314,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, String?)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, String?), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -350,19 +364,21 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i2;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, _i2.DialogResultType?)> showMySheet({
     _i3.Color barrierColor = const _i3.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, _i2.DialogResultType?), _i4.MySheet>(
-        _i4.MySheet(completer: closeSheet),
+        _i4.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -395,23 +411,25 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required String pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -442,23 +460,25 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required String? pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -489,23 +509,25 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required String pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
-          completer: closeSheet,
+          completer: closeOverlay,
           pos: pos,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -536,23 +558,25 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     String? pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
-          completer: closeSheet,
+          completer: closeOverlay,
           pos: pos,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -583,23 +607,25 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     String pos = 'default',
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
-          completer: closeSheet,
+          completer: closeOverlay,
           pos: pos,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -636,23 +662,25 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required _i3.MySheetRef pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i4.MySheet>(
         _i4.MySheet(
-          completer: closeSheet,
+          completer: closeOverlay,
           pos: pos,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -685,23 +713,25 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required List<String> pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -734,23 +764,25 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required List<_i3.Foobar> pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -789,23 +821,25 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required _i3.Foo<_i3.Bar<_i4.Baz, int>> pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -843,23 +877,25 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required _i3.Foo<_i4.Baz> pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -890,23 +926,25 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required void Function() pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -946,23 +984,25 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required _i3.Foo Function(_i3.Bar<_i4.Baz>) pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1002,12 +1042,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required _i3.Foo Function(
       _i3.Bar<_i4.Baz>, {
       required _i3.Foo f,
@@ -1017,12 +1058,13 @@ extension BottomSheets on _i1.BottomSheetService {
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1062,12 +1104,13 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required _i3.Foo Function(
       _i3.Bar<_i4.Baz>, [
       _i3.Foo?,
@@ -1076,12 +1119,13 @@ extension BottomSheets on _i1.BottomSheetService {
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
         _i3.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1119,23 +1163,25 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
     required _i3.MyCallback pos,
   }) =>
       showBottomSheet<(bool?, dynamic), _i4.MySheet>(
         _i4.MySheet(
           pos,
-          completer: closeSheet,
+          completer: closeOverlay,
         ),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1167,19 +1213,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, (int, int)?)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, (int, int)?), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1209,19 +1257,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, ({int a})?)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, ({int a})?), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1251,19 +1301,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, void Function()?)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, void Function()?), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1284,8 +1336,9 @@ extension BottomSheets on _i1.BottomSheetService {
                 @BottomSheetConfig(
                   defaultBarrierColor: 0x34ff0000,
                   defaultFullscreen: true,
-                  defaultIgnoreSafeArea: false,
+                  defaultUseSafeArea: false,
                   defaultDraggable: false,
+                  defaultShowDragHandle: true,
                 )
                 class MySheet extends FluorFlowSimpleBottomSheet {
                   const MySheet({super.key, required this.completer});
@@ -1302,19 +1355,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x34ff0000),
     bool fullscreen = true,
-    bool ignoreSafeArea = false,
+    bool useSafeArea = false,
     bool draggable = false,
+    bool showDragHandle = true,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1348,19 +1403,21 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension BottomSheets on _i1.BottomSheetService {
+extension BottomSheets on _i1.NavigationService {
   Future<(bool?, dynamic)> showMySheet({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool fullscreen = false,
-    bool ignoreSafeArea = true,
+    bool useSafeArea = false,
     bool draggable = true,
+    bool showDragHandle = false,
   }) =>
       showBottomSheet<(bool?, dynamic), _i3.MySheet>(
-        _i3.MySheet(completer: closeSheet),
+        _i3.MySheet(completer: closeOverlay),
         barrierColor: barrierColor,
         fullscreen: fullscreen,
         draggable: draggable,
-        ignoreSafeArea: ignoreSafeArea,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
       ).then((r) => (r?.$1, r?.$2));
 }
 '''

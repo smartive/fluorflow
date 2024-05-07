@@ -34,7 +34,7 @@ class DialogBuilder implements Builder {
 
     var extension = Extension((b) => b
       ..name = 'Dialogs'
-      ..on = refer('DialogService', 'package:fluorflow/fluorflow.dart'));
+      ..on = refer('NavigationService', 'package:fluorflow/fluorflow.dart'));
 
     await for (final assetId in buildStep.findAssets(_allDartFilesInLib)) {
       if (!await resolver.isLibrary(assetId)) {
@@ -140,7 +140,7 @@ class DialogBuilder implements Builder {
                                     .where((p) => p.isPositional)
                                     .map((p) => refer(p.name)),
                                 {
-                          'completer': refer('closeDialog'),
+                          'completer': refer('closeOverlay'),
                           for (final p in params.where((p) => p.isNamed))
                             p.name: refer(p.name)
                         }).code).closure

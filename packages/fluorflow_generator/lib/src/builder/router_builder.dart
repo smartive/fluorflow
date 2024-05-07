@@ -116,7 +116,6 @@ class RouterBuilder implements Builder {
               prefix: 'rootTo',
               displayName: element.displayName,
               params: params,
-              withPreventDuplicates: false,
               withReturnFuture: false);
         }
 
@@ -214,8 +213,7 @@ class RouterBuilder implements Builder {
           {required String prefix,
           required String displayName,
           required Iterable<ParameterElement> params,
-          bool withReturnFuture = true,
-          bool withPreventDuplicates = true}) =>
+          bool withReturnFuture = true}) =>
       ext.rebuild((b) => b
         ..methods.add(Method((b) => b
           ..name = '$prefix${displayName.pascalCase}'
@@ -229,22 +227,9 @@ class RouterBuilder implements Builder {
             ..required = p.isRequired
             ..defaultTo = p.hasDefaultValue ? Code(p.defaultValueCode!) : null
             ..named = true)))
-          ..optionalParameters.addAll([
-            if (withPreventDuplicates)
-              Parameter((b) => b
-                ..name = 'preventDuplicates'
-                ..type = refer('bool')
-                ..named = true
-                ..defaultTo = literalTrue.code),
-          ])
           ..body = refer(prefix).call([
             refer('AppRoute.${displayName.camelCase}.path'),
           ], {
-            ...withPreventDuplicates
-                ? {
-                    'preventDuplicates': refer('preventDuplicates'),
-                  }
-                : {},
             ...params.isNotEmpty
                 ? {
                     'arguments': refer('${displayName.pascalCase}Arguments')

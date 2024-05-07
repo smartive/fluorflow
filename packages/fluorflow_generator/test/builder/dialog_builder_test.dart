@@ -44,7 +44,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -58,7 +58,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -88,7 +88,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, void)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -102,7 +102,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, null));
 }
 '''
@@ -132,7 +132,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, String?)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -146,7 +146,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -182,7 +182,7 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i2;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, _i2.DialogResultType?)> showMyDialog({
     _i3.Color barrierColor = const _i3.Color(0x80000000),
     bool barrierDismissible = false,
@@ -196,7 +196,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i4.MyDialog(completer: closeDialog)),
+                _i4.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -228,7 +228,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -242,7 +242,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -272,7 +272,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, void)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -286,7 +286,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, null));
 }
 '''
@@ -316,7 +316,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, String?)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -330,7 +330,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -366,7 +366,7 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i2;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, _i2.DialogResultType?)> showMyDialog({
     _i3.Color barrierColor = const _i3.Color(0x80000000),
     bool barrierDismissible = false,
@@ -380,7 +380,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i4.MyDialog(completer: closeDialog)),
+                _i4.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -413,7 +413,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -430,7 +430,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -462,7 +462,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -479,7 +479,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -511,7 +511,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -527,7 +527,7 @@ extension Dialogs on _i1.DialogService {
           ___,
         ) =>
                 _i3.MyDialog(
-                  completer: closeDialog,
+                  completer: closeOverlay,
                   pos: pos,
                 )),
       ).then((r) => (r?.$1, r?.$2));
@@ -560,7 +560,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -576,7 +576,7 @@ extension Dialogs on _i1.DialogService {
           ___,
         ) =>
                 _i3.MyDialog(
-                  completer: closeDialog,
+                  completer: closeOverlay,
                   pos: pos,
                 )),
       ).then((r) => (r?.$1, r?.$2));
@@ -609,7 +609,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -625,7 +625,7 @@ extension Dialogs on _i1.DialogService {
           ___,
         ) =>
                 _i3.MyDialog(
-                  completer: closeDialog,
+                  completer: closeOverlay,
                   pos: pos,
                 )),
       ).then((r) => (r?.$1, r?.$2));
@@ -664,7 +664,7 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -680,7 +680,7 @@ extension Dialogs on _i1.DialogService {
           ___,
         ) =>
                 _i4.MyDialog(
-                  completer: closeDialog,
+                  completer: closeOverlay,
                   pos: pos,
                 )),
       ).then((r) => (r?.$1, r?.$2));
@@ -715,7 +715,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -732,7 +732,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -766,7 +766,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -783,7 +783,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -823,7 +823,7 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -840,7 +840,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -879,7 +879,7 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -896,7 +896,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -928,7 +928,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -945,7 +945,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -986,7 +986,7 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1003,7 +1003,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -1044,7 +1044,7 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1065,7 +1065,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -1106,7 +1106,7 @@ import 'package:a/a.dart' as _i3;
 import 'package:a/b.dart' as _i4;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1126,7 +1126,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i3.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -1165,7 +1165,7 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1182,7 +1182,7 @@ extension Dialogs on _i1.DialogService {
         ) =>
                 _i4.MyDialog(
                   pos,
-                  completer: closeDialog,
+                  completer: closeOverlay,
                 )),
       ).then((r) => (r?.$1, r?.$2));
 }
@@ -1215,7 +1215,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, (int, int)?)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1229,7 +1229,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1259,7 +1259,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, ({int a})?)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1273,7 +1273,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1303,7 +1303,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, void Function()?)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1317,7 +1317,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1354,7 +1354,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x34ff0000),
     bool barrierDismissible = true,
@@ -1368,7 +1368,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1410,7 +1410,7 @@ import 'package:a/a.dart' as _i4;
 import 'package:a/b.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1424,7 +1424,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i4.MyDialog(completer: closeDialog)),
+                _i4.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
@@ -1462,7 +1462,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1476,7 +1476,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.\$1, r?.\$2));
 }
 ''',
@@ -1511,7 +1511,7 @@ import 'dart:ui' as _i2;
 import 'package:a/a.dart' as _i3;
 import 'package:fluorflow/fluorflow.dart' as _i1;
 
-extension Dialogs on _i1.DialogService {
+extension Dialogs on _i1.NavigationService {
   Future<(bool?, dynamic)> showMyDialog({
     _i2.Color barrierColor = const _i2.Color(0x80000000),
     bool barrierDismissible = false,
@@ -1525,7 +1525,7 @@ extension Dialogs on _i1.DialogService {
           __,
           ___,
         ) =>
-                _i3.MyDialog(completer: closeDialog)),
+                _i3.MyDialog(completer: closeOverlay)),
       ).then((r) => (r?.$1, r?.$2));
 }
 '''
