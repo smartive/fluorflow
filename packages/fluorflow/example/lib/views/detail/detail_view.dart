@@ -7,7 +7,7 @@ import 'detail_viewmodel.dart';
 @Routable(
     replaceWithExtension: false,
     rootToExtension: false,
-    routeBuilder: RouteBuilder.leftToRight)
+    routeBuilder: RouteBuilder.platform)
 final class DetailView extends FluorFlowView<DetailViewModel> {
   const DetailView({super.key});
 

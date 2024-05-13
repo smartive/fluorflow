@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'home_viewmodel.dart';
 
-@Routable(navigateToExtension: false, replaceWithExtension: false)
+@Routable(
+    navigateToExtension: false,
+    replaceWithExtension: false,
+    routeBuilder: RouteBuilder.fadeIn)
 final class HomeView extends FluorFlowView<HomeViewModel> {
   const HomeView({super.key});
 
