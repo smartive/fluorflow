@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../overlays/overlay.dart';
+import 'navigation_observer.dart';
 
 /// A service that provides a set of methods to navigate between routes.
 /// One may directly use the [navigateTo] and other methods to navigate dynamically.
@@ -39,7 +40,7 @@ import '../overlays/overlay.dart';
 /// }
 /// ```
 class NavigationService {
-  static final _navigator = _NavigationObserver();
+  static final _observer = FluorflowNavigatorObserver();
 
   /// Static navigator key to be used in the main entrypoint of the app.
   /// This allows navigation without context of the build method.
@@ -48,16 +49,16 @@ class NavigationService {
 
   /// Static navigator observer to be used in the main entrypoint of the app.
   /// Required for adjusting the navigation stack.
-  static final NavigatorObserver observer = _navigator;
+  static final FluorflowNavigatorObserver observer = _observer;
 
   const NavigationService();
 
   /// Returns the current route name (or an empty string if no route
   /// matches).
-  String get currentRoute => _navigator.currentRoute?.settings.name ?? '';
+  String get currentRoute => _observer.currentRoute?.settings.name ?? '';
 
   /// Returns the current route arguments (`dynamic` typed).
-  dynamic get currentArguments => _navigator.currentRoute?.settings.arguments;
+  dynamic get currentArguments => _observer.currentRoute?.settings.arguments;
 
   /// Navigate "back" and return an optional result.
   void back<T>([T? result]) => navigatorKey.currentState?.canPop() == true
@@ -191,33 +192,4 @@ final class _DialogRoute<T> extends PopupRoute<T> {
   @override
   Duration get reverseTransitionDuration =>
       dialogBuilder.reverseTransitionDuration;
-}
-
-final class _NavigationObserver extends NavigatorObserver {
-  final _history = List<Route<dynamic>>.empty(growable: true);
-
-  Route<dynamic>? get currentRoute =>
-      _history.where((r) => r.isCurrent).firstOrNull;
-
-  @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) =>
-      _history.add(route);
-
-  @override
-  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) =>
-      _history.remove(route);
-
-  @override
-  void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) =>
-      _history.remove(route);
-
-  @override
-  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
-    if (oldRoute != null) {
-      _history.remove(oldRoute);
-    }
-    if (newRoute != null) {
-      _history.add(newRoute);
-    }
-  }
 }
