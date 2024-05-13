@@ -3,6 +3,11 @@ enum RouteBuilder {
   /// No transition.
   noTransition,
 
+  /// Platform default transition.
+  /// For iOS / macOS devices, this uses the cuperino transition which supports
+  /// the swipe back gesture. All other devices use the fade upwards transition.
+  platform,
+
   /// Fade in transition.
   fadeIn,
 

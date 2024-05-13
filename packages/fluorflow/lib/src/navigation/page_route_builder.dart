@@ -1,8 +1,29 @@
-import 'package:flutter/widgets.dart';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 
 /// A custom page route builder that provides a page transition without any animation.
 class NoTransitionPageRouteBuilder extends PageRouteBuilder {
   NoTransitionPageRouteBuilder({super.settings, required super.pageBuilder});
+}
+
+/// A custom page route builder that provides transitions
+/// that should match the defaults of the underlying platform.
+class PlatformPageRouteBuilder extends PageRouteBuilder {
+  static const _ios = CupertinoPageTransitionsBuilder();
+  static const _other = FadeUpwardsPageTransitionsBuilder();
+
+  PlatformPageRouteBuilder({super.settings, required super.pageBuilder});
+
+  @override
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+          Animation<double> secondaryAnimation, Widget child) =>
+      switch (Platform.operatingSystem) {
+        'ios' || 'macos' => _ios.buildTransitions(
+            this, context, animation, secondaryAnimation, child),
+        _ => _other.buildTransitions(
+            this, context, animation, secondaryAnimation, child),
+      };
 }
 
 /// A custom page route builder that provides a fade-in transition effect.
