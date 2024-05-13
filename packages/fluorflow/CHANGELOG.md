@@ -1,3 +1,12 @@
+# [3.1.0](https://github.com/smartive/fluorflow/compare/v3.0.1...v3.1.0) (2024-05-13)
+
+
+### Features
+
+* **navigation:** add platform specific page builder ([#8](https://github.com/smartive/fluorflow/issues/8)) ([03a69bd](https://github.com/smartive/fluorflow/commit/03a69bd384b12529a325722adce37f21aab97104))
+* **navigation:** add possibility for config of max history limit ([#7](https://github.com/smartive/fluorflow/issues/7)) ([3349f8d](https://github.com/smartive/fluorflow/commit/3349f8dafbd8296b730cd78ebfc27ae7a1669f0e))
+* **navigation:** expose the previous route in navigation service ([#9](https://github.com/smartive/fluorflow/issues/9)) ([087cea6](https://github.com/smartive/fluorflow/commit/087cea635145eefee600ef8375ebe39ce02e4ae3))
+
 ## [3.0.1](https://github.com/smartive/fluorflow/compare/v3.0.0...v3.0.1) (2024-05-07)
 
 
