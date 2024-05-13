@@ -10,11 +10,3 @@ Widget mockApp(
       navigatorObservers: [NavigationService.observer],
       home: withScaffold ? Scaffold(body: child) : child,
     );
-
-Widget routableMockApp(RouteFactory onGenerateRoute, [String? initialRoute]) =>
-    MaterialApp(
-      navigatorKey: NavigationService.navigatorKey,
-      navigatorObservers: [NavigationService.observer],
-      onGenerateRoute: onGenerateRoute,
-      initialRoute: initialRoute,
-    );

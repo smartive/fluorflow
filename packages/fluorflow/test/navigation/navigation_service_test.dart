@@ -3,8 +3,6 @@ import 'package:fluorflow/src/navigation/navigation_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../helpers.dart';
-
 class _ViewOne extends StatelessWidget {
   const _ViewOne();
 
@@ -38,7 +36,12 @@ final _routeFactory = generateRouteFactory({
 
 Widget _app() {
   getRouteHistory(NavigationService.observer).clear();
-  return routableMockApp(_routeFactory, '/one');
+  return MaterialApp(
+    navigatorKey: NavigationService.navigatorKey,
+    navigatorObservers: [NavigationService.observer],
+    onGenerateRoute: _routeFactory,
+    initialRoute: '/one',
+  );
 }
 
 void main() {
