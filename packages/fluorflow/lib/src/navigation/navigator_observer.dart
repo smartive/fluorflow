@@ -36,6 +36,19 @@ final class FluorflowNavigatorObserver extends NavigatorObserver {
   Route<dynamic>? get currentRoute =>
       _history.where((r) => r.isCurrent).firstOrNull;
 
+  Route<dynamic>? get previousRoute {
+    if (_history.length < 2) {
+      return null;
+    }
+
+    final current = currentRoute;
+    if (current == null) {
+      return null;
+    }
+
+    return _history[_history.indexOf(current) - 1];
+  }
+
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     _history.add(route);
