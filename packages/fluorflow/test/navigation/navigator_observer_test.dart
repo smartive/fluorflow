@@ -1,5 +1,5 @@
 import 'package:fluorflow/fluorflow.dart';
-import 'package:fluorflow/src/navigation/navigation_observer.dart';
+import 'package:fluorflow/src/navigation/navigator_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

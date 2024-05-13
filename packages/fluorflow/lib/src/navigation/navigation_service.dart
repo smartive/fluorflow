@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../overlays/overlay.dart';
-import 'navigation_observer.dart';
+import 'navigator_observer.dart';
 
 /// A service that provides a set of methods to navigate between routes.
 /// One may directly use the [navigateTo] and other methods to navigate dynamically.
