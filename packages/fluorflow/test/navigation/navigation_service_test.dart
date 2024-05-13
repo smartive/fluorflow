@@ -91,6 +91,27 @@ void main() {
       expect(nav.currentArguments['foo'], 'bar');
     });
 
+    testWidgets('should return no previous route if none exists.',
+        (tester) async {
+      await tester.pumpWidget(_app());
+      await tester.pumpAndSettle();
+
+      const nav = NavigationService();
+
+      expect(nav.previousRoute, null);
+    });
+
+    testWidgets('should return previous route.', (tester) async {
+      await tester.pumpWidget(_app());
+      await tester.pumpAndSettle();
+
+      const nav = NavigationService();
+      nav.navigateTo('/two');
+      await tester.pumpAndSettle();
+
+      expect(nav.previousRoute, '/one');
+    });
+
     testWidgets('should correctly navigate back.', (tester) async {
       await tester.pumpWidget(_app());
       await tester.pumpAndSettle();

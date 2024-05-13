@@ -55,10 +55,17 @@ class NavigationService {
 
   /// Returns the current route name (or an empty string if no route
   /// matches).
+  /// The whole route object (for more advanced usecases) can be accessed
+  /// via the `currentRoute` property of the observer.
   String get currentRoute => _observer.currentRoute?.settings.name ?? '';
 
   /// Returns the current route arguments (`dynamic` typed).
   dynamic get currentArguments => _observer.currentRoute?.settings.arguments;
+
+  /// Returns the previous route name (or `null` if no previous route exists).
+  /// The whole route object (for more advanced usecases) can be accessed
+  /// via the `previousRoute` property of the observer.
+  String? get previousRoute => _observer.previousRoute?.settings.name;
 
   /// Navigate "back" and return an optional result.
   void back<T>([T? result]) => navigatorKey.currentState?.canPop() == true
