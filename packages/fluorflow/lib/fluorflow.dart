@@ -1,6 +1,8 @@
 /// Main library for the fluorflow package.
 library fluorflow;
 
+export 'package:get_it/get_it.dart' show Disposable;
+
 export 'src/bottom_sheets/bottom_sheet.dart';
 export 'src/bottom_sheets/simple_bottom_sheet.dart';
 export 'src/dialogs/dialog.dart';
