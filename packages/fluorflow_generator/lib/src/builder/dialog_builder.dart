@@ -27,14 +27,17 @@ class DialogBuilder implements Builder {
     final output = AssetId(buildStep.inputId.package, options.output);
     final resolver = buildStep.resolver;
     final configChecker = TypeChecker.fromRuntime(DialogConfig);
-    const dialogSuperTypes = [
-      'FluorFlowSimpleDialog',
-      'FluorFlowDialog',
-    ];
+    const dialogSuperTypes = ['FluorFlowSimpleDialog', 'FluorFlowDialog'];
 
-    var extension = Extension((b) => b
-      ..name = 'Dialogs'
-      ..on = refer('NavigationService', 'package:fluorflow/fluorflow.dart'));
+    var extension = Extension(
+      (b) =>
+          b
+            ..name = 'Dialogs'
+            ..on = refer(
+              'NavigationService',
+              'package:fluorflow/fluorflow.dart',
+            ),
+    );
 
     await for (final assetId in buildStep.findAssets(_allDartFilesInLib)) {
       if (!await resolver.isLibrary(assetId)) {
@@ -44,120 +47,221 @@ class DialogBuilder implements Builder {
       final lib = LibraryReader(await resolver.libraryFor(assetId));
 
       for (final (dialogClass, superType) in lib.classes
-          .where((c) => c.allSupertypes
-              .map((s) => s.element.name)
-              .any((s) => dialogSuperTypes.contains(s)))
-          .map((c) => (
-                c,
-                c.allSupertypes.firstWhere(
-                    (s) => dialogSuperTypes.contains(s.element.name))
-              ))) {
+          .where(
+            (c) => c.allSupertypes
+                .map((s) => s.element3.displayName)
+                .any((s) => dialogSuperTypes.contains(s)),
+          )
+          .map(
+            (c) => (
+              c,
+              c.allSupertypes.firstWhere(
+                (s) => dialogSuperTypes.contains(s.element3.displayName),
+              ),
+            ),
+          )) {
         final configAnnotation =
             configChecker.hasAnnotationOf(dialogClass, throwOnUnresolved: false)
-                ? ConstantReader(configChecker.firstAnnotationOf(dialogClass,
-                    throwOnUnresolved: false))
+                ? ConstantReader(
+                  configChecker.firstAnnotationOf(
+                    dialogClass,
+                    throwOnUnresolved: false,
+                  ),
+                )
                 : null;
 
         final dialogReturnType = superType.typeArguments.first;
-        final methodTupleRef = RecordType((b) => b
-          ..isNullable = false
-          ..positionalFieldTypes.add(refer('bool?'))
-          ..positionalFieldTypes.add(recursiveTypeReference(
-              lib, dialogReturnType,
-              forceNullable: true)));
+        final methodTupleRef = RecordType(
+          (b) =>
+              b
+                ..isNullable = false
+                ..positionalFieldTypes.add(refer('bool?'))
+                ..positionalFieldTypes.add(
+                  recursiveTypeReference(
+                    lib,
+                    dialogReturnType,
+                    forceNullable: true,
+                  ),
+                ),
+        );
+
+        // TODO: replace deprecated use of constructors
+        // ignore: deprecated_member_use
         final params = dialogClass.constructors.first.parameters
             .where(
-                (p) => p.displayName != 'key' && p.displayName != 'completer')
+              (p) => p.displayName != 'key' && p.displayName != 'completer',
+            )
             .toList(growable: false);
-        final dialogBuilder = configAnnotation == null
-            ? refer('NoTransitionPageRouteBuilder',
-                'package:fluorflow/fluorflow.dart')
-            : switch ((
-                getEnumFromAnnotation(
+        final dialogBuilder =
+            configAnnotation == null
+                ? refer(
+                  'NoTransitionPageRouteBuilder',
+                  'package:fluorflow/fluorflow.dart',
+                )
+                : switch ((
+                  getEnumFromAnnotation(
                     RouteBuilder.values,
                     configAnnotation.read('routeBuilder').objectValue,
-                    RouteBuilder.noTransition),
-                configAnnotation.read('pageRouteBuilder').isNull
-              )) {
-                (_, false) => refer(
+                    RouteBuilder.noTransition,
+                  ),
+                  configAnnotation.read('pageRouteBuilder').isNull,
+                )) {
+                  (_, false) => refer(
                     configAnnotation
                         .read('pageRouteBuilder')
                         .typeValue
                         .getDisplayString(),
                     lib
-                        .pathToElement(configAnnotation
-                            .read('pageRouteBuilder')
-                            .typeValue
-                            .element!)
-                        .toString()),
-                (final t, _) => refer('${t.name.pascalCase}PageRouteBuilder',
-                    'package:fluorflow/fluorflow.dart'),
-              };
+                        .pathToElement(
+                          configAnnotation
+                              .read('pageRouteBuilder')
+                              .typeValue
+                              // TODO: replace deprecated element
+                              // ignore: deprecated_member_use
+                              .element!,
+                        )
+                        .toString(),
+                  ),
+                  (final t, _) => refer(
+                    '${t.name.pascalCase}PageRouteBuilder',
+                    'package:fluorflow/fluorflow.dart',
+                  ),
+                };
 
-        extension = extension.rebuild((b) => b.methods.add(Method((b) => b
-          ..name = 'show${dialogClass.displayName}'
-          ..returns = TypeReference((b) => b
-            ..symbol = 'Future'
-            ..types.add(methodTupleRef))
-          ..lambda = true
-          ..optionalParameters.add(Parameter((b) => b
-            ..name = 'barrierColor'
-            ..type = refer('Color', 'dart:ui')
-            ..named = true
-            ..defaultTo = refer('Color', 'dart:ui').constInstance([
-              CodeExpression(Code(
-                  '0x${(configAnnotation?.read('defaultBarrierColor').intValue ?? 0x80000000).toRadixString(16).padLeft(8, '0')}'))
-            ]).code))
-          ..optionalParameters.add(Parameter((b) => b
-            ..name = 'barrierDismissible'
-            ..type = refer('bool')
-            ..named = true
-            ..defaultTo = literalBool(configAnnotation
-                        ?.read('defaultBarrierDismissible')
-                        .boolValue ??
-                    false)
-                .code))
-          ..optionalParameters.addAll(params.map((p) => Parameter((b) => b
-            ..name = p.name
-            ..type = recursiveTypeReference(lib, p.type)
-            ..required = p.isRequired
-            ..defaultTo = p.hasDefaultValue ? Code(p.defaultValueCode!) : null
-            ..named = true)))
-          ..body = refer('showDialog')
-              .call([], {
-                'barrierColor': refer('barrierColor'),
-                'barrierDismissible': refer('barrierDismissible'),
-                'dialogBuilder': dialogBuilder.newInstance([], {
-                  'pageBuilder': Method((b) => b
-                    ..requiredParameters.add(Parameter((b) => b.name = '_'))
-                    ..requiredParameters.add(Parameter((b) => b.name = '__'))
-                    ..requiredParameters.add(Parameter((b) => b.name = '___'))
+        extension = extension.rebuild(
+          (b) => b.methods.add(
+            Method(
+              (b) =>
+                  b
+                    ..name = 'show${dialogClass.displayName}'
+                    ..returns = TypeReference(
+                      (b) =>
+                          b
+                            ..symbol = 'Future'
+                            ..types.add(methodTupleRef),
+                    )
                     ..lambda = true
+                    ..optionalParameters.add(
+                      Parameter(
+                        (b) =>
+                            b
+                              ..name = 'barrierColor'
+                              ..type = refer('Color', 'dart:ui')
+                              ..named = true
+                              ..defaultTo =
+                                  refer('Color', 'dart:ui').constInstance([
+                                    CodeExpression(
+                                      Code(
+                                        '0x${(configAnnotation?.read('defaultBarrierColor').intValue ?? 0x80000000).toRadixString(16).padLeft(8, '0')}',
+                                      ),
+                                    ),
+                                  ]).code,
+                      ),
+                    )
+                    ..optionalParameters.add(
+                      Parameter(
+                        (b) =>
+                            b
+                              ..name = 'barrierDismissible'
+                              ..type = refer('bool')
+                              ..named = true
+                              ..defaultTo =
+                                  literalBool(
+                                    configAnnotation
+                                            ?.read('defaultBarrierDismissible')
+                                            .boolValue ??
+                                        false,
+                                  ).code,
+                      ),
+                    )
+                    ..optionalParameters.addAll(
+                      params.map(
+                        (p) => Parameter(
+                          (b) =>
+                              b
+                                ..name = p.name
+                                ..type = recursiveTypeReference(lib, p.type)
+                                ..required = p.isRequired
+                                ..defaultTo =
+                                    p.hasDefaultValue
+                                        ? Code(p.defaultValueCode!)
+                                        : null
+                                ..named = true,
+                        ),
+                      ),
+                    )
                     ..body =
-                        refer(dialogClass.displayName, assetId.uri.toString())
-                            .newInstance(
-                                params
-                                    .where((p) => p.isPositional)
-                                    .map((p) => refer(p.name)),
-                                {
-                          'completer': refer('closeOverlay'),
-                          for (final p in params.where((p) => p.isNamed))
-                            p.name: refer(p.name)
-                        }).code).closure
-                })
-              }, [
-                methodTupleRef
-              ])
-              .property('then')
-              .call([
-                Method((b) => b
-                      ..requiredParameters.add(Parameter((b) => b.name = 'r'))
-                      ..lambda = true
-                      ..body = Code(
-                          '(r?.\$1, ${dialogReturnType is analyzer.VoidType ? 'null' : r'r?.$2'})'))
-                    .closure
-              ])
-              .code)));
+                        refer('showDialog')
+                            .call(
+                              [],
+                              {
+                                'barrierColor': refer('barrierColor'),
+                                'barrierDismissible': refer(
+                                  'barrierDismissible',
+                                ),
+                                'dialogBuilder': dialogBuilder.newInstance([], {
+                                  'pageBuilder':
+                                      Method(
+                                        (b) =>
+                                            b
+                                              ..requiredParameters.add(
+                                                Parameter((b) => b.name = '_'),
+                                              )
+                                              ..requiredParameters.add(
+                                                Parameter((b) => b.name = '__'),
+                                              )
+                                              ..requiredParameters.add(
+                                                Parameter(
+                                                  (b) => b.name = '___',
+                                                ),
+                                              )
+                                              ..lambda = true
+                                              ..body =
+                                                  refer(
+                                                    dialogClass.displayName,
+                                                    assetId.uri.toString(),
+                                                  ).newInstance(
+                                                    params
+                                                        .where(
+                                                          (p) => p.isPositional,
+                                                        )
+                                                        .map(
+                                                          (p) => refer(p.name),
+                                                        ),
+                                                    {
+                                                      'completer': refer(
+                                                        'closeOverlay',
+                                                      ),
+                                                      for (final p in params
+                                                          .where(
+                                                            (p) => p.isNamed,
+                                                          ))
+                                                        p.name: refer(p.name),
+                                                    },
+                                                  ).code,
+                                      ).closure,
+                                }),
+                              },
+                              [methodTupleRef],
+                            )
+                            .property('then')
+                            .call([
+                              Method(
+                                (b) =>
+                                    b
+                                      ..requiredParameters.add(
+                                        Parameter((b) => b.name = 'r'),
+                                      )
+                                      ..lambda = true
+                                      ..body = Code(
+                                        '(r?.\$1, ${dialogReturnType is analyzer.VoidType ? 'null' : r'r?.$2'})',
+                                      ),
+                              ).closure,
+                            ])
+                            .code,
+            ),
+          ),
+        );
       }
     }
 
@@ -165,21 +269,32 @@ class DialogBuilder implements Builder {
       return;
     }
 
-    final outputLib = Library((b) => b
-      ..ignoreForFile.add('type=lint')
-      ..body.add(extension));
+    final outputLib = Library(
+      (b) =>
+          b
+            ..ignoreForFile.add('type=lint')
+            ..body.add(extension),
+    );
 
     buildStep.writeAsString(
-        output,
-        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
-            .format(outputLib
-                .accept(DartEmitter.scoped(
-                    useNullSafetySyntax: true, orderDirectives: true))
-                .toString()));
+      output,
+      DartFormatter(
+        languageVersion: DartFormatter.latestLanguageVersion,
+      ).format(
+        outputLib
+            .accept(
+              DartEmitter.scoped(
+                useNullSafetySyntax: true,
+                orderDirectives: true,
+              ),
+            )
+            .toString(),
+      ),
+    );
   }
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        r'lib/$lib$': [options.output],
-      };
+    r'lib/$lib$': [options.output],
+  };
 }
