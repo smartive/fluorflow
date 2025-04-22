@@ -68,9 +68,10 @@ class NavigationService {
   String? get previousRoute => _observer.previousRoute?.settings.name;
 
   /// Navigate "back" and return an optional result.
-  void back<T>([T? result]) => navigatorKey.currentState?.canPop() == true
-      ? navigatorKey.currentState!.pop(result)
-      : null;
+  void back<T>([T? result]) =>
+      navigatorKey.currentState?.canPop() == true
+          ? navigatorKey.currentState!.pop(result)
+          : null;
 
   /// Pops the route stack until the predicate is fulfilled.
   void popUntil(RoutePredicate predicate) =>
@@ -79,29 +80,18 @@ class NavigationService {
   /// Navigate to a new route and return an optional result
   /// when back is called from the new route. This pushes
   /// the new route onto the navigation stack.
-  Future<T?>? navigateTo<T>(
-    String routeName, {
-    dynamic arguments,
-  }) =>
+  Future<T?>? navigateTo<T>(String routeName, {dynamic arguments}) =>
       navigatorKey.currentState?.pushNamed(routeName, arguments: arguments);
 
   /// Navigate to a new route and replace the current route on the
   /// navigation stack.
-  void replaceWith(
-    String routeName, {
-    dynamic arguments,
-  }) =>
-      navigatorKey.currentState?.pushReplacementNamed(
-        routeName,
-        arguments: arguments,
-      );
+  void replaceWith(String routeName, {dynamic arguments}) => navigatorKey
+      .currentState
+      ?.pushReplacementNamed(routeName, arguments: arguments);
 
   /// Navigate to a new route and remove all previous routes from the
   /// navigation stack.
-  void rootTo(
-    String routeName, {
-    dynamic arguments,
-  }) =>
+  void rootTo(String routeName, {dynamic arguments}) =>
       navigatorKey.currentState?.pushNamedAndRemoveUntil(
         routeName,
         (route) => false,
@@ -117,13 +107,16 @@ class NavigationService {
       return Future.value(null);
     }
 
-    return Navigator.of(navigatorKey.currentState!.overlay!.context,
-            rootNavigator: true)
-        .push(_DialogRoute(
-      dialogBuilder: dialogBuilder,
-      barrierColor: barrierColor,
-      barrierDismissible: barrierDismissible,
-    ));
+    return Navigator.of(
+      navigatorKey.currentState!.overlay!.context,
+      rootNavigator: true,
+    ).push(
+      _DialogRoute(
+        dialogBuilder: dialogBuilder,
+        barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
+      ),
+    );
   }
 
   Future<TResult?> showBottomSheet<TResult, TSheet extends FluorFlowOverlay>(
@@ -139,16 +132,19 @@ class NavigationService {
       return Future.value(null);
     }
 
-    return Navigator.of(navigatorKey.currentState!.overlay!.context,
-            rootNavigator: useRootNavigator)
-        .push(ModalBottomSheetRoute<TResult>(
-      builder: (context) => sheet,
-      isScrollControlled: fullscreen,
-      enableDrag: draggable,
-      showDragHandle: showDragHandle,
-      modalBarrierColor: barrierColor,
-      useSafeArea: useSafeArea,
-    ));
+    return Navigator.of(
+      navigatorKey.currentState!.overlay!.context,
+      rootNavigator: useRootNavigator,
+    ).push(
+      ModalBottomSheetRoute<TResult>(
+        builder: (context) => sheet,
+        isScrollControlled: fullscreen,
+        enableDrag: draggable,
+        showDragHandle: showDragHandle,
+        modalBarrierColor: barrierColor,
+        useSafeArea: useSafeArea,
+      ),
+    );
   }
 
   void closeOverlay<T>({bool? confirmed, T? result}) {
@@ -156,9 +152,10 @@ class NavigationService {
       return;
     }
 
-    Navigator.of(navigatorKey.currentState!.overlay!.context,
-            rootNavigator: true)
-        .pop((confirmed, result));
+    Navigator.of(
+      navigatorKey.currentState!.overlay!.context,
+      rootNavigator: true,
+    ).pop((confirmed, result));
   }
 }
 
@@ -178,20 +175,30 @@ final class _DialogRoute<T> extends PopupRoute<T> {
   });
 
   @override
-  String? get barrierLabel => barrierDismissible
-      ? 'dialog ${dialogBuilder.settings.name} $hashCode'
-      : null;
+  String? get barrierLabel =>
+      barrierDismissible
+          ? 'dialog ${dialogBuilder.settings.name} $hashCode'
+          : null;
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-          Animation<double> secondaryAnimation) =>
-      dialogBuilder.buildPage(context, animation, secondaryAnimation);
+  Widget buildPage(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+  ) => dialogBuilder.buildPage(context, animation, secondaryAnimation);
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation,
-          Animation<double> secondaryAnimation, Widget child) =>
-      dialogBuilder.buildTransitions(
-          context, animation, secondaryAnimation, child);
+  Widget buildTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) => dialogBuilder.buildTransitions(
+    context,
+    animation,
+    secondaryAnimation,
+    child,
+  );
 
   @override
   Duration get transitionDuration => dialogBuilder.transitionDuration;

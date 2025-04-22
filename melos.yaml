@@ -16,7 +16,7 @@ scripts:
 
   lint:
     description: Run static analysis and code style checks
-    run: dart analyze && dart format --fix --set-exit-if-changed .
+    run: dart analyze && dart format --output=none --set-exit-if-changed .
     exec:
       failFast: true
 

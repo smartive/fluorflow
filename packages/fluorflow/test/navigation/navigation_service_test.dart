@@ -26,7 +26,9 @@ class _ViewThree extends StatelessWidget {
 
 RouteFactory _factory(Widget view) =>
     (settings) => NoTransitionPageRouteBuilder(
-        settings: settings, pageBuilder: (_, __, ___) => view);
+      settings: settings,
+      pageBuilder: (_, __, ___) => view,
+    );
 
 final _routeFactory = generateRouteFactory({
   '/one': _factory(const _ViewOne()),
@@ -46,15 +48,18 @@ Widget _app() {
 
 void main() {
   group('Navigation Service', () {
-    testWidgets('should show initial route without navigation.',
-        (tester) async {
+    testWidgets('should show initial route without navigation.', (
+      tester,
+    ) async {
       await tester.pumpWidget(_app());
       await tester.pumpAndSettle();
 
       expect(find.byType(_ViewOne), findsOneWidget);
       expect(getRouteHistory(NavigationService.observer).length, 1);
-      expect(getRouteHistory(NavigationService.observer).first.settings.name,
-          '/one');
+      expect(
+        getRouteHistory(NavigationService.observer).first.settings.name,
+        '/one',
+      );
     });
 
     testWidgets('should correctly navigate to page.', (tester) async {
@@ -91,8 +96,9 @@ void main() {
       expect(nav.currentArguments['foo'], 'bar');
     });
 
-    testWidgets('should return no previous route if none exists.',
-        (tester) async {
+    testWidgets('should return no previous route if none exists.', (
+      tester,
+    ) async {
       await tester.pumpWidget(_app());
       await tester.pumpAndSettle();
 
@@ -124,8 +130,10 @@ void main() {
 
       expect(find.byType(_ViewOne), findsOneWidget);
       expect(getRouteHistory(NavigationService.observer).length, 1);
-      expect(getRouteHistory(NavigationService.observer).first.settings.name,
-          '/one');
+      expect(
+        getRouteHistory(NavigationService.observer).first.settings.name,
+        '/one',
+      );
     });
 
     testWidgets('should replace route on stack.', (tester) async {

@@ -22,9 +22,7 @@ cb.Reference recursiveTypeReference(
   cb.Reference mapRef(DartType t) => recursiveTypeReference(lib, t);
 
   return switch (t) {
-    VoidType() ||
-    DynamicType() =>
-      cb.refer(t.getDisplayString(withNullability: false)),
+    VoidType() || DynamicType() => cb.refer(t.getDisplayString()),
     DartType(alias: InstantiatedTypeAliasElement(:final element)) =>
       cb.refer(element.name, lib.pathToElement(element).toString()),
     FunctionType(
@@ -72,7 +70,7 @@ cb.Reference recursiveTypeReference(
     _ => cb.TypeReference((b) => b
       ..isNullable =
           forceNullable || t.nullabilitySuffix == NullabilitySuffix.question
-      ..symbol = t.element?.name ?? t.getDisplayString(withNullability: false)
+      ..symbol = t.element?.name ?? t.getDisplayString()
       ..types.addAll(switch (t) {
         ParameterizedType(:final typeArguments) =>
           typeArguments.map(mapRef).toList(),

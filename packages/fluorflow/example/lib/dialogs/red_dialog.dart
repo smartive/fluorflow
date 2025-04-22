@@ -14,22 +14,20 @@ final class RedDialog extends FluorFlowSimpleDialog<void> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Colors.red[200],
-        appBar: AppBar(
-          title: const Text('Dialog'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('Dialog Page'),
-              const SizedBox(height: 36),
-              ElevatedButton(
-                onPressed: completer.confirm,
-                child: const Text('Close'),
-              ),
-            ],
+    backgroundColor: Colors.red[200],
+    appBar: AppBar(title: const Text('Dialog')),
+    body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('Dialog Page'),
+          const SizedBox(height: 36),
+          ElevatedButton(
+            onPressed: completer.confirm,
+            child: const Text('Close'),
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }

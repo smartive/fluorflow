@@ -1,5 +1,5 @@
 /// Main library for the fluorflow package.
-library fluorflow;
+library;
 
 export 'package:get_it/get_it.dart' show Disposable;
 

@@ -105,10 +105,11 @@ class LocatorBuilder implements Builder {
 
     buildStep.writeAsString(
         output,
-        DartFormatter().format(outputLib
-            .accept(DartEmitter.scoped(
-                useNullSafetySyntax: true, orderDirectives: true))
-            .toString()));
+        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+            .format(outputLib
+                .accept(DartEmitter.scoped(
+                    useNullSafetySyntax: true, orderDirectives: true))
+                .toString()));
   }
 
   @override
@@ -262,7 +263,7 @@ class LocatorBuilder implements Builder {
       if (factory
           case MethodElement(
             displayName: final methodName,
-            enclosingElement: ClassElement(displayName: final className)
+            enclosingElement3: ClassElement(displayName: final className)
           )) {
         block = block.rebuild((b) => b
           ..addExpression(locatorRef.property('registerSingletonAsync').call([
@@ -361,7 +362,7 @@ class LocatorBuilder implements Builder {
             ],
             {},
             [
-              refer(func.returnType.getDisplayString(withNullability: true),
+              refer(func.returnType.getDisplayString(),
                   lib.pathToElement(func.returnType.element!).toString()),
               if (func.parameters.isNotEmpty)
                 refer(
@@ -382,8 +383,7 @@ class LocatorBuilder implements Builder {
         // add the factory to the Locator extension for convenience
         var ext = Method((b) => b
           ..name = 'get${func.returnType.toString()}'
-          ..returns = refer(
-              func.returnType.getDisplayString(withNullability: true),
+          ..returns = refer(func.returnType.getDisplayString(),
               lib.pathToElement(func.returnType.element!).toString())
           ..body = refer('get').call([], {
             'param1': refer(func.parameters.first.displayName),

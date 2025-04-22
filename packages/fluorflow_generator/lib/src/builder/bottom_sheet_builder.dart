@@ -166,10 +166,11 @@ class BottomSheetBuilder implements Builder {
 
     buildStep.writeAsString(
         output,
-        DartFormatter().format(outputLib
-            .accept(DartEmitter.scoped(
-                useNullSafetySyntax: true, orderDirectives: true))
-            .toString()));
+        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+            .format(outputLib
+                .accept(DartEmitter.scoped(
+                    useNullSafetySyntax: true, orderDirectives: true))
+                .toString()));
   }
 
   @override

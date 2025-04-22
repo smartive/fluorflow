@@ -14,8 +14,10 @@ final class TestView extends FluorFlowView<MockViewModel> {
 
   @override
   Widget builder(
-          BuildContext context, MockViewModel viewModel, Widget? child) =>
-      const Placeholder();
+    BuildContext context,
+    MockViewModel viewModel,
+    Widget? child,
+  ) => const Placeholder();
 
   @override
   MockViewModel viewModelBuilder(BuildContext context) => vm;

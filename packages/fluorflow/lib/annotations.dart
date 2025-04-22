@@ -9,7 +9,7 @@
 ///
 /// Note: when the build_runner / fluorflow_generator is not used, the annotations are
 /// not needed and have no effect.
-library annotations;
+library;
 
 export 'src/annotations/bottom_sheet_config.dart';
 export 'src/annotations/dialog_config.dart';

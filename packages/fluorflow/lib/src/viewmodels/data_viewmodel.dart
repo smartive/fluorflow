@@ -78,7 +78,7 @@ abstract base class DataViewModel<TData> extends BaseViewModel {
   /// If this is set to false, changes to the data field will not automatically trigger
   /// a [notifyListeners] call.
   DataViewModel(TData initialData, [bool notifyOnDataChange = true])
-      : _data = ValueNotifier(initialData) {
+    : _data = ValueNotifier(initialData) {
     if (notifyOnDataChange) {
       _data.addListener(notifyListeners);
     }

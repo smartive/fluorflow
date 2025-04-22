@@ -14,14 +14,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'FluorFlow Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        initialRoute: AppRoute.homeView.path,
-        onGenerateRoute: onGenerateRoute,
-        navigatorKey: NavigationService.navigatorKey,
-        navigatorObservers: [NavigationService.observer],
-      );
+    title: 'FluorFlow Demo',
+    theme: ThemeData(
+      colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      useMaterial3: true,
+    ),
+    initialRoute: AppRoute.homeView.path,
+    onGenerateRoute: onGenerateRoute,
+    navigatorKey: NavigationService.navigatorKey,
+    navigatorObservers: [NavigationService.observer],
+  );
 }

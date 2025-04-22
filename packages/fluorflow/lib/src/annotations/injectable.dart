@@ -129,6 +129,8 @@ final class CustomLocatorFunction {
   final bool includeInLocator;
   final bool includeInTestLocator;
 
-  const CustomLocatorFunction(
-      {this.includeInLocator = true, this.includeInTestLocator = true});
+  const CustomLocatorFunction({
+    this.includeInLocator = true,
+    this.includeInTestLocator = true,
+  });
 }

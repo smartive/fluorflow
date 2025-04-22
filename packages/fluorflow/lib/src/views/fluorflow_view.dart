@@ -45,8 +45,9 @@ class _FluorFlowViewState<TViewModel extends ViewModel>
   void initState() {
     viewModel = widget.viewModelBuilder(context);
     widget.onViewModelCreated(viewModel);
-    SchedulerBinding.instance
-        .addPostFrameCallback((timeStamp) => viewModel.initialize());
+    SchedulerBinding.instance.addPostFrameCallback(
+      (timeStamp) => viewModel.initialize(),
+    );
     super.initState();
   }
 
@@ -58,8 +59,8 @@ class _FluorFlowViewState<TViewModel extends ViewModel>
 
   @override
   Widget build(BuildContext context) => ListenableBuilder(
-        listenable: viewModel,
-        builder: (context, child) => widget.builder(context, viewModel, child),
-        child: widget.staticChildBuilder(context),
-      );
+    listenable: viewModel,
+    builder: (context, child) => widget.builder(context, viewModel, child),
+    child: widget.staticChildBuilder(context),
+  );
 }

@@ -128,10 +128,7 @@ class RouterBuilder implements Builder {
           annotation.read('pageRouteBuilder').isNull
         )) {
           (_, false) => refer(
-              annotation
-                  .read('pageRouteBuilder')
-                  .typeValue
-                  .getDisplayString(withNullability: false),
+              annotation.read('pageRouteBuilder').typeValue.getDisplayString(),
               lib
                   .pathToElement(
                       annotation.read('pageRouteBuilder').typeValue.element!)
@@ -198,10 +195,11 @@ class RouterBuilder implements Builder {
 
     buildStep.writeAsString(
         output,
-        DartFormatter().format(outputLib
-            .accept(DartEmitter.scoped(
-                useNullSafetySyntax: true, orderDirectives: true))
-            .toString()));
+        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+            .format(outputLib
+                .accept(DartEmitter.scoped(
+                    useNullSafetySyntax: true, orderDirectives: true))
+                .toString()));
   }
 
   @override

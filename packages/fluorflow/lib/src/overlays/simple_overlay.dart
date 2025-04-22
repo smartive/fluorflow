@@ -17,8 +17,10 @@ abstract base class FluorFlowSimpleOverlay<TResult>
   @override
   @nonVirtual
   Widget builder(
-          BuildContext context, NoopViewModel viewModel, Widget? child) =>
-      child!;
+    BuildContext context,
+    NoopViewModel viewModel,
+    Widget? child,
+  ) => child!;
 
   @override
   @nonVirtual

@@ -37,14 +37,15 @@ final class _ErrorViewModel extends DataViewModel<String> {
 final class _TestView extends FluorFlowView<_NormalViewModel> {
   @override
   Widget builder(
-          BuildContext context, _NormalViewModel viewModel, Widget? child) =>
-      Column(
-        children: [
-          Text(viewModel.data),
-          TextButton(
-              onPressed: viewModel.updateData, child: const Text('update')),
-        ],
-      );
+    BuildContext context,
+    _NormalViewModel viewModel,
+    Widget? child,
+  ) => Column(
+    children: [
+      Text(viewModel.data),
+      TextButton(onPressed: viewModel.updateData, child: const Text('update')),
+    ],
+  );
 
   @override
   _NormalViewModel viewModelBuilder(BuildContext context) => _NormalViewModel();

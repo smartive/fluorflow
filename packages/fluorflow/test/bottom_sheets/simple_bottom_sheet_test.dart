@@ -9,28 +9,22 @@ final class _BottomSheet extends FluorFlowSimpleBottomSheet {
 
   @override
   Widget build(BuildContext context) => Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Bottom Sheet'),
-              TextButton(
-                onPressed: completer.confirm,
-                child: const Text('confirm'),
-              ),
-              TextButton(
-                onPressed: completer.cancel,
-                child: const Text('cancel'),
-              ),
-              TextButton(
-                onPressed: completer.abort,
-                child: const Text('abort'),
-              ),
-            ],
+          const Text('Bottom Sheet'),
+          TextButton(
+            onPressed: completer.confirm,
+            child: const Text('confirm'),
           ),
+          TextButton(onPressed: completer.cancel, child: const Text('cancel')),
+          TextButton(onPressed: completer.abort, child: const Text('abort')),
         ],
-      );
+      ),
+    ],
+  );
 }
 
 final class _TestView extends StatefulWidget {
@@ -44,19 +38,20 @@ class _TestViewState extends State<_TestView> {
 
   @override
   Widget build(BuildContext context) => Column(
-        children: [
-          TextButton(
-              onPressed: () async {
-                final result =
-                    await _nav.showBottomSheet<(bool?, dynamic), _BottomSheet>(
-                  _BottomSheet(completer: _nav.closeOverlay),
-                );
-                setState(() => _result = result?.$1);
-              },
-              child: const Text('open')),
-          Text(_result?.toString() ?? 'null'),
-        ],
-      );
+    children: [
+      TextButton(
+        onPressed: () async {
+          final result = await _nav
+              .showBottomSheet<(bool?, dynamic), _BottomSheet>(
+                _BottomSheet(completer: _nav.closeOverlay),
+              );
+          setState(() => _result = result?.$1);
+        },
+        child: const Text('open'),
+      ),
+      Text(_result?.toString() ?? 'null'),
+    ],
+  );
 }
 
 void main() {

@@ -26,7 +26,9 @@ class _ViewThree extends StatelessWidget {
 
 RouteFactory _factory(Widget view) =>
     (settings) => NoTransitionPageRouteBuilder(
-        settings: settings, pageBuilder: (_, __, ___) => view);
+      settings: settings,
+      pageBuilder: (_, __, ___) => view,
+    );
 
 final _routeFactory = generateRouteFactory({
   '/one': _factory(const _ViewOne()),
@@ -46,8 +48,9 @@ Widget _app(NavigatorObserver Function(FluorflowNavigatorObserver) mod) {
 
 void main() {
   group('Navigation Observer', () {
-    testWidgets('should use default, non opinionated, options.',
-        (tester) async {
+    testWidgets('should use default, non opinionated, options.', (
+      tester,
+    ) async {
       await tester.pumpWidget(_app((obs) => obs));
       await tester.pumpAndSettle();
 
@@ -62,8 +65,9 @@ void main() {
       expect(getRouteHistory(NavigationService.observer).length, 31);
     });
 
-    testWidgets('should respect maximal history limit (for back navigation).',
-        (tester) async {
+    testWidgets('should respect maximal history limit (for back navigation).', (
+      tester,
+    ) async {
       await tester.pumpWidget(_app((obs) => obs..maxLength = 5));
       await tester.pumpAndSettle();
 

@@ -103,11 +103,10 @@ class TestLocatorBuilder implements Builder {
             refer(e.displayName, lib.pathToElement(e).toString()),
           FunctionElement(returnType: final InterfaceType rt)
               when (rt.isDartAsyncFuture || rt.isDartAsyncFutureOr) =>
-            refer(
-                rt.typeArguments.first.getDisplayString(withNullability: true),
+            refer(rt.typeArguments.first.getDisplayString(),
                 lib.pathToElement(rt.typeArguments.first.element!).toString()),
           FunctionElement(:final returnType) => refer(
-              returnType.getDisplayString(withNullability: true),
+              returnType.getDisplayString(),
               lib.pathToElement(returnType.element!).toString()),
           _ => throw InvalidGenerationSourceError('Invalid element type.',
               element: element),
@@ -181,10 +180,11 @@ class TestLocatorBuilder implements Builder {
 
     buildStep.writeAsString(
         output,
-        DartFormatter().format(outputLib
-            .accept(DartEmitter.scoped(
-                useNullSafetySyntax: true, orderDirectives: true))
-            .toString()));
+        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+            .format(outputLib
+                .accept(DartEmitter.scoped(
+                    useNullSafetySyntax: true, orderDirectives: true))
+                .toString()));
   }
 
   @override
