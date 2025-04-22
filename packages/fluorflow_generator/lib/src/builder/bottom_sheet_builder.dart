@@ -31,9 +31,15 @@ class BottomSheetBuilder implements Builder {
       'FluorFlowBottomSheet',
     ];
 
-    var extension = Extension((b) => b
-      ..name = 'BottomSheets'
-      ..on = refer('NavigationService', 'package:fluorflow/fluorflow.dart'));
+    var extension = Extension(
+      (b) =>
+          b
+            ..name = 'BottomSheets'
+            ..on = refer(
+              'NavigationService',
+              'package:fluorflow/fluorflow.dart',
+            ),
+    );
 
     await for (final assetId in buildStep.findAssets(_allDartFilesInLib)) {
       if (!await resolver.isLibrary(assetId)) {
@@ -43,116 +49,215 @@ class BottomSheetBuilder implements Builder {
       final lib = LibraryReader(await resolver.libraryFor(assetId));
 
       for (final (sheetClass, superType) in lib.classes
-          .where((c) => c.allSupertypes
-              .map((s) => s.element.name)
-              .any((s) => sheetSuperTypes.contains(s)))
-          .map((c) => (
-                c,
-                c.allSupertypes
-                    .firstWhere((s) => sheetSuperTypes.contains(s.element.name))
-              ))) {
+          .where(
+            (c) => c.allSupertypes
+                .map((s) => s.element3.displayName)
+                .any((s) => sheetSuperTypes.contains(s)),
+          )
+          .map(
+            (c) => (
+              c,
+              c.allSupertypes.firstWhere(
+                (s) => sheetSuperTypes.contains(s.element3.displayName),
+              ),
+            ),
+          )) {
         final configAnnotation =
             configChecker.hasAnnotationOf(sheetClass, throwOnUnresolved: false)
-                ? ConstantReader(configChecker.firstAnnotationOf(sheetClass,
-                    throwOnUnresolved: false))
+                ? ConstantReader(
+                  configChecker.firstAnnotationOf(
+                    sheetClass,
+                    throwOnUnresolved: false,
+                  ),
+                )
                 : null;
 
         final sheetReturnType = superType.typeArguments.first;
-        final methodTupleRef = RecordType((b) => b
-          ..isNullable = false
-          ..positionalFieldTypes.add(refer('bool?'))
-          ..positionalFieldTypes.add(recursiveTypeReference(
-              lib, sheetReturnType,
-              forceNullable: true)));
+        final methodTupleRef = RecordType(
+          (b) =>
+              b
+                ..isNullable = false
+                ..positionalFieldTypes.add(refer('bool?'))
+                ..positionalFieldTypes.add(
+                  recursiveTypeReference(
+                    lib,
+                    sheetReturnType,
+                    forceNullable: true,
+                  ),
+                ),
+        );
+
+        // TODO: replace deprecated use of constructors
+        // ignore: deprecated_member_use
         final params = sheetClass.constructors.first.parameters
             .where(
-                (p) => p.displayName != 'key' && p.displayName != 'completer')
+              (p) => p.displayName != 'key' && p.displayName != 'completer',
+            )
             .toList(growable: false);
 
-        extension = extension.rebuild((b) => b.methods.add(Method((b) => b
-          ..name = 'show${sheetClass.displayName}'
-          ..returns = TypeReference((b) => b
-            ..symbol = 'Future'
-            ..types.add(methodTupleRef))
-          ..lambda = true
-          ..optionalParameters.add(Parameter((b) => b
-            ..name = 'barrierColor'
-            ..type = refer('Color', 'dart:ui')
-            ..named = true
-            ..defaultTo = refer('Color', 'dart:ui').constInstance([
-              CodeExpression(Code(
-                  '0x${(configAnnotation?.read('defaultBarrierColor').intValue ?? 0x80000000).toRadixString(16).padLeft(8, '0')}'))
-            ]).code))
-          ..optionalParameters.add(Parameter((b) => b
-            ..name = 'fullscreen'
-            ..type = refer('bool')
-            ..named = true
-            ..defaultTo = literalBool(
-                    configAnnotation?.read('defaultFullscreen').boolValue ??
-                        false)
-                .code))
-          ..optionalParameters.add(Parameter((b) => b
-            ..name = 'useSafeArea'
-            ..type = refer('bool')
-            ..named = true
-            ..defaultTo = literalBool(
-                    configAnnotation?.read('defaultUseSafeArea').boolValue ??
-                        false)
-                .code))
-          ..optionalParameters.add(Parameter((b) => b
-            ..name = 'draggable'
-            ..type = refer('bool')
-            ..named = true
-            ..defaultTo = literalBool(
-                    configAnnotation?.read('defaultDraggable').boolValue ??
-                        true)
-                .code))
-          ..optionalParameters.add(Parameter((b) => b
-            ..name = 'showDragHandle'
-            ..type = refer('bool')
-            ..named = true
-            ..defaultTo = literalBool(
-                    configAnnotation?.read('defaultShowDragHandle').boolValue ??
-                        false)
-                .code))
-          ..optionalParameters.addAll(params.map((p) => Parameter((b) => b
-            ..name = p.name
-            ..type = recursiveTypeReference(lib, p.type)
-            ..required = p.isRequired
-            ..defaultTo = p.hasDefaultValue ? Code(p.defaultValueCode!) : null
-            ..named = true)))
-          ..body = refer('showBottomSheet')
-              .call([
-                refer(sheetClass.displayName, assetId.uri.toString())
-                    .newInstance(
-                        params
-                            .where((p) => p.isPositional)
-                            .map((p) => refer(p.name)),
-                        {
-                      'completer': refer('closeOverlay'),
-                      for (final p in params.where((p) => p.isNamed))
-                        p.name: refer(p.name)
-                    }),
-              ], {
-                'barrierColor': refer('barrierColor'),
-                'fullscreen': refer('fullscreen'),
-                'draggable': refer('draggable'),
-                'showDragHandle': refer('showDragHandle'),
-                'useSafeArea': refer('useSafeArea'),
-              }, [
-                methodTupleRef,
-                refer(sheetClass.displayName, assetId.uri.toString()),
-              ])
-              .property('then')
-              .call([
-                Method((b) => b
-                      ..requiredParameters.add(Parameter((b) => b.name = 'r'))
-                      ..lambda = true
-                      ..body = Code(
-                          '(r?.\$1, ${sheetReturnType is analyzer.VoidType ? 'null' : r'r?.$2'})'))
-                    .closure
-              ])
-              .code)));
+        extension = extension.rebuild(
+          (b) => b.methods.add(
+            Method(
+              (b) =>
+                  b
+                    ..name = 'show${sheetClass.displayName}'
+                    ..returns = TypeReference(
+                      (b) =>
+                          b
+                            ..symbol = 'Future'
+                            ..types.add(methodTupleRef),
+                    )
+                    ..lambda = true
+                    ..optionalParameters.add(
+                      Parameter(
+                        (b) =>
+                            b
+                              ..name = 'barrierColor'
+                              ..type = refer('Color', 'dart:ui')
+                              ..named = true
+                              ..defaultTo =
+                                  refer('Color', 'dart:ui').constInstance([
+                                    CodeExpression(
+                                      Code(
+                                        '0x${(configAnnotation?.read('defaultBarrierColor').intValue ?? 0x80000000).toRadixString(16).padLeft(8, '0')}',
+                                      ),
+                                    ),
+                                  ]).code,
+                      ),
+                    )
+                    ..optionalParameters.add(
+                      Parameter(
+                        (b) =>
+                            b
+                              ..name = 'fullscreen'
+                              ..type = refer('bool')
+                              ..named = true
+                              ..defaultTo =
+                                  literalBool(
+                                    configAnnotation
+                                            ?.read('defaultFullscreen')
+                                            .boolValue ??
+                                        false,
+                                  ).code,
+                      ),
+                    )
+                    ..optionalParameters.add(
+                      Parameter(
+                        (b) =>
+                            b
+                              ..name = 'useSafeArea'
+                              ..type = refer('bool')
+                              ..named = true
+                              ..defaultTo =
+                                  literalBool(
+                                    configAnnotation
+                                            ?.read('defaultUseSafeArea')
+                                            .boolValue ??
+                                        false,
+                                  ).code,
+                      ),
+                    )
+                    ..optionalParameters.add(
+                      Parameter(
+                        (b) =>
+                            b
+                              ..name = 'draggable'
+                              ..type = refer('bool')
+                              ..named = true
+                              ..defaultTo =
+                                  literalBool(
+                                    configAnnotation
+                                            ?.read('defaultDraggable')
+                                            .boolValue ??
+                                        true,
+                                  ).code,
+                      ),
+                    )
+                    ..optionalParameters.add(
+                      Parameter(
+                        (b) =>
+                            b
+                              ..name = 'showDragHandle'
+                              ..type = refer('bool')
+                              ..named = true
+                              ..defaultTo =
+                                  literalBool(
+                                    configAnnotation
+                                            ?.read('defaultShowDragHandle')
+                                            .boolValue ??
+                                        false,
+                                  ).code,
+                      ),
+                    )
+                    ..optionalParameters.addAll(
+                      params.map(
+                        (p) => Parameter(
+                          (b) =>
+                              b
+                                ..name = p.name
+                                ..type = recursiveTypeReference(lib, p.type)
+                                ..required = p.isRequired
+                                ..defaultTo =
+                                    p.hasDefaultValue
+                                        ? Code(p.defaultValueCode!)
+                                        : null
+                                ..named = true,
+                        ),
+                      ),
+                    )
+                    ..body =
+                        refer('showBottomSheet')
+                            .call(
+                              [
+                                refer(
+                                  sheetClass.displayName,
+                                  assetId.uri.toString(),
+                                ).newInstance(
+                                  params
+                                      .where((p) => p.isPositional)
+                                      .map((p) => refer(p.name)),
+                                  {
+                                    'completer': refer('closeOverlay'),
+                                    for (final p in params.where(
+                                      (p) => p.isNamed,
+                                    ))
+                                      p.name: refer(p.name),
+                                  },
+                                ),
+                              ],
+                              {
+                                'barrierColor': refer('barrierColor'),
+                                'fullscreen': refer('fullscreen'),
+                                'draggable': refer('draggable'),
+                                'showDragHandle': refer('showDragHandle'),
+                                'useSafeArea': refer('useSafeArea'),
+                              },
+                              [
+                                methodTupleRef,
+                                refer(
+                                  sheetClass.displayName,
+                                  assetId.uri.toString(),
+                                ),
+                              ],
+                            )
+                            .property('then')
+                            .call([
+                              Method(
+                                (b) =>
+                                    b
+                                      ..requiredParameters.add(
+                                        Parameter((b) => b.name = 'r'),
+                                      )
+                                      ..lambda = true
+                                      ..body = Code(
+                                        '(r?.\$1, ${sheetReturnType is analyzer.VoidType ? 'null' : r'r?.$2'})',
+                                      ),
+                              ).closure,
+                            ])
+                            .code,
+            ),
+          ),
+        );
       }
     }
 
@@ -160,21 +265,32 @@ class BottomSheetBuilder implements Builder {
       return;
     }
 
-    final outputLib = Library((b) => b
-      ..ignoreForFile.add('type=lint')
-      ..body.add(extension));
+    final outputLib = Library(
+      (b) =>
+          b
+            ..ignoreForFile.add('type=lint')
+            ..body.add(extension),
+    );
 
     buildStep.writeAsString(
-        output,
-        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
-            .format(outputLib
-                .accept(DartEmitter.scoped(
-                    useNullSafetySyntax: true, orderDirectives: true))
-                .toString()));
+      output,
+      DartFormatter(
+        languageVersion: DartFormatter.latestLanguageVersion,
+      ).format(
+        outputLib
+            .accept(
+              DartEmitter.scoped(
+                useNullSafetySyntax: true,
+                orderDirectives: true,
+              ),
+            )
+            .toString(),
+      ),
+    );
   }
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        r'lib/$lib$': [options.output],
-      };
+    r'lib/$lib$': [options.output],
+  };
 }
