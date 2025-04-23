@@ -19,11 +19,13 @@ extension on BuilderOptions {
 }
 
 class TestLocatorBuilder implements Builder {
-  static final _allDartFilesInLib =
-      Glob('{lib/*.dart,lib/**/*.dart,test/*.dart,test/**/*.dart}');
+  static final _allDartFilesInLib = Glob(
+    '{lib/*.dart,lib/**/*.dart,test/*.dart,test/**/*.dart}',
+  );
   static final _ignoreAnnotation = TypeChecker.fromRuntime(IgnoreDependency);
-  static final _customLocatorAnnotation =
-      TypeChecker.fromRuntime(CustomLocatorFunction);
+  static final _customLocatorAnnotation = TypeChecker.fromRuntime(
+    CustomLocatorFunction,
+  );
   static final _isFactory = TypeChecker.fromRuntime(Factory);
   static final _nonFactory = TypeChecker.any([
     TypeChecker.fromRuntime(Singleton),
@@ -51,26 +53,41 @@ class TestLocatorBuilder implements Builder {
 
     var outputLib = Library((b) => b..ignoreForFile.add('type=lint'));
     var setupTestLocatorMethodBody = Block();
-    var setupTestLocatorMethod = Method((b) => b
-      ..name = 'setupTestLocator'
-      ..returns = refer('void'));
+    var setupTestLocatorMethod = Method(
+      (b) =>
+          b
+            ..name = 'setupTestLocator'
+            ..returns = refer('void'),
+    );
 
     final mockedTypes = List<Reference>.empty(growable: true);
 
     void addNonFactoryMock(Reference originalType, Reference mockType) {
-      outputLib = outputLib.rebuild((b) => b.body.add(Method((b) => b
-        ..name = 'get${mockType.symbol}'
-        ..returns = mockType
-        ..body = Block.of([
-          Code.scope(
-              (a) => 'if (${a(locatorRef)}.isRegistered<${a(originalType)}>())'
-                  '{${a(locatorRef)}.unregister<${a(originalType)}>();}'),
-          declareFinal('service').assign(mockType.newInstance([])).statement,
-          locatorRef
-              .property('registerSingleton')
-              .call([refer('service')], {}, [originalType]).statement,
-          refer('service').returned.statement,
-        ]))));
+      outputLib = outputLib.rebuild(
+        (b) => b.body.add(
+          Method(
+            (b) =>
+                b
+                  ..name = 'get${mockType.symbol}'
+                  ..returns = mockType
+                  ..body = Block.of([
+                    Code.scope(
+                      (a) =>
+                          'if (${a(locatorRef)}.isRegistered<${a(originalType)}>())'
+                          '{${a(locatorRef)}.unregister<${a(originalType)}>();}',
+                    ),
+                    declareFinal(
+                      'service',
+                    ).assign(mockType.newInstance([])).statement,
+                    locatorRef
+                        .property('registerSingleton')
+                        .call([refer('service')], {}, [originalType])
+                        .statement,
+                    refer('service').returned.statement,
+                  ]),
+          ),
+        ),
+      );
     }
 
     void addInternalType(Reference internalType) {
@@ -78,7 +95,8 @@ class TestLocatorBuilder implements Builder {
       mockedTypes.add(internalType);
       addNonFactoryMock(internalType, mockType);
       setupTestLocatorMethodBody = setupTestLocatorMethodBody.rebuild(
-          (b) => b.addExpression(refer('get${mockType.symbol}').call([])));
+        (b) => b.addExpression(refer('get${mockType.symbol}').call([])),
+      );
     }
 
     await for (final assetId in buildStep.findAssets(_allDartFilesInLib)) {
@@ -89,27 +107,32 @@ class TestLocatorBuilder implements Builder {
       final lib = LibraryReader(await resolver.libraryFor(assetId));
 
       for (final AnnotatedElement(:annotation, :element) in lib
-          .annotatedWith(TypeChecker.any([
-            _nonFactory,
-            _isFactory,
-          ]))
+          .annotatedWith(TypeChecker.any([_nonFactory, _isFactory]))
           .where((element) => !_hasIgnoreAnnotation(element))) {
         // For all annotations (except Factory), the mocked element is either
         // the annotated class or the returnvalue of the factory function.
         // For all factories (Factory annotations), the mocked element is the
         // return value regardless of params. But the factory is still registered.
         final originalType = switch (element) {
-          final ClassElement e =>
-            refer(e.displayName, lib.pathToElement(e).toString()),
+          final ClassElement e => refer(
+            e.displayName,
+            lib.pathToElement(e).toString(),
+          ),
           FunctionElement(returnType: final InterfaceType rt)
               when (rt.isDartAsyncFuture || rt.isDartAsyncFutureOr) =>
-            refer(rt.typeArguments.first.getDisplayString(),
-                lib.pathToElement(rt.typeArguments.first.element!).toString()),
+            refer(
+              rt.typeArguments.first.getDisplayString(),
+              lib.pathToElement(rt.typeArguments.first.element!).toString(),
+            ),
           FunctionElement(:final returnType) => refer(
-              returnType.getDisplayString(),
-              lib.pathToElement(returnType.element!).toString()),
-          _ => throw InvalidGenerationSourceError('Invalid element type.',
-              element: element),
+            returnType.getDisplayString(),
+            lib.pathToElement(returnType.element!).toString(),
+          ),
+          _ =>
+            throw InvalidGenerationSourceError(
+              'Invalid element type.',
+              element: element,
+            ),
         };
         final mockType = refer('Mock${originalType.symbol}', mocksUri);
         mockedTypes.add(originalType);
@@ -117,85 +140,143 @@ class TestLocatorBuilder implements Builder {
         if (annotation.instanceOf(_nonFactory)) {
           addNonFactoryMock(originalType, mockType);
         } else {
-          outputLib = outputLib.rebuild((b) => b.body.add(Method((b) => b
-            ..name = 'get${mockType.symbol}'
-            ..returns = mockType
-            ..body = Block.of([
-              Code.scope((a) =>
-                  'if (${a(locatorRef)}.isRegistered<${a(originalType)}>())'
-                  '{${a(locatorRef)}.unregister<${a(originalType)}>();}'),
-              declareFinal('service')
-                  .assign(mockType.newInstance([]))
-                  .statement,
-              locatorRef.property('registerFactory').call(
-                  [Method((b) => b.body = refer('service').code).closure],
-                  {},
-                  [originalType]).statement,
-              refer('service').returned.statement,
-            ]))));
+          outputLib = outputLib.rebuild(
+            (b) => b.body.add(
+              Method(
+                (b) =>
+                    b
+                      ..name = 'get${mockType.symbol}'
+                      ..returns = mockType
+                      ..body = Block.of([
+                        Code.scope(
+                          (a) =>
+                              'if (${a(locatorRef)}.isRegistered<${a(originalType)}>())'
+                              '{${a(locatorRef)}.unregister<${a(originalType)}>();}',
+                        ),
+                        declareFinal(
+                          'service',
+                        ).assign(mockType.newInstance([])).statement,
+                        locatorRef
+                            .property('registerFactory')
+                            .call(
+                              [
+                                Method(
+                                  (b) => b.body = refer('service').code,
+                                ).closure,
+                              ],
+                              {},
+                              [originalType],
+                            )
+                            .statement,
+                        refer('service').returned.statement,
+                      ]),
+              ),
+            ),
+          );
         }
 
         setupTestLocatorMethodBody = setupTestLocatorMethodBody.rebuild(
-            (b) => b.addExpression(refer('get${mockType.symbol}').call([])));
+          (b) => b.addExpression(refer('get${mockType.symbol}').call([])),
+        );
       }
 
       for (final AnnotatedElement(:element) in lib
           .annotatedWith(_customLocatorAnnotation)
           .where((element) => element.element is FunctionElement)
-          .where((element) =>
-              element.annotation.read('includeInTestLocator').boolValue)) {
-        setupTestLocatorMethodBody = setupTestLocatorMethodBody.rebuild((b) =>
-            b.addExpression(refer(
-                    element.displayName, lib.pathToElement(element).toString())
-                .call([])));
+          .where(
+            (element) =>
+                element.annotation.read('includeInTestLocator').boolValue,
+          )) {
+        setupTestLocatorMethodBody = setupTestLocatorMethodBody.rebuild(
+          (b) => b.addExpression(
+            refer(
+              element.displayName,
+              lib.pathToElement(element).toString(),
+            ).call([]),
+          ),
+        );
       }
     }
 
     if (options.mockNavService) {
       addInternalType(
-          refer('NavigationService', 'package:fluorflow/fluorflow.dart'));
+        refer('NavigationService', 'package:fluorflow/fluorflow.dart'),
+      );
     }
 
-    setupTestLocatorMethod = setupTestLocatorMethod.rebuild((b) => b
-      ..body = setupTestLocatorMethodBody
-      ..annotations.add(
-          refer('GenerateNiceMocks', 'package:mockito/annotations.dart').call([
-        literalList(mockedTypes.map((t) =>
-            refer('MockSpec', 'package:mockito/annotations.dart')
-                .newInstance([], {
-              'onMissingStub':
-                  refer('OnMissingStub', 'package:mockito/annotations.dart')
-                      .property('returnDefault')
-            }, [
-              t
-            ])))
-      ])));
-    outputLib = outputLib.rebuild((b) => b
-      ..body.add(setupTestLocatorMethod)
-      ..body.add(Method((b) => b
-        ..name = 'tearDownLocator'
-        ..returns = refer('void')
-        ..lambda = true
-        ..body = locatorRef.property('reset').call([]).code)));
+    setupTestLocatorMethod = setupTestLocatorMethod.rebuild(
+      (b) =>
+          b
+            ..body = setupTestLocatorMethodBody
+            ..annotations.add(
+              refer(
+                'GenerateNiceMocks',
+                'package:mockito/annotations.dart',
+              ).call([
+                literalList(
+                  mockedTypes.map(
+                    (t) => refer(
+                      'MockSpec',
+                      'package:mockito/annotations.dart',
+                    ).newInstance(
+                      [],
+                      {
+                        'onMissingStub': refer(
+                          'OnMissingStub',
+                          'package:mockito/annotations.dart',
+                        ).property('returnDefault'),
+                      },
+                      [t],
+                    ),
+                  ),
+                ),
+              ]),
+            ),
+    );
+    outputLib = outputLib.rebuild(
+      (b) =>
+          b
+            ..body.add(setupTestLocatorMethod)
+            ..body.add(
+              Method(
+                (b) =>
+                    b
+                      ..name = 'tearDownLocator'
+                      ..returns = refer('void')
+                      ..lambda = true
+                      ..body = locatorRef.property('reset').call([]).code,
+              ),
+            ),
+    );
 
     buildStep.writeAsString(
-        output,
-        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
-            .format(outputLib
-                .accept(DartEmitter.scoped(
-                    useNullSafetySyntax: true, orderDirectives: true))
-                .toString()));
+      output,
+      DartFormatter(
+        languageVersion: DartFormatter.latestLanguageVersion,
+      ).format(
+        outputLib
+            .accept(
+              DartEmitter.scoped(
+                useNullSafetySyntax: true,
+                orderDirectives: true,
+              ),
+            )
+            .toString(),
+      ),
+    );
   }
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        r'lib/$lib$': [options.output],
-      };
+    r'lib/$lib$': [options.output],
+  };
 
   bool _hasIgnoreAnnotation(AnnotatedElement e) =>
-      ConstantReader(_ignoreAnnotation.firstAnnotationOf(e.element,
-              throwOnUnresolved: false))
-          .peek('inTestLocator')
-          ?.boolValue ==
+      ConstantReader(
+        _ignoreAnnotation.firstAnnotationOf(
+          e.element,
+          throwOnUnresolved: false,
+        ),
+      ).peek('inTestLocator')?.boolValue ==
       true;
 }
