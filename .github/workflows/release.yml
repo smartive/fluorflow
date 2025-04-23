@@ -29,7 +29,7 @@ jobs:
           channel: stable
       - run: gcloud auth print-identity-token --audiences=https://pub.dev | dart pub token add https://pub.dev
       - name: release
-        uses: cycjimmy/semantic-release-action@v3
+        uses: cycjimmy/semantic-release-action@v4
         with:
           extra_plugins: |
             @semantic-release/exec
