@@ -85,7 +85,8 @@ class DialogBuilder implements Builder {
                 ),
         );
 
-        // TODO: replace deprecated use of constructors
+        // TODO: replace deprecated use of constructors and implement new
+        // analyzer API
         // ignore: deprecated_member_use
         final params = dialogClass.constructors.first.parameters
             .where(
@@ -111,15 +112,12 @@ class DialogBuilder implements Builder {
                         .read('pageRouteBuilder')
                         .typeValue
                         .getDisplayString(),
-                    lib
-                        .pathToElement(
-                          configAnnotation
-                              .read('pageRouteBuilder')
-                              .typeValue
-                              // TODO: replace deprecated element
-                              // ignore: deprecated_member_use
-                              .element!,
-                        )
+                    configAnnotation
+                        .read('pageRouteBuilder')
+                        .typeValue
+                        .element3
+                        ?.library2
+                        ?.uri
                         .toString(),
                   ),
                   (final t, _) => refer(
